@@ -382,32 +382,56 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-lg-4 d-flex flex-column">
-                                                <div class="row flex-grow">
-                                                    <div class="col-6 grid-margin stretch-card">
-                                                        <div class="card card-rounded">
-                                                            <div class="card-body">
-                                                                <div class="row">
-                                                                    <div class="col-lg-12">
-                                                                        <div class="d-flex justify-content-between align-items-center">
-                                                                            <h4 class="card-title card-title-dash" style="text-align: center;">Fitur Pengelolaan Data Pegawai</h4>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                            <div class="col-lg-3 col-xl-2 col-md-6 mb-3">
+                                                <div class="card card-rounded h-100">
+                                                    <div class="card-body">
+                                                        <div class="fw-bold">
+                                                            Lorem ipsum dolor sit amet.
                                                         </div>
                                                     </div>
-                                                    <div class="col-6 grid-margin stretch-card">
-                                                        <div class="card card-rounded">
-                                                            <div class="card-body">
-                                                                <div class="row">
-                                                                    <div class="col-lg-12">
-                                                                        <div class="d-flex justify-content-between align-items-center">
-                                                                            <h4 class="card-title card-title-dash" style="text-align: center;">Fitur Pengelolaan Data KGB</h4>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-xl-2 col-md-6 mb-3">
+                                                <div class="card card-rounded h-100">
+                                                    <div class="card-body">
+                                                        <div class="fw-bold">
+                                                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid, ut.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-xl-2 col-md-6 mb-3">
+                                                <div class="card card-rounded h-100">
+                                                    <div class="card-body">
+                                                        <div class="fw-bold">
+                                                            Lorem ipsum dolor sit amet.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-xl-2 col-md-6 mb-3">
+                                                <div class="card card-rounded h-100">
+                                                    <div class="card-body">
+                                                        <div class="fw-bold">
+                                                            Lorem ipsum dolor sit amet.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-xl-2 col-md-6 mb-3">
+                                                <div class="card card-rounded h-100">
+                                                    <div class="card-body">
+                                                        <div class="fw-bold">
+                                                            Lorem ipsum dolor sit amet.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-xl-2 col-md-6 mb-3">
+                                                <div class="card card-rounded h-100">
+                                                    <div class="card-body">
+                                                        <div class="fw-bold">
+                                                            Lorem ipsum dolor sit amet.
                                                         </div>
                                                     </div>
                                                 </div>
