@@ -381,58 +381,67 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-lg-3 col-xl-2 col-md-6 mb-3">
-                                                <div class="card card-rounded h-100">
-                                                    <div class="card-body">
-                                                        <div class="fw-bold">
-                                                            Lorem ipsum dolor sit amet.
-                                                        </div>
+                                        <div class="row justify-content-between align-items-center m-0">
+                                            <div class="bg-white rounded d-flex justify-content-center align-items-center mb-3 px-4" style="font-size: 0.6rem; width: 10rem; height: 10rem">
+                                                <div>
+                                                    <div class="fw-bold ">Fitur Pengelolaan Data Pegawai</div>
+                                                    <div class="text-break">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, aut?</div>
+                                                    <div class="d-flex justify-content-center">
+                                                        <button class="mt-3 btn btn-primary text-white rounded bottom-auto">Kelola</button>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-3 col-xl-2 col-md-6 mb-3">
-                                                <div class="card card-rounded h-100">
-                                                    <div class="card-body">
-                                                        <div class="fw-bold">
-                                                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid, ut.
-                                                        </div>
+                                            <div class="bg-white rounded d-flex justify-content-center align-items-center mb-3 px-4" style="font-size: 0.6rem; width: 10rem; height: 10rem">
+                                                <div>
+                                                    <div class="fw-bold ">Fitur Pengelolaan Data KGB</div>
+                                                    <div class="text-break">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, aut?</div>
+                                                    <div class="d-flex justify-content-center">
+                                                        <button class="mt-3 btn btn-primary text-white rounded bottom-auto">Kelola</button>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-3 col-xl-2 col-md-6 mb-3">
-                                                <div class="card card-rounded h-100">
-                                                    <div class="card-body">
-                                                        <div class="fw-bold">
-                                                            Lorem ipsum dolor sit amet.
-                                                        </div>
+                                            <div class="bg-white rounded d-flex justify-content-center align-items-center mb-3 px-4" style="font-size: 0.6rem; width: 10rem; height: 10rem">
+                                                <div>
+                                                    <div class="fw-bold ">Fitur Pengelolaan Data KP</div>
+                                                    <div class="text-break">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, aut?</div>
+                                                    <div class="d-flex justify-content-center">
+                                                        <button class="mt-3 btn btn-primary text-white rounded bottom-auto">Kelola</button>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-3 col-xl-2 col-md-6 mb-3">
-                                                <div class="card card-rounded h-100">
-                                                    <div class="card-body">
-                                                        <div class="fw-bold">
-                                                            Lorem ipsum dolor sit amet.
-                                                        </div>
+                                            <div class="bg-white rounded d-flex justify-content-center align-items-center mb-3 px-4" style="font-size: 0.6rem; width: 10rem; height: 10rem">
+                                                <div>
+                                                    <div class="fw-bold ">Fitur Pengelolaan Data Penghargaan</div>
+                                                    <div class="text-break">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, aut?</div>
+                                                    <div class="d-flex justify-content-center">
+                                                        <button class="mt-3 btn btn-primary text-white rounded bottom-auto">Kelola</button>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-3 col-xl-2 col-md-6 mb-3">
-                                                <div class="card card-rounded h-100">
-                                                    <div class="card-body">
-                                                        <div class="fw-bold">
-                                                            Lorem ipsum dolor sit amet.
-                                                        </div>
+                                            <div class="bg-white rounded d-flex justify-content-center align-items-center mb-3 px-4" style="font-size: 0.6rem; width: 10rem; height: 10rem">
+                                                <div>
+                                                    <div class="fw-bold ">Fitur Pengelolaan Data DUK</div>
+                                                    <div class="text-break">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, aut?</div>
+                                                    <div class="d-flex justify-content-center">
+                                                        <button class="mt-3 btn btn-primary text-white rounded bottom-auto">Kelola</button>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-3 col-xl-2 col-md-6 mb-3">
-                                                <div class="card card-rounded h-100">
-                                                    <div class="card-body">
-                                                        <div class="fw-bold">
-                                                            Lorem ipsum dolor sit amet.
-                                                        </div>
+                                            <div class="bg-white rounded d-flex justify-content-center align-items-center mb-3 px-4" style="font-size: 0.6rem; width: 10rem; height: 10rem">
+                                                <div>
+                                                    <div class="fw-bold ">Fitur Pengelolaan Data Pensiun</div>
+                                                    <div class="text-break">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, aut?</div>
+                                                    <div class="d-flex justify-content-center">
+                                                        <button class="mt-3 btn btn-primary text-white rounded bottom-auto">Kelola</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="bg-white rounded d-flex justify-content-center align-items-center mb-3 px-4" style="font-size: 0.6rem; width: 10rem; height: 10rem">
+                                                <div>
+                                                    <div class="fw-bold ">Fitur Pengelolaan Data Cuti</div>
+                                                    <div class="text-break">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, aut?</div>
+                                                    <div class="d-flex justify-content-center">
+                                                        <button class="mt-3 btn btn-primary text-white rounded bottom-auto">Kelola</button>
                                                     </div>
                                                 </div>
                                             </div>
