@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\DataKgb;
+use App\Models\DataPegawai;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class DataKgbController extends Controller
@@ -14,7 +16,10 @@ class DataKgbController extends Controller
      */
     public function index()
     {
-        return view('tabel.tabeldatakgb2021-2025');
+        $datapegawai1 = DataPegawai::first();
+        $test = Carbon::createFromFormat('Y-m-d', $datapegawai1->kgb);
+        dd($test->addYear(5));
+        // return view('tabel.tabeldatakgb2021-2025', compact('datapegawai'));
     }
 
     /**

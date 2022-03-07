@@ -15,11 +15,11 @@ class DataPegawaiController extends Controller
     public function index(Request $request)
     {
         if ($request->has('cari')) {
-    		$data_pegawai = \App\Models\DataPegawai::where('namapegawai', 'LIKE', '%'.$request->cari.'%')->get();
-    	}else{
-    		$data_pegawai = \App\Models\DataPegawai::all();
-    	}
-    	return view('tabel.tabeldatapegawai', ['data_pegawai' => $data_pegawai]);
+            $data_pegawai = \App\Models\DataPegawai::where('namapegawai', 'LIKE', '%' . $request->cari . '%')->get();
+        } else {
+            $data_pegawai = \App\Models\DataPegawai::all();
+        }
+        return view('tabel.tabeldatapegawai', ['data_pegawai' => $data_pegawai]);
     }
 
     public function create()
@@ -29,6 +29,7 @@ class DataPegawaiController extends Controller
 
     public function store(Request $request)
     {
+
         $attr = request()->validate([
             'namapegawai' => 'required',
             'nip' => 'required',
@@ -44,7 +45,7 @@ class DataPegawaiController extends Controller
         ]);
 
         $attr = $request->all();
-        \App\Models\DataPegawai::create($attr);
+        DataPegawai::create($attr);
 
         session()->flash('success', 'Data Pegawai berhasil di Tambahkan');
 
@@ -77,7 +78,6 @@ class DataPegawaiController extends Controller
         session()->flash('success', 'Data Pegawai Berhasil di Update');
 
         return redirect('admin/datapegawai');
-        
     }
 
     public function destroy(DataPegawai $dataPegawai)
