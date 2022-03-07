@@ -30712,6 +30712,18 @@ div.tagsinput span.tag a {
   right: unset;
 }
 
+.fntsz {
+  font-size: 12px;
+}
+
+.fontsize {
+  font-size: 7px;
+}
+
+.mgtop {
+  margin-top: 10px;
+}
+
 #theme-settings .settings-close {
   top: 12px;
   background: transparent;

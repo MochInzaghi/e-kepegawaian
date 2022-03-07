@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>E-Kepegawaian </title>
     <!-- plugins:css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{asset('template')}}/vendors/feather/feather.css">
     <link rel="stylesheet" href="{{asset('template')}}/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="{{asset('template')}}/vendors/ti-icons/css/themify-icons.css">
@@ -73,24 +74,20 @@
             <!-- partial:partials/_settings-panel.html -->
             <div class="theme-setting-wrapper">
                 <div id="settings-trigger"><i class="ti-settings"></i></div>
-                <div id="theme-settings" class="settings-panel">
-                    <i class="settings-close ti-close"></i>
-                    <p class="settings-heading">SIDEBAR SKINS</p>
-                    <div class="sidebar-bg-options selected" id="sidebar-light-theme">
-                        <div class="img-ss rounded-circle bg-light border me-3"></div>Light
-                    </div>
-                    <div class="sidebar-bg-options" id="sidebar-dark-theme">
-                        <div class="img-ss rounded-circle bg-dark border me-3"></div>Dark
-                    </div>
-                    <p class="settings-heading mt-2">HEADER SKINS</p>
-                    <div class="color-tiles mx-0 px-4">
-                        <div class="tiles success"></div>
-                        <div class="tiles warning"></div>
-                        <div class="tiles danger"></div>
-                        <div class="tiles info"></div>
-                        <div class="tiles dark"></div>
-                        <div class="tiles default"></div>
-                    </div>
+                    <div id="theme-settings" class="settings-panel">
+                            <i class="settings-close ti-close"></i>
+                            <p class="settings-heading">SIDEBAR SKINS</p>
+                        <div class="sidebar-bg-options selected" id="sidebar-light-theme"><div class="img-ss rounded-circle bg-light border me-3"></div>Light</div>
+                            <div class="sidebar-bg-options" id="sidebar-dark-theme"><div class="img-ss rounded-circle bg-dark border me-3"></div>Dark</div>
+                                <p class="settings-heading mt-2">HEADER SKINS</p>
+                        <div class="color-tiles mx-0 px-4">
+                            <div class="tiles success"></div>
+                            <div class="tiles warning"></div>
+                            <div class="tiles danger"></div>
+                            <div class="tiles info"></div>
+                            <div class="tiles dark"></div>
+                            <div class="tiles default"></div>
+                        </div>
                 </div>
             </div>
             <div id="right-sidebar" class="settings-panel">
@@ -331,10 +328,10 @@
                                                             <div class="card-body">
                                                                 <div class="d-sm-flex justify-content-between align-items-start">
                                                                     <div>
-                                                                        <h4 class="card-title card-title-dash">About Sistem Informasi E-Kepegawaian</h4>
+                                                                        <h4 class="card-title card-title-dash" style="font-size:18px;">About Sistem Informasi E-Kepegawaian</h4>
                                                                     </div>
                                                                 </div>
-                                                                <p style="margin-top:10px;">E-Kepegawaian merupakan suatu sistem informasi yang memiliki fungsi utama yaitu membantu admin kepegawaian untuk mengelola data kepegawaian di kesekretariatan Dinas Komunikasi dan Informatika Kabupaten Malang. Sistem ini memiliki berbagai fitur yang menunjang pengelolaan data kepegawaian. Fitur-fitur yang tersedia yaitu Fitur Pengelolaan Data Pegawai, Fitur Pengelolaan Data Kenaikan Gaji Berkala, Fitur Pengelolaan Data Kenaikan Pangkat, Fitur Pengelolaan Data Penghargaan, Fitur Pengelolaan Data DUK (Daftar Urut Kepangkatan), Fitur Pengelolaan Data Pensiun, dan Fitur Pengelolaan Data Cuti.</p>
+                                                                <p style="margin-top:10px;font-size:20px;line-height:1;">E-Kepegawaian merupakan suatu sistem informasi yang memiliki fungsi utama yaitu membantu admin kepegawaian untuk mengelola data kepegawaian di kesekretariatan Dinas Komunikasi dan Informatika Kabupaten Malang. Sistem ini memiliki berbagai fitur yang menunjang pengelolaan data kepegawaian. Fitur-fitur yang tersedia yaitu Fitur Pengelolaan Data Pegawai, Fitur Pengelolaan Data Kenaikan Gaji Berkala, Fitur Pengelolaan Data Kenaikan Pangkat, Fitur Pengelolaan Data Penghargaan, Fitur Pengelolaan Data DUK (Daftar Urut Kepangkatan), Fitur Pengelolaan Data Pensiun, dan Fitur Pengelolaan Data Cuti.</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -384,64 +381,64 @@
                                         <div class="row justify-content-between align-items-center m-0">
                                             <div class="bg-white rounded d-flex justify-content-center align-items-center mb-3 pt-3 px-4" style="font-size: 0.6rem; width: 10rem;">
                                                 <div class="text-center">
-                                                    <div class="fw-bold">Fitur Pengelolaan Data Pegawai</div>
-                                                    <div class="text-break mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, aut?</div>
-                                                    <div class="d-flex justify-content-center">
-                                                        <button class="mt-3 btn btn-primary text-white rounded bottom-auto">Kelola</button>
+                                                    <div class="fw-bold fntsz">Fitur Pengelolaan <br>Data Pegawai</div>
+                                                    <div class="text-break mt-2 fontsize">admin dapat melakukan<br>pengelolaan berupa tambah,<br>edit, dan hapus data pegawai</div>
+                                                    <div class="d-flex justify-content-center mgtop">
+                                                        <button class="mt-3 btn btn-primary text-white rounded bottom-auto">Kelola<i style="font-size:15px; margin-left:5px;" class="fa fa-arrow-right"></i></button>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="bg-white rounded d-flex justify-content-center align-items-center mb-3 pt-3 px-4" style="font-size: 0.6rem; width: 10rem;">
                                                 <div class="text-center">
-                                                    <div class="fw-bold">Fitur Pengelolaan Data KGB</div>
-                                                    <div class="text-break mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, aut?</div>
+                                                    <div class="fw-bold fntsz">Fitur Pengelolaan <br>Data KGB</div>
+                                                    <div class="text-break mt-2 fontsize">admin dapat melakukan<br>pengelolaan berupa edit dan<br>print laporan setiap kenaikan gaji<br>per karyawan</div>
                                                     <div class="d-flex justify-content-center">
-                                                        <button class="mt-3 btn btn-primary text-white rounded bottom-auto">Kelola</button>
+                                                        <button class="mt-3 btn btn-primary text-white rounded bottom-auto">Kelola<i style="font-size:15px; margin-left:5px;" class="fa fa-arrow-right"></i></button>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="bg-white rounded d-flex justify-content-center align-items-center mb-3 pt-3 px-4" style="font-size: 0.6rem; width: 10rem;">
                                                 <div class="text-center">
-                                                    <div class="fw-bold">Fitur Pengelolaan Data KP</div>
-                                                    <div class="text-break mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, aut?</div>
+                                                    <div class="fw-bold fntsz">Fitur Pengelolaan <br>Data KP</div>
+                                                    <div class="text-break mt-2 fontsize">admin dapat melakukan<br>pengelolaan berupa edit dan<br>print laporan setiap kenaikan<br>pangkat per karyawan</div>
                                                     <div class="d-flex justify-content-center">
-                                                        <button class="mt-3 btn btn-primary text-white rounded bottom-auto">Kelola</button>
+                                                        <button class="mt-3 btn btn-primary text-white rounded bottom-auto">Kelola<i style="font-size:15px; margin-left:5px;" class="fa fa-arrow-right"></i></button>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="bg-white rounded d-flex justify-content-center align-items-center mb-3 pt-3 px-4" style="font-size: 0.6rem; width: 10rem;">
                                                 <div class="text-center">
-                                                    <div class="fw-bold">Fitur Pengelolaan Data Penghargaan</div>
-                                                    <div class="text-break mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, aut?</div>
-                                                    <div class="d-flex justify-content-center">
-                                                        <button class="mt-3 btn btn-primary text-white rounded bottom-auto">Kelola</button>
+                                                    <div class="fw-bold fntsz">Fitur Pengelolaan <br>Data Penghargaan</div>
+                                                    <div class="text-break mt-2 fontsize">admin dapat melakukan<br>pengelolaan berupa edit dan<br>print laporan setiap bulan</div>
+                                                    <div class="d-flex justify-content-center mgtop">
+                                                        <button class="mt-3 btn btn-primary text-white rounded bottom-auto">Kelola<i style="font-size:15px; margin-left:5px;" class="fa fa-arrow-right"></i></button>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="bg-white rounded d-flex justify-content-center align-items-center mb-3 pt-3 px-4" style="font-size: 0.6rem; width: 10rem;">
                                                 <div class="text-center">
-                                                    <div class="fw-bold">Fitur Pengelolaan Data DUK</div>
-                                                    <div class="text-break mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, aut?</div>
-                                                    <div class="d-flex justify-content-center">
-                                                        <button class="mt-3 btn btn-primary text-white rounded bottom-auto">Kelola</button>
+                                                    <div class="fw-bold fntsz">Fitur Pengelolaan <br>Data DUK</div>
+                                                    <div class="text-break mt-2 fontsize">admin dapat melakukan<br>pengelolaan berupa edit dan <br>print laporan setiap bulan</div>
+                                                    <div class="d-flex justify-content-center mgtop">
+                                                        <button class="mt-3 btn btn-primary text-white rounded bottom-auto">Kelola<i style="font-size:15px; margin-left:5px;" class="fa fa-arrow-right"></i></button>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="bg-white rounded d-flex justify-content-center align-items-center mb-3 pt-3 px-4" style="font-size: 0.6rem; width: 10rem;">
                                                 <div class="text-center">
-                                                    <div class="fw-bold">Fitur Pengelolaan Data Pensiun</div>
-                                                    <div class="text-break mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, aut?</div>
-                                                    <div class="d-flex justify-content-center">
-                                                        <button class="mt-3 btn btn-primary text-white rounded bottom-auto">Kelola</button>
+                                                    <div class="fw-bold fntsz">Fitur Pengelolaan <br>Data Pensiun</div>
+                                                    <div class="text-break mt-2 fontsize">admin dapat melakukan<br>pengelolaan berupa edit dan<br>print laporan setiap bulan</div>
+                                                    <div class="d-flex justify-content-center mgtop">
+                                                        <button class="mt-3 btn btn-primary text-white rounded bottom-auto">Kelola<i style="font-size:15px; margin-left:5px;" class="fa fa-arrow-right"></i></button>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="bg-white rounded d-flex justify-content-center align-items-center mb-3 pt-3 px-4" style="font-size: 0.6rem; width: 10rem;">
                                                 <div class="text-center">
-                                                    <div class="fw-bold">Fitur Pengelolaan Data Cuti</div>
-                                                    <div class="text-break mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, aut?</div>
+                                                    <div class="fw-bold fntsz">Fitur Pengelolaan <br>Data Cuti</div>
+                                                    <div class="text-break mt-2 fontsize">admin dapat melakukan<br>pengelolaan berupa tambah,<br>edit, hapus, dan print laporan <br>data pegawai setiap bulan</div>
                                                     <div class="d-flex justify-content-center">
-                                                        <button class="mt-3 btn btn-primary text-white rounded bottom-auto">Kelola</button>
+                                                        <button class="mt-3 btn btn-primary text-white rounded bottom-auto">Kelola <i style="font-size:15px; margin-left:5px;" class="fa fa-arrow-right"></i></button>
                                                     </div>
                                                 </div>
                                             </div>

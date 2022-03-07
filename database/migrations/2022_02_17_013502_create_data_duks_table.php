@@ -14,7 +14,21 @@ class CreateDataDuksTable extends Migration
     public function up()
     {
         Schema::create('data_duks', function (Blueprint $table) {
-            $table->id();
+            $table->bigIcrements('id');
+            $table->bigInteger('tabelpegawai_id')->unsigned();
+            $table->string('pangkat');
+            $table->string('tmt');
+            $table->string('jabatanterakhir');
+            $table->integer('mk_tahun');
+            $table->integer('mk_bulan');
+            $table->string('pendidikan_kepemimpinan');
+            $table->integer('tahunlulus');
+            $table->string('pendidikan_terakhir');
+            $table->integer('tahun_lulus');
+            $table->string('jeniskelamin');
+            $table->string('agama_tahun');
+            $table->integer('tahunpensiun');
+            $table->string('keterangan');
             $table->timestamps();
         });
     }

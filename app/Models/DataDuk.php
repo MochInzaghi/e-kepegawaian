@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class DataDuk extends Model
 {
-    use HasFactory;
+    protected $table = 'data_duks' ;//sesuaikan nama table
+    protected $fillable = ['pangkat','tmt','jabatanterakhir','mk_tahun','mk_bulan','pendidikan_kepemimpinan','tahunlulus','pendidikan_terakhir','tahun_lulus','jeniskelamin','agama_tahun','tahunpensiun','keterangan'];
+
+    public function getPegawai(){
+        return $this->belongsTo(DataPegawai::class);
+    }
 }
