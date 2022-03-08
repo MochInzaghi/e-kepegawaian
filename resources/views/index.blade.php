@@ -245,7 +245,7 @@
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="/">
                             <i class="mdi mdi-grid-large menu-icon"></i>
                             <span class="menu-title">Dashboard</span>
                         </a>
@@ -281,27 +281,27 @@
                         </div>
                         <div class="collapse" id="tables">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="{{asset('template')}}/pages/tables/basic-table.html">Data KGB</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{route('admin.kgb')}}">Data KGB</a></li>
                             </ul>
                         </div>
                         <div class="collapse" id="tables">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="{{asset('template')}}/pages/tables/basic-table.html">Tabel Data KP</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{route('admin.kp')}}">Tabel Data KP</a></li>
                             </ul>
                         </div>
                         <div class="collapse" id="tables">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="{{asset('template')}}/pages/tables/basic-table.html">Tabel Data Penghargaan</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{route('admin.penghargaan')}}">Tabel Data Penghargaan</a></li>
                             </ul>
                         </div>
                         <div class="collapse" id="tables">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="{{asset('template')}}/pages/tables/basic-table.html">Tabel Data DUK</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{route('admin.duk')}}">Tabel Data DUK</a></li>
                             </ul>
                         </div>
                         <div class="collapse" id="tables">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="{{asset('template')}}/pages/tables/basic-table.html">Tabel Data Pensiun</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{route('admin.pensiun')}}">Tabel Data Pensiun</a></li>
                             </ul>
                         </div>
                         <div class="collapse" id="tables">
