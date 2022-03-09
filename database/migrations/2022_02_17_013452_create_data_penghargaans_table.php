@@ -14,7 +14,8 @@ class CreateDataPenghargaansTable extends Migration
     public function up()
     {
         Schema::create('data_penghargaans', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->bigInteger('tabelpegawai_id')->unsigned();
             $table->timestamps();
         });
     }

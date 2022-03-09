@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class DataPensiun extends Model
 {
-    use HasFactory;
+    protected $table = 'data_pensiuns' ;//sesuaikan nama table
+    protected $fillable = ['pangkat','tl_sk_pertama','tmt_58','tmt_60','tanggal','no_sk','keterangan'];
 }
