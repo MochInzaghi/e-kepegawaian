@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\DataDukController;
 use App\Models\DataPegawai;
 use GuzzleHttp\Psr7\Request;
+use Illuminate\Http\Request as HttpRequest;
 use Illuminate\Support\Facades\Route;
 
 
@@ -54,6 +56,4 @@ Route::patch('admin/datacuti/{data_cuti:id}/update', '\App\Http\Controllers\Data
 Route::delete('admin/datacuti/{data_cuti:id}/delete', '\App\Http\Controllers\DataCutiController@destroy')->name('hapus.cuti');
 
 
-Route::get('/test/{coba}/edit', function($coba){
-    return $coba;
-});
+Route::post('/test', [DataDukController::class, 'newUpdate']);

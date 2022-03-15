@@ -30,7 +30,6 @@ class DataDukController extends Controller
      */
     public function create()
     {
-        
     }
 
     /**
@@ -63,9 +62,13 @@ class DataDukController extends Controller
      */
     public function edit($id)
     {
+        $data_pegawai = DAtaPegawai::find($id);
+        if (!$data_pegawai) {
+            abort(404);
+        }
+
+        return view('test', ['data_pegawai' => $data_pegawai]);
         //return view('form.formeditduk', compact('dataDuk'));
-        $dataedit = DataDuk::where('id', $id)->firstOrFail();
-        return $dataedit;
     }
 
     /**
@@ -98,6 +101,19 @@ class DataDukController extends Controller
         session()->flash('success', 'Data Duk Berhasil di Update');
 
         return redirect('admin/dataduk');
+    }
+
+    public function newUpdate(Request $request)
+    {
+        $data_duk = DataDuk::updateorCreate(
+            ['data_pegawai_id' => $request->data_pegawai_id],
+            [
+                'tmt' => $request->tmt,
+                'jabatanterakhir' => $request->jabatanterakhir,
+            ]
+        );
+
+        return $data_duk;
     }
 
     /**
