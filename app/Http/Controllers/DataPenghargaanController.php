@@ -14,7 +14,8 @@ class DataPenghargaanController extends Controller
      */
     public function index()
     {
-        return view('tabel.tabeldatapenghargaan');
+        $datapegawai = \App\Models\DataPegawai::all();
+        return view('tabel.tabeldatapenghargaan', ['datapegawai' => $datapegawai]);
     }
 
     /**

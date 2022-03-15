@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Form Edit Data Pegawai </title>
+  <title>Form Edit Data Pensiun </title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="{{asset('template')}}/vendors/feather/feather.css">
   <link rel="stylesheet" href="{{asset('template')}}/vendors/mdi/css/materialdesignicons.min.css">
@@ -47,7 +47,7 @@
         <ul class="navbar-nav">
           <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
             <h1 class="welcome-text">Good Morning, <span class="text-black fw-bold">Admin</span></h1>
-            <h3 class="welcome-sub-text">Silahkan Mengedit Data Pegawai </h3>
+            <h3 class="welcome-sub-text">Silahkan Mengedit Data Pensiun </h3>
           </li>
         </ul>
         <ul class="navbar-nav ms-auto">
@@ -325,60 +325,48 @@
             <div class="col-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Form Edit Data Pegawai</h4>
+                  <h4 class="card-title">Form Edit Data Pensiun</h4>
                   <p class="card-description">
-                    Silhkan Edit Data Pegawai
+                    Silhkan Edit Data Pensiun
                   </p>
                   <form class="forms-sample" action="update" method="POST" enctype="multipart/form-data">
                   @method('patch')
                   {{csrf_field()}}
                     <div class="form-group">
                       <label for="nama">Nama Pegawai</label>
-                      <input type="text" class="form-control" id="nama" name="namapegawai" value="{{ old('namapegawai') ?? $dataPegawai->namapegawai }}">
+                      <input type="text" class="form-control" id="nama" name="namapegawai" value="{{ old('namapegawai') ?? $dataPensiun->namapegawai }}" disabled>
                     </div>
                     <div class="form-group">
                       <label for="NIP">NIP</label>
-                      <input type="text" class="form-control" id="nip" name="nip" value="{{ old('nip') ?? $dataPegawai->nip }}">
-                    </div>
-                    <div class="form-group">
-                      <label for="TTL">Tempat Tanggal Lahir</label>
-                      <input type="text" class="form-control" id="ttl" name="ttl" value="{{ old('ttl') ?? $dataPegawai->ttl }}">
+                      <input type="text" class="form-control" id="nip" name="nip" value="{{ old('nip') ?? $dataPensiun->nip }}" disabled>
                     </div>
                     <div class="form-group">
                       <label for="pangkat">Pangkat</label>
-                      <input type="text" class="form-control" id="pangkat" name="pangkat" value="{{ old('pangkat') ?? $dataPegawai->pangkat }}">
+                      <input type="text" class="form-control" id="pangkat" name="pangkat" value="{{ old('pangkat') ?? $dataPensiun->pangkat }}" disabled>
                     </div>
                     <div class="form-group">
-                      <label for="jabatan">Jabatan</label>
-                      <input type="text" class="form-control" id="jabatan" name="jabatan" value="{{ old('jabatan') ?? $dataPegawai->jabatan }}">
+                      <label for="tlskpertama">Tanggal Lahir Pada SK Pengangkatan Pertama</label>
+                      <input type="text" class="form-control" id="tl_sk_pertama" name="tl_sk_pertama" value="{{ old('tl_sk_pertama') ?? $dataPensiun->tl_sk_pertama }}">
                     </div>
                     <div class="form-group">
-                      <label for="jenjang">Jenjang</label>
-                      <input type="text" class="form-control" id="jenjang" name="jenjang" value="{{ old('jenjang') ?? $dataPegawai->jenjang }}">
+                      <label for="tmt58">58 Tahun Yang Akan Datang Pada (TMT)</label>
+                      <input type="text" class="form-control" id="tmt58" name="tmt_58" value="{{ old('tmt_58') ?? $dataPensiun->tmt_58 }}">
                     </div>
                     <div class="form-group">
-                      <label for="notelp">Nomor Telepon</label>
-                      <input type="text" class="form-control" id="notelp" name="notelp" value="{{ old('notelp') ?? $dataPegawai->notelp }}">
+                      <label for="tmt60">60 Tahun Yang Akan Datang Pada (TMT)</label>
+                      <input type="text" class="form-control" id="tmt60" name="tmt_60" value="{{ old('tmt_60') ?? $dataPensiun->tmt_60 }}">
                     </div>
                     <div class="form-group">
-                      <label for="KGB">KGB Terakhir</label>
-                      <input type="date" class="form-control" id="kgb" name="kgb" value="{{ old('kgb') ?? $dataPegawai->kgb }}">
+                      <label for="tanggal">Tanggal</label>
+                      <input type="date" class="form-control" id="tanggal" name="tanggal" value="{{ old('tanggal') ?? $dataPensiun->tanggal }}">
                     </div>
                     <div class="form-group">
-                      <label for="KP">KP Terakhir</label>
-                      <input type="date" class="form-control" id="kp" name="kp" value="{{ old('kp') ?? $dataPegawai->kp }}">
-                    </div>
-                    <div class="form-group">
-                      <label for="Gaji">Gaji Pokok</label>
-                      <input type="text" class="form-control" id="gajipokok" name="gajipokok" value="{{ old('gajipokok') ?? $dataPegawai->gajipokok }}">
+                      <label for="no_sk">No. SK</label>
+                      <input type="text" class="form-control" id="no_sk" name="no_sk" value="{{ old('no_sk') ?? $dataPensiun->no_sk }}">
                     </div>
                     <div class="form-group">
                       <label for="keterangan">Keterangan</label>
-                        <select id="keterangan" class="form-control" name="arsip" value="{{ old('keterangan') ?? $dataPegawai->keterangan }}">
-                          <option selected disabled>Silahkan Pilih :</option>
-                          <option value="Dinas">Pegawai Dinas</option>
-                          <option value="Honorer">Pegawai Honorer</option>
-                        </select>
+                      <input type="text" class="form-control" id="keterangan" name="keterangan_pensiun" value="{{ old('keterangan_pensiun') ?? $dataPensiun->keterangan_pensiun }}">
                     </div>
                     <button type="submit" class="btn btn-primary me-2">Submit</button>
                   </form>

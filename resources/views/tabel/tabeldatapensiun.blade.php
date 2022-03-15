@@ -152,9 +152,9 @@
             </div>
           </li>
           <li class="nav-item">
-            <form class="search-form" action="#">
-              <i class="icon-search"></i>
-              <input type="search" class="form-control" placeholder="Search Here" title="Search here">
+            <form class="search-form" method="GET" action="#">
+                <i class="icon-search"></i>
+                <input type="search" class="form-control" placeholder="Cari" title="Cari" name="cari">
             </form>
           </li>
           <li class="nav-item dropdown d-none d-lg-block user-dropdown">
@@ -316,16 +316,23 @@
                         </tr>
                       </thead>
                       <tbody>
+                        @foreach ($data_pensiun as $pensiun)
                         <tr>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td> 
-                          <td></td>
-                          <td></td>
-                          <td></td>
+                          <th scope="row">{{ $pensiun->id }}</th>
+                          <td>{{ $pensiun->namapegawai }}</td>
+                          <td>{{ $pensiun->nip }}</td>
+                          <td>{{ $pensiun->pangkat }}</td>
+                          <td>{{ $pensiun->tl_sk_pertama }}</td> 
+                          <td>{{ $pensiun->tmt_58 }}</td>
+                          <td>{{ $pensiun->tmt_60 }}</td>
+                          <td>{{ $pensiun->tanggal }}</td>
+                          <td>{{ $pensiun->no_sk }}</td>
+                          <td>{{ $pensiun->keterangan_pensiun }}</td>
+                          <td>
+                            <a href="datapensiun/{{ $pensiun->id }}/edit" class="btn btn-primary btn sm inline">Edit</a>
+                          </td>
                         </tr>
+                        @endforeach
                       </tbody>
                     </table>
                   </div>

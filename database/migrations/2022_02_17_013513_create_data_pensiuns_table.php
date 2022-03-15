@@ -15,13 +15,13 @@ class CreateDataPensiunsTable extends Migration
     {
         Schema::create('data_pensiuns', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('pangkat');
+            $table->foreignId('data_pegawai_id');
             $table->date('tl_sk_pertama');
             $table->date('tmt_58');
             $table->date('tmt_60');
             $table->date('tanggal');
             $table->integer('no_sk');
-            $table->string('keterangan');
+            $table->string('keterangan_pensiun');
             $table->timestamps();
         });
     }

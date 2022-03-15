@@ -257,7 +257,7 @@
                                                         <td>{{ $pegawai->keterangan }}</td>
                                                         <td>
                                                             <a href="datapegawai/{{ $pegawai->id }}/edit"
-                                                                class="btn btn-primary d-inline ml-3">Edit</a>
+                                                                class="btn btn-primary btn sm inline">Edit</a>
                                                             <form class="d-inline ml-3"
                                                                 action="datapegawai/{{ $pegawai->id }}/delete"
                                                                 method="POST">

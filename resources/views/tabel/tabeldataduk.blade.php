@@ -152,9 +152,9 @@
             </div>
           </li>
           <li class="nav-item">
-            <form class="search-form" action="#">
-              <i class="icon-search"></i>
-              <input type="search" class="form-control" placeholder="Search Here" title="Search here">
+            <form class="search-form" method="GET" action="#">
+                <i class="icon-search"></i>
+                <input type="search" class="form-control" placeholder="Cari" title="Cari" name="cari">
             </form>
           </li>
           <li class="nav-item dropdown d-none d-lg-block user-dropdown">
@@ -329,30 +329,38 @@
                             Tahun Pensiun
                           </th>
                           <th>
+                            Keterangan
+                          </th>
+                          <th>
                             Aksi
                           </th>
                         </tr>
                       </thead>
                       <tbody>
+                        @foreach ($data_duk as $duk)
                         <tr>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td> 
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td> 
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
+                            <th scope="row">{{ $duk->id }}</th>
+                            <td>{{ $duk->namapegawai }}</td>
+                            <td>{{ $duk->nip }}</td>
+                            <td>{{ $duk->ttl }}</td>
+                            <td>{{ $duk->pangkat }}</td>
+                            <td>{{ $duk->tmt }}</td> 
+                            <td>{{ $duk->jabatanterakhir }}</td>
+                            <td>{{ $duk->mk_tahun }}</td>
+                            <td>{{ $duk->mk_bulan }}</td>
+                            <td>{{ $duk->pendidikan_kepemimpinan }}</td>
+                            <td>{{ $duk->tahunlulus }}</td>
+                            <td>{{ $duk->pendidikan_terakhir }}</td>
+                            <td>{{ $duk->tahun_lulus }}</td>
+                            <td>{{ $duk->jeniskelamin }}</td> 
+                            <td>{{ $duk->agama_tahun }}</td>
+                            <td>{{ $duk->tahunpensiun }}</td>
+                            <td>{{ $duk->keterangan_duk}}</td>
+                            <td>
+                              <a href="dataduk/{{ $duk->id }}/edit" class="btn btn-primary btn sm inline">Edit</a>
+                            </td>
                         </tr>
+                      @endforeach
                       </tbody>
                     </table>
                   </div>

@@ -368,13 +368,10 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="NIP">NIP</label>
-                                            <input type="text" class="form-control @error('nip') is invalid @enderror"
-                                                id="nip" placeholder="NIP" name="nip">
-                                            @error('nip')
-                                                <div class="text-danger">
-                                                    Mohon Isi Kolom NIP
-                                                </div>
-                                            @enderror
+                                            <input type="text" name="nip" id="nip" required class="form-control">
+                                                <small id="nipvalidate" class="form-text text-muted invalid-feedback">
+                                                    Your NIP must be a number and 18 digit
+                                                </small>
                                         </div>
                                         <div class="form-group">
                                             <label for="TTL">Tempat Tanggal Lahir</label>
@@ -501,6 +498,16 @@
     <script src="{{ asset('template') }}/js/typeahead.js"></script>
     <script src="{{ asset('template') }}/js/select2.js"></script>
     <!-- End custom js for this page-->
+
+    <script>
+        let validateNip = document.getElementById('nip').val();
+        if(is_int(validateNip)){
+            if(validateNip.length < 18 && validateNip.length > 18){
+                
+            }
+        }
+    </script>
+
 </body>
 
 </html>

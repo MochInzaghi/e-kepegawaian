@@ -16,4 +16,9 @@ class DataPegawai extends Model
     {
         return $this->hasOne(DataDuk::class);
     }
+
+    public function pegawaiPensiun()
+    {
+        return $this->hasOne(DataPensiun::class);
+    }
 }

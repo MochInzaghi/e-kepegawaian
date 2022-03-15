@@ -334,51 +334,51 @@
                   {{csrf_field()}}
                     <div class="form-group">
                       <label for="nama">Nama Pegawai</label>
-                      <input type="text" class="form-control" id="nama" placeholder="Nama Pegawai" name="namapegawai" value="{{ old('namapegawai') ?? $dataCuti->namapegawai }}">
+                      <input type="text" class="form-control" id="nama" name="namapegawai" value="{{ old('namapegawai') ?? $dataCuti->namapegawai }}">
                     </div>
                     <div class="form-group">
                       <label for="NIP">NIP</label>
-                      <input type="text" class="form-control" id="nip" placeholder="NIP" name="nip" value="{{ old('nip') ?? $dataCuti->nip }}">
+                      <input type="text" class="form-control" id="nip" name="nip" value="{{ old('nip') ?? $dataCuti->nip }}">
                     </div>
                     <div class="form-group">
                       <label for="jabatan">Jabatan</label>
-                      <input type="text" class="form-control" id="jabatan" placeholder="Jabatan" name="jabatan" value="{{ old('jabatan') ?? $dataCuti->jabatan }}">
+                      <input type="text" class="form-control" id="jabatan" name="jabatan" value="{{ old('jabatan') ?? $dataCuti->jabatan }}">
                     </div>
                     <div class="form-group">
                       <label for="jeniscuti">Jenis Cuti</label>
-                      <input type="text" class="form-control" id="jeniscuti" placeholder="Jenis Cuti" name="jeniscuti" value="{{ old('jeniscuti') ?? $dataCuti->jeniscuti }}">
+                      <input type="text" class="form-control" id="jeniscuti" name="jeniscuti" value="{{ old('jeniscuti') ?? $dataCuti->jeniscuti }}">
                     </div>
                     <div class="form-group">
                       <label for="daritgl">Dari Tanggal</label>
-                      <input type="date" class="form-control" id="daritgl" placeholder="Dari Tanggal" name="daritgl" value="{{ old('daritgl') ?? $dataCuti->daritgl }}">
+                      <input type="date" class="form-control" id="daritgl" name="daritgl" value="{{ old('daritgl') ?? $dataCuti->daritgl }}">
                     </div>
                     <div class="form-group">
                       <label for="sampaitgl">Sampai Tanggal</label>
-                      <input type="date" class="form-control" id="sampaitgl" placeholder="Sampai Tanggal" name="sampaitgl" value="{{ old('sampaitgl') ?? $dataCuti->sampaitgl }}">
+                      <input type="date" class="form-control" id="sampaitgl" name="sampaitgl" value="{{ old('sampaitgl') ?? $dataCuti->sampaitgl }}">
                     </div>
                     <div class="form-group">
                       <label for="jmlhrkrj">Jumlah Hari Kerja</label>
-                      <input type="text" class="form-control" id="jmlhrkrj" placeholder="Jumlah Hari Kerja" name="jmlhrkrj" value="{{ old('jmlhrkrj') ?? $dataCuti->jmlhrkrj }}">
+                      <input type="text" class="form-control" id="jmlhrkrj" name="jmlhrkrj" value="{{ old('jmlhrkrj') ?? $dataCuti->jmlhrkrj }}">
                     </div>
                     <div class="form-group">
                       <label for="sisacuti">Sisa Cuti Tahunan YBS</label>
-                      <input type="text" class="form-control" id="sisacuti" placeholder="Sisa Cuti Tahunan YBS" name="sisacuti" value="{{ old('sisacuti') ?? $dataCuti->sisacuti }}">
+                      <input type="text" class="form-control" id="sisacuti" name="sisacuti" value="{{ old('sisacuti') ?? $dataCuti->sisacuti }}">
                     </div>
                     <div class="form-group">
                       <label for="pejabat">Pejabat</label>
-                      <input type="text" class="form-control" id="pejabat" placeholder="Pejabat" name="pejabat" value="{{ old('pejabat') ?? $dataCuti->pejabat }}">
+                      <input type="text" class="form-control" id="pejabat" name="pejabat" value="{{ old('pejabat') ?? $dataCuti->pejabat }}">
                     </div>
                     <div class="form-group">
                       <label for="nosurat">No. Surat</label>
-                      <input type="text" class="form-control" id="nosurat" placeholder="No. Surat" name="nosurat" value="{{ old('nosurat') ?? $dataCuti->nosurat }}">
+                      <input type="text" class="form-control" id="nosurat" name="nosurat" value="{{ old('nosurat') ?? $dataCuti->nosurat }}">
                     </div>
                     <div class="form-group">
                       <label for="tanggal">Tanggal</label>
-                      <input type="date" class="form-control" id="tanggal" placeholder="Tanggal" name="tanggal" value="{{ old('tanggal') ?? $dataCuti->tanggal }}">
+                      <input type="date" class="form-control" id="tanggal" name="tanggal" value="{{ old('tanggal') ?? $dataCuti->tanggal }}">
                     </div>
                     <div class="form-group">
                       <label for="keterangan">Keterangan</label>
-                      <input type="text" class="form-control" id="keterangan" placeholder="Keterangan" name="keterangan" value="{{ old('keterangan') ?? $dataCuti->keterangan }}">
+                      <input type="text" class="form-control" id="keterangan" name="keterangan" value="{{ old('keterangan') ?? $dataCuti->keterangan }}">
                     </div>
                     <button type="submit" class="btn btn-primary me-2">Submit</button>
                   </form>

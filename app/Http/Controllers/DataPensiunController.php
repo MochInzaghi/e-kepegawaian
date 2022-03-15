@@ -12,9 +12,14 @@ class DataPensiunController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('tabel.tabeldatapensiun');
+        if ($request->has('cari')) {
+            $data_pensiun = \App\Models\DataPegawai::with('pegawaiPensiun')->where('namapegawai', 'LIKE', '%' . $request->cari . '%')->get();
+        } else {
+            $data_pensiun = \App\Models\DataPegawai::with('pegawaiPensiun')->get();
+        }
+        return view('tabel.tabeldatapensiun', ['data_pensiun' => $data_pensiun]);
     }
 
     /**
@@ -57,7 +62,7 @@ class DataPensiunController extends Controller
      */
     public function edit(DataPensiun $dataPensiun)
     {
-        //
+        return view('form.formeditpensiun', compact('dataPensiun'));
     }
 
     /**
@@ -69,7 +74,20 @@ class DataPensiunController extends Controller
      */
     public function update(Request $request, DataPensiun $dataPensiun)
     {
-        //
+        $attr = request()->validate([
+            'tl_sk_pertama' => 'required',
+            'tmt_58' => 'required',
+            'tmt_60' => 'required',
+            'tanggal' => 'required',
+            'no_sk' => 'required',
+            'keterangan_pensiun' => 'required',
+        ]);
+
+        $dataPensiun->update($attr);
+
+        session()->flash('success', 'Data Pensiun Berhasil di Update');
+
+        return redirect('admin/datapensiun');
     }
 
     /**

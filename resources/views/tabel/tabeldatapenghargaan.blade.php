@@ -152,9 +152,9 @@
             </div>
           </li>
           <li class="nav-item">
-            <form class="search-form" action="#">
-              <i class="icon-search"></i>
-              <input type="search" class="form-control" placeholder="Search Here" title="Search here">
+            <form class="search-form" method="GET" action="#">
+                <i class="icon-search"></i>
+                <input type="search" class="form-control" placeholder="Cari" title="Cari" name="cari">
             </form>
           </li>
           <li class="nav-item dropdown d-none d-lg-block user-dropdown">
@@ -293,7 +293,7 @@
                             Gelar Tanda Kehormatan<br>20 Tahun
                           </th>
                           <th>
-                            Gelar Tanda Kehormatan<br>30 Tahun
+                            Gelar Tanda Kehormatan<br>30 Tahun<
                           </th>
                           <th>
                             Aksi
@@ -301,14 +301,16 @@
                         </tr>
                       </thead>
                       <tbody>
+                        @foreach ($datapegawai as $pegawai)
                         <tr>
-                          <td></td>
-                          <td></td>
-                          <td></td> 
-                          <td></td>
-                          <td></td>
-                          <td></td>
+                            <th scope="row">{{ $pegawai->id }}</th>
+                            <td>{{ $pegawai->namapegawai }}</td>
+                            <td></td> 
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>
+                        @endforeach
                       </tbody>
                     </table>
                   </div>

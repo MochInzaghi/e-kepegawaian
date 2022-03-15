@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\DataDuk;
+use App\Models\DataPegawai;
 use Illuminate\Http\Request;
 
 class DataDukController extends Controller
@@ -12,9 +13,14 @@ class DataDukController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('tabel.tabeldataduk');
+        if ($request->has('cari')) {
+            $data_duk = \App\Models\DataPegawai::with('pegawaiDuk')->where('namapegawai', 'LIKE', '%' . $request->cari . '%')->get();
+        } else {
+            $data_duk = \App\Models\DataPegawai::with('pegawaiDuk')->get();
+        }
+        return view('tabel.tabeldataduk', ['data_duk' => $data_duk]);
     }
 
     /**
@@ -24,7 +30,7 @@ class DataDukController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -55,9 +61,11 @@ class DataDukController extends Controller
      * @param  \App\Models\DataDuk  $dataDuk
      * @return \Illuminate\Http\Response
      */
-    public function edit(DataDuk $dataDuk)
+    public function edit($id)
     {
-        //
+        //return view('form.formeditduk', compact('dataDuk'));
+        $dataedit = DataDuk::where('id', $id)->firstOrFail();
+        return $dataedit;
     }
 
     /**
@@ -69,7 +77,27 @@ class DataDukController extends Controller
      */
     public function update(Request $request, DataDuk $dataDuk)
     {
-        //
+        $attr = request()->validate([
+            'pangkat' => 'required',
+            'tmt' => 'required',
+            'jabatanterakhir' => 'required',
+            'mk_tahun' => 'required',
+            'mk_bulan' => 'required',
+            'pendidikan_kepemimpinan' => 'required',
+            'tahunlulus' => 'required',
+            'pendidikan_terakhir' => 'required',
+            'tahun_lulus' => 'required',
+            'jeniskelamin' => 'required',
+            'agama_tahun' => 'required',
+            'tahunpensiun' => 'required',
+            'keterangan_duk' => 'required',
+        ]);
+
+        $dataDuk->update($attr);
+
+        session()->flash('success', 'Data Duk Berhasil di Update');
+
+        return redirect('admin/dataduk');
     }
 
     /**
