@@ -280,61 +280,72 @@
                     </li>
                     <li class="nav-item nav-category">Forms and Datas</li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#form-elements" aria-expanded="false"
+                            aria-controls="form-elements">
                             <i class="menu-icon mdi mdi-card-text-outline"></i>
                             <span class="menu-title">Form</span>
                             <i class="menu-arrow"></i>
                         </a>
                         <div class="collapse" id="form-elements">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"><a class="nav-link" href="{{route('create.pegawai')}}">Form Data Pegawai</a></li>
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{{ route('create.pegawai') }}">Form Data Pegawai</a></li>
                             </ul>
                         </div>
                         <div class="collapse" id="form-elements">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"><a class="nav-link" href="{{route('create.cuti')}}">Form Data Cuti</a></li>
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{{ route('create.cuti') }}">Form Data Cuti</a></li>
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#tables" aria-expanded="false"
+                            aria-controls="tables">
                             <i class="menu-icon mdi mdi-table"></i>
                             <span class="menu-title">Tables</span>
                             <i class="menu-arrow"></i>
                         </a>
                         <div class="collapse" id="tables">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="{{route('admin.pegawai')}}">Data Pegawai</a></li>
+                                <li class="nav-item"> <a class="nav-link"
+                                        href="{{ route('admin.pegawai') }}">Data Pegawai</a></li>
                             </ul>
                         </div>
                         <div class="collapse" id="tables">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="{{route('admin.kgb')}}">Data KGB</a></li>
+                                <li class="nav-item"> <a class="nav-link"
+                                        href="{{ route('admin.kgb') }}">Data KGB</a></li>
                             </ul>
                         </div>
                         <div class="collapse" id="tables">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="{{route('admin.kp')}}">Tabel Data KP</a></li>
+                                <li class="nav-item"> <a class="nav-link"
+                                        href="{{ route('admin.kp') }}">Tabel Data KP</a></li>
                             </ul>
                         </div>
                         <div class="collapse" id="tables">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="{{route('admin.penghargaan')}}">Tabel Data Penghargaan</a></li>
+                                <li class="nav-item"> <a class="nav-link"
+                                        href="{{ route('admin.penghargaan') }}">Tabel Data Penghargaan</a></li>
                             </ul>
                         </div>
                         <div class="collapse" id="tables">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="{{route('admin.duk')}}">Tabel Data DUK</a></li>
+                                <li class="nav-item"> <a class="nav-link"
+                                        href="{{ route('admin.duk') }}">Tabel Data DUK</a></li>
                             </ul>
                         </div>
                         <div class="collapse" id="tables">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="{{route('admin.pensiun')}}">Tabel Data Pensiun</a></li>
+                                <li class="nav-item"> <a class="nav-link"
+                                        href="{{ route('admin.pensiun') }}">Tabel Data Pensiun</a></li>
                             </ul>
                         </div>
                         <div class="collapse" id="tables">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="{{route('admin.cuti')}}">Tabel Data Cuti</a></li>
+                                <li class="nav-item"> <a class="nav-link"
+                                        href="{{ route('admin.cuti') }}">Tabel Data Cuti</a></li>
                             </ul>
                         </div>
                     </li>
@@ -351,81 +362,53 @@
                                     <p class="card-description">
                                         Silhkan Masukkan Data Pegawai
                                     </p>
-
+                                    @include('sweetalert::alert')
                                     <form class="forms-sample" action="{{ route('store.pegawai') }}" method="POST"
                                         enctype="multipart/form-data">
                                         {{ csrf_field() }}
+                                        {{-- @if ($errors->any())
+                                            <div class="alert alert-danger">
+                                                <ul>
+                                                    @foreach ($errors->all() as $error)
+                                                        <li>{{ $error }}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        @endif --}}
                                         <div class="form-group">
                                             <label for="nama">Nama Pegawai</label>
-                                            <input type="text"
-                                                class="form-control @error('namapegawai') is invalid @enderror"
-                                                id="nama" placeholder="Nama Pegawai" name="namapegawai">
-                                            @error('namapegawai')
-                                                <div class="text-danger">
-                                                    Mohon Isi Kolom Nama Pegawai
-                                                </div>
-                                            @enderror
+                                            <input type="text" class="form-control" id="nama"
+                                                placeholder="Nama Pegawai" name="namapegawai">
                                         </div>
                                         <div class="form-group">
                                             <label for="NIP">NIP</label>
-                                            <input type="text" name="nip" id="nip" required class="form-control">
-                                                <small id="nipvalidate" class="form-text text-muted invalid-feedback">
-                                                    Your NIP must be a number and 18 digit
-                                                </small>
+                                            <input type="text" name="nip" id="nip" placeholder="NIP"
+                                                class="form-control">
                                         </div>
                                         <div class="form-group">
                                             <label for="TTL">Tempat Tanggal Lahir</label>
-                                            <input type="text" class="form-control @error('ttl') is invalid @enderror"
-                                                id="ttl" placeholder="Tempat Tanggal Lahir" name="ttl">
-                                            @error('ttl')
-                                                <div class="text-danger">
-                                                    Mohon Isi Kolom Tempat Tanggal Lahir
-                                                </div>
-                                            @enderror
+                                            <input type="text" class="form-control" id="ttl"
+                                                placeholder="Tempat Tanggal Lahir" name="ttl">
                                         </div>
                                         <div class="form-group">
                                             <label for="pangkat">Pangkat</label>
-                                            <input type="text"
-                                                class="form-control @error('pangkat') is invalid @enderror"
-                                                id="pangkat" placeholder="Pangkat" name="pangkat">
-                                            @error('pangkat')
-                                                <div class="text-danger">
-                                                    Mohon Isi Kolom Nama Pangkat
-                                                </div>
-                                            @enderror
+                                            <input type="text" class="form-control" id="pangkat"
+                                                placeholder="Pangkat" name="pangkat">
                                         </div>
                                         <div class="form-group">
                                             <label for="jabatan">Jabatan</label>
-                                            <input type="text"
-                                                class="form-control @error('jabatan') is invalid @enderror"
-                                                id="jabatan" placeholder="Jabatan" name="jabatan">
-                                            @error('jabatan')
-                                                <div class="text-danger">
-                                                    Mohon Isi Kolom Jabatan
-                                                </div>
-                                            @enderror
+                                            <input type="text" class="form-control" id="jabatan"
+                                                placeholder="Jabatan" name="jabatan">
                                         </div>
                                         <div class="form-group">
                                             <label for="jenjang">Jenjang</label>
-                                            <input type="text"
-                                                class="form-control @error('jenjang') is invalid @enderror"
-                                                id="jenjang" placeholder="Jenjang" name="jenjang">
-                                            @error('jenjang')
-                                                <div class="text-danger">
-                                                    Mohon Isi Kolom Jenjang
-                                                </div>
-                                            @enderror
+                                            <input type="text" class="form-control" id="jenjang"
+                                                placeholder="Jenjang" name="jenjang">
                                         </div>
                                         <div class="form-group">
                                             <label for="notelp">Nomor Telepon</label>
-                                            <input type="text"
-                                                class="form-control @error('notelp') is invalid @enderror" id="notelp"
+                                            <input type="text" class="form-control" id="notelp"
                                                 placeholder="Nomor Telepon" name="notelp">
-                                            @error('notelp')
-                                                <div class="text-danger">
-                                                    Mohon Isi Kolom Nomor Telepon
-                                                </div>
-                                            @enderror
                                         </div>
                                         <div class="form-group">
                                             <label for="KGB">KGB Terakhir</label>
@@ -439,14 +422,8 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="Gaji">Gaji Pokok</label>
-                                            <input type="text"
-                                                class="form-control @error('gajipokok') is invalid @enderror"
-                                                id="gajipokok" placeholder="Gaji Pokok" name="gajipokok">
-                                            @error('gajipokok')
-                                                <div class="text-danger">
-                                                    Mohon Isi Kolom Gaji Pokok
-                                                </div>
-                                            @enderror
+                                            <input type="text" class="form-control" id="gajipokok"
+                                                placeholder="Gaji Pokok" name="gajipokok">
                                         </div>
                                         <div class="form-group">
                                             <label for="keterangan">Keterangan</label>
@@ -480,6 +457,8 @@
     <!-- container-scroller -->
     <!-- plugins:js -->
     <script src="{{ asset('template') }}/vendors/js/vendor.bundle.base.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
     <script src="{{ asset('template') }}/vendors/typeahead.js/typeahead.bundle.min.js"></script>
@@ -498,15 +477,6 @@
     <script src="{{ asset('template') }}/js/typeahead.js"></script>
     <script src="{{ asset('template') }}/js/select2.js"></script>
     <!-- End custom js for this page-->
-
-    <script>
-        let validateNip = document.getElementById('nip').val();
-        if(is_int(validateNip)){
-            if(validateNip.length < 18 && validateNip.length > 18){
-                
-            }
-        }
-    </script>
 
 </body>
 

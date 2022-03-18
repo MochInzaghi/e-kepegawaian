@@ -16,11 +16,11 @@ class DataDukController extends Controller
     public function index(Request $request)
     {
         if ($request->has('cari')) {
-            $data_duk = \App\Models\DataPegawai::with('pegawaiDuk')->where('namapegawai', 'LIKE', '%' . $request->cari . '%')->get();
+            $data_duk = \App\Models\DataPegawai::where('namapegawai', 'LIKE', '%' . $request->cari . '%')->get();
         } else {
-            $data_duk = \App\Models\DataPegawai::with('pegawaiDuk')->get();
+            $data_duk = \App\Models\DataPegawai::all();
         }
-        return view('tabel.tabeldataduk', ['data_duk' => $data_duk]);
+        return view('tabel.tabeldataduk', compact('data_duk'));
     }
 
     /**
@@ -62,13 +62,12 @@ class DataDukController extends Controller
      */
     public function edit($id)
     {
-        $data_pegawai = DAtaPegawai::find($id);
+        $data_pegawai = DataPegawai::find($id);
         if (!$data_pegawai) {
             abort(404);
         }
 
-        return view('test', ['data_pegawai' => $data_pegawai]);
-        //return view('form.formeditduk', compact('dataDuk'));
+        return view('form.formeditduk', ['data_pegawai' => $data_pegawai]);
     }
 
     /**
@@ -78,44 +77,31 @@ class DataDukController extends Controller
      * @param  \App\Models\DataDuk  $dataDuk
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, DataDuk $dataDuk)
-    {
-        $attr = request()->validate([
-            'pangkat' => 'required',
-            'tmt' => 'required',
-            'jabatanterakhir' => 'required',
-            'mk_tahun' => 'required',
-            'mk_bulan' => 'required',
-            'pendidikan_kepemimpinan' => 'required',
-            'tahunlulus' => 'required',
-            'pendidikan_terakhir' => 'required',
-            'tahun_lulus' => 'required',
-            'jeniskelamin' => 'required',
-            'agama_tahun' => 'required',
-            'tahunpensiun' => 'required',
-            'keterangan_duk' => 'required',
-        ]);
-
-        $dataDuk->update($attr);
-
-        session()->flash('success', 'Data Duk Berhasil di Update');
-
-        return redirect('admin/dataduk');
-    }
-
-    public function newUpdate(Request $request)
+    public function update(Request $request)
     {
         $data_duk = DataDuk::updateorCreate(
             ['data_pegawai_id' => $request->data_pegawai_id],
             [
                 'tmt' => $request->tmt,
                 'jabatanterakhir' => $request->jabatanterakhir,
+                'mk_tahun' => $request->mk_tahun,
+                'mk_bulan' => $request->mk_bulan,
+                'pendidikan_kepemimpinan' => $request->pendidikan_kepemimpinan,
+                'tahunlulus' => $request->tahunlulus,
+                'pendidikan_terakhir' => $request->pendidikan_terakhir,
+                'tahun_lulus' => $request->tahun_lulus,
+                'jeniskelamin' => $request->jeniskelamin,
+                'agama_tahun' => $request->agama_tahun,
+                'tahunpensiun' => $request->tahunpensiun,
+                'keterangan_duk' => $request->keterangan_duk,
             ]
         );
 
-        return $data_duk;
-    }
+        session()->flash('success', 'Data Duk Berhasil di Update');
+        return redirect('/admin/dataduk');
 
+        //return redirect('admin/dataduk', $data_duk);
+    }
     /**
      * Remove the specified resource from storage.
      *

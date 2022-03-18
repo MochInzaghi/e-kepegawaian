@@ -5,6 +5,7 @@ use App\Models\DataPegawai;
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Http\Request as HttpRequest;
 use Illuminate\Support\Facades\Route;
+use RealRashid\SweetAlert\Facades\Alert;
 
 
 /*
@@ -22,6 +23,10 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/admin/login', function () {
+    return view('login');
+});
+
 //data pegawai
 Route::get('admin/datapegawai', '\App\Http\Controllers\DataPegawaiController@index')->name('admin.pegawai');
 Route::get('admin/datapegawai/create', '\App\Http\Controllers\DataPegawaiController@create')->name('create.pegawai');
@@ -37,15 +42,19 @@ Route::get('admin/datakgb', '\App\Http\Controllers\DataKgbController@index')->na
 Route::get('admin/datakp', '\App\Http\Controllers\DataKpController@index')->name('admin.kp');
 
 //tabel penghargaan
-Route::get('admin/datapenghargaan', '\App\Http\Controllers\DataPenghargaanController@index')->name('admin.penghargaan');
+Route::get('/admin/datapenghargaan', '\App\Http\Controllers\DataPenghargaanController@index')->name('admin.penghargaan');
+Route::get('admin/datapenghargaan/{id}/edit', '\App\Http\Controllers\DatapenghargaanController@edit');
+Route::post('/admin/datapenghargaan/update', '\App\Http\Controllers\DataPenghargaanController@update')->name('update.penghargaan');
 
 //tabel duk
-Route::get('admin/dataduk', '\App\Http\Controllers\DataDukController@index')->name('admin.duk');
+Route::get('/admin/dataduk', '\App\Http\Controllers\DataDukController@index')->name('admin.duk');
 Route::get('admin/dataduk/{id}/edit', '\App\Http\Controllers\DataDukController@edit');
-Route::patch('admin/dataduk/{dataDuk:id}/update', '\App\Http\Controllers\DataDukController@update')->name('update.duk');
+Route::post('/admin/dataduk/update', '\App\Http\Controllers\DataDukController@update')->name('update.duk');
 
 //tabel pensiun
-Route::get('admin/datapensiun', '\App\Http\Controllers\DataPensiunController@index')->name('admin.pensiun');
+Route::get('/admin/datapensiun', '\App\Http\Controllers\DataPensiunController@index')->name('admin.pensiun');
+Route::get('admin/datapensiun/{id}/edit', '\App\Http\Controllers\DataPensiunController@edit');
+Route::post('/admin/datapensiun/update', '\App\Http\Controllers\DataPensiunController@update')->name('update.pensiun');
 
 //tabel cuti
 Route::get('admin/datacuti', '\App\Http\Controllers\DataCutiController@index')->name('admin.cuti');
@@ -56,4 +65,4 @@ Route::patch('admin/datacuti/{data_cuti:id}/update', '\App\Http\Controllers\Data
 Route::delete('admin/datacuti/{data_cuti:id}/delete', '\App\Http\Controllers\DataCutiController@destroy')->name('hapus.cuti');
 
 
-Route::post('/test', [DataDukController::class, 'newUpdate']);
+//Route::post('/test', [DataDukController::class, 'newUpdate']);

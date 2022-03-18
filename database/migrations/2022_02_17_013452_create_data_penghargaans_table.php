@@ -15,7 +15,10 @@ class CreateDataPenghargaansTable extends Migration
     {
         Schema::create('data_penghargaans', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('tabelpegawai_id')->unsigned();
+            $table->bigInteger('data_pegawai_id')->unsigned();
+            $table->date('thn_10');
+            $table->date('thn_20');
+            $table->date('thn_30');
             $table->timestamps();
         });
     }

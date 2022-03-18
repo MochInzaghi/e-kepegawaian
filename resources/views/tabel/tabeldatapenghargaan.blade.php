@@ -293,7 +293,7 @@
                             Gelar Tanda Kehormatan<br>20 Tahun
                           </th>
                           <th>
-                            Gelar Tanda Kehormatan<br>30 Tahun<
+                            Gelar Tanda Kehormatan<br>30 Tahun
                           </th>
                           <th>
                             Aksi
@@ -301,14 +301,16 @@
                         </tr>
                       </thead>
                       <tbody>
-                        @foreach ($datapegawai as $pegawai)
+                        @foreach ($data_penghargaan as $penghargaan)
                         <tr>
-                            <th scope="row">{{ $pegawai->id }}</th>
-                            <td>{{ $pegawai->namapegawai }}</td>
-                            <td></td> 
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <th scope="row">{{ $penghargaan->id }}</th>
+                            <td>{{ $penghargaan->namapegawai }}</td>
+                            <td>{{ $penghargaan->pegawaiPenghargaan->thn_10 ?? '' }}</td>
+                            <td>{{ $penghargaan->pegawaiPenghargaan->thn_20 ?? '' }}</td>
+                            <td>{{ $penghargaan->pegawaiPenghargaan->thn_30 ?? '' }}</td>
+                            <td>
+                              <a href="datapenghargaan/{{ $penghargaan->id }}/edit" class="btn btn-primary btn sm inline">Edit</a>
+                            </td>
                         </tr>
                         @endforeach
                       </tbody>

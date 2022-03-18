@@ -322,12 +322,12 @@
                           <td>{{ $pensiun->namapegawai }}</td>
                           <td>{{ $pensiun->nip }}</td>
                           <td>{{ $pensiun->pangkat }}</td>
-                          <td>{{ $pensiun->tl_sk_pertama }}</td> 
-                          <td>{{ $pensiun->tmt_58 }}</td>
-                          <td>{{ $pensiun->tmt_60 }}</td>
-                          <td>{{ $pensiun->tanggal }}</td>
-                          <td>{{ $pensiun->no_sk }}</td>
-                          <td>{{ $pensiun->keterangan_pensiun }}</td>
+                          <td>{{ $pensiun->pegawaiPensiun->tl_sk_pertama ?? '' }}</td> 
+                          <td>{{ $pensiun->pegawaiPensiun->tmt_58 ?? '' }}</td>
+                          <td>{{ $pensiun->pegawaiPensiun->tmt_60 ?? '' }}</td>
+                          <td>{{ $pensiun->pegawaiPensiun->tanggal ?? '' }}</td>
+                          <td>{{ $pensiun->pegawaiPensiun->no_sk ?? '' }}</td>
+                          <td>{{ $pensiun->pegawaiPensiun->keterangan_pensiun ?? '' }}</td>
                           <td>
                             <a href="datapensiun/{{ $pensiun->id }}/edit" class="btn btn-primary btn sm inline">Edit</a>
                           </td>

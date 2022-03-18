@@ -186,15 +186,6 @@
                                     <h4 class="card-title">Tabel Data Pegawai</h4>
                                     <a href="#" class="btn btn-primary btn-sm text-white me-0 btn-"><i
                                             class="icon-plus"></i> Tambah Data</a>
-                                    @if (session()->has('success'))
-                                        <div class="container-fluid">
-                                            <div>
-                                                <div class="alert alert-success">
-                                                    {{ session()->get('success') }}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endif
                                     <div class="table-responsive pt-3">
                                         <table class="table table-bordered">
                                             <thead>
@@ -306,6 +297,7 @@
     <!-- endinject -->
     <!-- Custom js for this page-->
     <!-- End custom js for this page-->
+    @include('sweetalert::alert');
 </body>
 
 </html>

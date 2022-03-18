@@ -344,23 +344,23 @@
                             <td>{{ $duk->nip }}</td>
                             <td>{{ $duk->ttl }}</td>
                             <td>{{ $duk->pangkat }}</td>
-                            <td>{{ $duk->tmt }}</td> 
-                            <td>{{ $duk->jabatanterakhir }}</td>
-                            <td>{{ $duk->mk_tahun }}</td>
-                            <td>{{ $duk->mk_bulan }}</td>
-                            <td>{{ $duk->pendidikan_kepemimpinan }}</td>
-                            <td>{{ $duk->tahunlulus }}</td>
-                            <td>{{ $duk->pendidikan_terakhir }}</td>
-                            <td>{{ $duk->tahun_lulus }}</td>
-                            <td>{{ $duk->jeniskelamin }}</td> 
-                            <td>{{ $duk->agama_tahun }}</td>
-                            <td>{{ $duk->tahunpensiun }}</td>
-                            <td>{{ $duk->keterangan_duk}}</td>
+                            <td>{{ $duk->pegawaiDuk->tmt ?? ''}}</td> 
+                            <td>{{ $duk->pegawaiDuk->jabatanterakhir ?? '' }}</td>
+                            <td>{{ $duk->pegawaiDuk->mk_tahun ?? '' }}</td>
+                            <td>{{ $duk->pegawaiDuk->mk_bulan ?? ''}}</td>
+                            <td>{{ $duk->pegawaiDuk->pendidikan_kepemimpinan ?? ''}}</td>
+                            <td>{{ $duk->pegawaiDuk->tahunlulus ?? ''}}</td>
+                            <td>{{ $duk->pegawaiDuk->pendidikan_terakhir ?? ''}}</td>
+                            <td>{{ $duk->pegawaiDuk->tahun_lulus ?? ''}}</td>
+                            <td>{{ $duk->pegawaiDuk->jeniskelamin ?? ''}}</td> 
+                            <td>{{ $duk->pegawaiDuk->agama_tahun ?? ''}}</td>
+                            <td>{{ $duk->pegawaiDuk->tahunpensiun ?? ''}}</td>
+                            <td>{{ $duk->pegawaiDuk->keterangan_duk ?? ''}}</td>
                             <td>
                               <a href="dataduk/{{ $duk->id }}/edit" class="btn btn-primary btn sm inline">Edit</a>
                             </td>
                         </tr>
-                      @endforeach
+                        @endforeach
                       </tbody>
                     </table>
                   </div>

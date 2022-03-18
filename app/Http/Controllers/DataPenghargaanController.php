@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\DataPenghargaan;
+use App\Models\DataPegawai;
 use Illuminate\Http\Request;
 
 class DataPenghargaanController extends Controller
@@ -12,10 +13,14 @@ class DataPenghargaanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $datapegawai = \App\Models\DataPegawai::all();
-        return view('tabel.tabeldatapenghargaan', ['datapegawai' => $datapegawai]);
+        if ($request->has('cari')) {
+            $data_penghargaan = \App\Models\DataPegawai::where('namapegawai', 'LIKE', '%' . $request->cari . '%')->get();
+        } else {
+            $data_penghargaan = \App\Models\DataPegawai::all();
+        }
+        return view('tabel.tabeldatapenghargaan', compact('data_penghargaan'));
     }
 
     /**
@@ -56,9 +61,14 @@ class DataPenghargaanController extends Controller
      * @param  \App\Models\DataPenghargaan  $dataPenghargaan
      * @return \Illuminate\Http\Response
      */
-    public function edit(DataPenghargaan $dataPenghargaan)
+    public function edit($id)
     {
-        //
+        $data_pegawai = DataPegawai::find($id);
+        if (!$data_pegawai) {
+            abort(404);
+        }
+
+        return view('form.formeditpenghargaan', ['data_pegawai' => $data_pegawai]);
     }
 
     /**
@@ -70,7 +80,18 @@ class DataPenghargaanController extends Controller
      */
     public function update(Request $request, DataPenghargaan $dataPenghargaan)
     {
-        //
+        $data_penghargaan = DataPenghargaan::updateorCreate(
+            ['data_pegawai_id' => $request->data_pegawai_id],
+            [
+                'thn_10' => $request->thn_10,
+                'thn_20' => $request->thn_20,
+                'thn_30' => $request->thn_30,
+            ]
+        );
+
+        session()->flash('success', 'Data Penghargaan Berhasil di Update');
+        return redirect('/admin/datapenghargaan');
+
     }
 
     /**

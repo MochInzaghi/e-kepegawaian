@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\DataPegawai;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Validator as ValidationValidator;
+use Nette\Utils\Validators;
+use RealRashid\SweetAlert\Facades\Alert;
+use Validator;
 
 class DataPegawaiController extends Controller
 {
@@ -29,8 +33,7 @@ class DataPegawaiController extends Controller
 
     public function store(Request $request)
     {
-
-        $attr = request()->validate([
+        $validator = Validator::make($request->all(), [
             'namapegawai' => 'required',
             'nip' => 'required',
             'ttl' => 'required',
@@ -44,12 +47,14 @@ class DataPegawaiController extends Controller
             'keterangan' => 'required',
         ]);
 
-        $attr = $request->all();
-        DataPegawai::create($attr);
+        if ($validator->fails()) {
+            Alert::error('Gagal', 'Gagal Menambahkan Data Pegawai');
+            return back();
+        }
 
-        session()->flash('success', 'Data Pegawai berhasil di Tambahkan');
+        DataPegawai::create($request->all());
 
-        return redirect('admin/datapegawai');
+        return redirect('admin/datapegawai')->with('success', 'Data Pegawai Berhasil di Tambahkan');
     }
 
     public function edit(DataPegawai $dataPegawai)

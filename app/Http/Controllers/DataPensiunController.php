@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\DataPensiun;
+use App\Models\DataPegawai;
 use Illuminate\Http\Request;
 
 class DataPensiunController extends Controller
@@ -15,11 +16,11 @@ class DataPensiunController extends Controller
     public function index(Request $request)
     {
         if ($request->has('cari')) {
-            $data_pensiun = \App\Models\DataPegawai::with('pegawaiPensiun')->where('namapegawai', 'LIKE', '%' . $request->cari . '%')->get();
+            $data_pensiun = \App\Models\DataPegawai::where('namapegawai', 'LIKE', '%' . $request->cari . '%')->get();
         } else {
-            $data_pensiun = \App\Models\DataPegawai::with('pegawaiPensiun')->get();
+            $data_pensiun = \App\Models\DataPegawai::all();
         }
-        return view('tabel.tabeldatapensiun', ['data_pensiun' => $data_pensiun]);
+        return view('tabel.tabeldatapensiun', compact('data_pensiun'));
     }
 
     /**
@@ -60,9 +61,14 @@ class DataPensiunController extends Controller
      * @param  \App\Models\DataPensiun  $dataPensiun
      * @return \Illuminate\Http\Response
      */
-    public function edit(DataPensiun $dataPensiun)
+    public function edit($id)
     {
-        return view('form.formeditpensiun', compact('dataPensiun'));
+        $data_pegawai = DataPegawai::find($id);
+        if (!$data_pegawai) {
+            abort(404);
+        }
+
+        return view('form.formeditpensiun', ['data_pegawai' => $data_pegawai]);
     }
 
     /**
@@ -74,20 +80,20 @@ class DataPensiunController extends Controller
      */
     public function update(Request $request, DataPensiun $dataPensiun)
     {
-        $attr = request()->validate([
-            'tl_sk_pertama' => 'required',
-            'tmt_58' => 'required',
-            'tmt_60' => 'required',
-            'tanggal' => 'required',
-            'no_sk' => 'required',
-            'keterangan_pensiun' => 'required',
-        ]);
-
-        $dataPensiun->update($attr);
+        $data_pensiun = DataPensiun::updateorCreate(
+            ['data_pegawai_id' => $request->data_pegawai_id],
+            [
+                'tl_sk_pertama' => $request->tl_sk_pertama,
+                'tmt_58' => $request->tmt_58,
+                'tmt_60' => $request->tmt_60,
+                'tanggal' => $request->tanggal,
+                'no_sk' => $request->no_sk,
+                'keterangan_pensiun' => $request->keterangan_pensiun,
+            ]
+        );
 
         session()->flash('success', 'Data Pensiun Berhasil di Update');
-
-        return redirect('admin/datapensiun');
+        return redirect('/admin/datapensiun');
     }
 
     /**

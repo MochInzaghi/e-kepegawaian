@@ -329,60 +329,60 @@
                   <p class="card-description">
                     Silhkan Edit Data DUK
                   </p>
-                  <form class="forms-sample" action="update" method="POST" enctype="multipart/form-data">
-                  @method('patch')
-                  {{csrf_field()}}
+                  <form class="forms-sample" action="/admin/dataduk/update" method="POST" enctype="multipart/form-data">
+                    {{csrf_field()}}
+                    <input type="hidden" name="data_pegawai_id" value="{{ $data_pegawai->id }}">
                     <div class="form-group">
                       <label for="nama">Nama Pegawai</label>
-                      <input type="text" class="form-control" id="nama" name="namapegawai" value="{{ old('namapegawai') ?? $dataPegawai->namapegawai }}" disabled>
+                      <input type="text" class="form-control" id="nama" name="namapegawai" value="{{ old('namapegawai') ?? $data_pegawai->namapegawai }}" disabled>
                     </div>
                     <div class="form-group">
                       <label for="NIP">NIP</label>
-                      <input type="text" class="form-control" id="nip" name="nip" value="{{ old('nip') ?? $dataPegawai->nip }}" disabled>
+                      <input type="text" class="form-control" id="nip" name="nip" value="{{ old('nip') ?? $data_pegawai->nip }}" disabled>
                     </div>
                     <div class="form-group">
                       <label for="TTL">Tempat Tanggal Lahir</label>
-                      <input type="text" class="form-control" id="ttl" name="ttl" value="{{ old('ttl') ?? $dataPegawai->ttl }}" disabled>
+                      <input type="text" class="form-control" id="ttl" name="ttl" value="{{ old('ttl') ??$data_pegawai->ttl }}" disabled>
                     </div>
                     <div class="form-group">
                       <label for="pangkat">Pangkat / Gol. Ruang</label>
-                      <input type="text" class="form-control" id="pangkat" name="pangkat" value="{{ old('pangkat') ?? $dataDuk->pangkat }}">
+                      <input type="text" class="form-control" id="pangkat" name="pangkat" value="{{ old('pangkat') ?? $data_pegawai->pangkat }}" disabled>
                     </div>
                     <div class="form-group">
                       <label for="tmt">TMT / Gol. Ruang</label>
-                      <input type="text" class="form-control" id="tmt" name="tmt" value="{{ old('tmt') ?? $dataDuk->tmt }}">
+                      <input type="text" class="form-control" id="tmt" name="tmt" value="{{ old('tmt') ??$data_pegawai->pegawaiDuk->tmt  ??''}}">
                     </div>
                     <div class="form-group">
                       <label for="jabatanterakhir">Jabatan Terakhir</label>
-                      <input type="text" class="form-control" id="jabatanterakhir" name="jabatanterakhir" value="{{ old('jabatanterakhir') ?? $dataDuk->jabatanterakhir }}">
+                      <input type="text" class="form-control" id="jabatanterakhir" name="jabatanterakhir" value="{{ old('jabatanterakhir') ?? $data_pegawai->pegawaiDuk->jabatanterakhir ?? ''}}">
                     </div>
                     <div class="form-group">
                       <label for="masakerjatahun">Masa Kerja (Tahun)</label>
-                      <input type="text" class="form-control" id="masakerjatahun" name="mk_tahun" value="{{ old('mk_tahun') ?? $dataDuk->mk_tahun }}">
+                      <input type="text" class="form-control" id="masakerjatahun" name="mk_tahun" value="{{ old('mk_tahun') ?? $data_pegawai->pegawaiDuk->mk_tahun ?? ''}}">
                     </div>
                     <div class="form-group">
                       <label for="masakerjabulan">Masa Kerja (Bulan)</label>
-                      <input type="text" class="form-control" id="masakerjabulan" name="mk_bulan" value="{{ old('mk_bulan') ?? $dataDuk->mk_bulan }}">
+                      <input type="text" class="form-control" id="masakerjabulan" name="mk_bulan" value="{{ old('mk_bulan') ?? $data_pegawai->pegawaiDuk->mk_bulan ?? ''}}">
                     </div>
                     <div class="form-group">
                       <label for="pendidikankepemimpinan">Pendidikan Kepemimpinan</label>
-                      <input type="text" class="form-control" id="pendidikankepemimpinan" name="pendidikan_kepemimpinan" value="{{ old('pendidikan_kepemimpinan') ?? $dataDuk->pendidikan_kepemimpinan }}">
+                      <input type="text" class="form-control" id="pendidikankepemimpinan" name="pendidikan_kepemimpinan" value="{{ old('pendidikan_kepemimpinan') ?? $data_pegawai->pegawaiDuk->pendidikan_kepemimpinan ?? ''}}">
                     </div>
                     <div class="form-group">
                       <label for="tahunlulus">Tahun Lulus</label>
-                      <input type="text" class="form-control" id="tahunlulus" name="tahunlulus" value="{{ old('tahunlulus') ?? $dataDuk->tahunlulus }}">
+                      <input type="text" class="form-control" id="tahunlulus" name="tahunlulus" value="{{ old('tahunlulus') ?? $data_pegawai->pegawaiDuk->tahunlulus ?? ''}}">
                     </div>
                     <div class="form-group">
                       <label for="pendidikanterakhir">Pendidikan Terakhir, Nama Sekolah</label>
-                      <input type="text" class="form-control" id="pendidikanterakhir" name="pendidikan_terakhir" value="{{ old('pendidikan_terakhir') ?? $dataDuk->pendidikan_terakhir }}">
+                      <input type="text" class="form-control" id="pendidikanterakhir" name="pendidikan_terakhir" value="{{ old('pendidikan_terakhir') ?? $data_pegawai->pegawaiDuk->pendidikan_terakhir ?? ''}}">
                     </div>
                     <div class="form-group">
                       <label for="tahun_lulus">Tahun Lulus</label>
-                      <input type="text" class="form-control" id="tahun_lulus" name="tahun_lulus" value="{{ old('tahun_lulus') ?? $dataDuk->tahun_lulus }}">
+                      <input type="text" class="form-control" id="tahun_lulus" name="tahun_lulus" value="{{ old('tahun_lulus') ?? $data_pegawai->pegawaiDuk->tahun_lulus ?? ''}}">
                     </div>
                     <div class="form-group">
                         <label for="jeniskelamin">Jenis Kelamin</label>
-                          <select id="jeniskelamin" class="form-control" name="jeniskelamin" value="{{ old('jeniskelamin') ?? $dataDuk->jeniskelamin }}">
+                          <select id="jeniskelamin" class="form-control" name="jeniskelamin" value="{{ old('jeniskelamin') ?? $data_pegawai->pegawaiDuk->jeniskelamin ?? ''}}">
                             <option selected disabled>Silahkan Pilih :</option>
                             <option value="Laki-Laki">Laki-Laki</option>
                             <option value="Perempuan">Perempuan</option>
@@ -390,15 +390,15 @@
                     </div>
                     <div class="form-group">
                       <label for="agamatahun">Agama Tahun</label>
-                      <input type="text" class="form-control" id="agamatahun" name="agama_tahun" value="{{ old('agama_tahun') ?? $dataDuk->agama_tahun }}">
+                      <input type="text" class="form-control" id="agamatahun" name="agama_tahun" value="{{ old('agama_tahun') ??$data_pegawai->pegawaiDuk->agama_tahun ?? ''}}">
                     </div>
                     <div class="form-group">
                         <label for="tahunpensiun">Tahun Pensiun</label>
-                        <input type="text" class="form-control" id="tahunpensiun" name="tahunpensiun" value="{{ old('tahunpensiun') ?? $dataDuk->tahunpensiun }}">
+                        <input type="text" class="form-control" id="tahunpensiun" name="tahunpensiun" value="{{ old('tahunpensiun') ?? $data_pegawai->pegawaiDuk->tahunpensiun ?? ''}}">
                       </div>
                     <div class="form-group">
                       <label for="keterangan">Keterangan</label>
-                      <input type="text" class="form-control" id="keterangan" name="keterangan_duk" value="{{ old('keterangan_duk') ?? $dataDuk->keterangan_duk }}">
+                      <input type="text" class="form-control" id="keterangan" name="keterangan_duk" value="{{ old('keterangan_duk') ??$data_pegawai->pegawaiDuk->keterangan_duk ?? ''}}">
                     </div>
                     <button type="submit" class="btn btn-primary me-2">Submit</button>
                   </form>
