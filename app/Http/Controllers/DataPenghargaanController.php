@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\DataPenghargaan;
 use App\Models\DataPegawai;
+use Exception;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -81,17 +82,23 @@ class DataPenghargaanController extends Controller
      */
     public function update(Request $request, DataPenghargaan $dataPenghargaan)
     {
-        $data_penghargaan = DataPenghargaan::updateorCreate(
-            ['data_pegawai_id' => $request->data_pegawai_id],
-            [
-                'thn_10' => $request->thn_10,
-                'thn_20' => $request->thn_20,
-                'thn_30' => $request->thn_30,
-            ]
-        );
+        // dd($request->all());
+        try {
+            DataPenghargaan::updateorCreate(
+                ['data_pegawai_id' => $request->data_pegawai_id],
+                [
+                    'thn_10' => $request->thn_10,
+                    'thn_20' => $request->thn_20,
+                    'thn_30' => $request->thn_30,
+                ]
+            );
 
-        return redirect('/admin/datapenghargaan')->with('success', 'Data Penghargaan Berhasil di Update');
-
+            return redirect('/admin/datapenghargaan')->with('success', 'Data Penghargaan Berhasil di Update');
+        } catch (Exception $e) {
+            // dd($e);
+            Alert::error('Gagal', 'Gagal Mengupdate Data Pegawai');
+            return back();
+        }
     }
 
     /**
