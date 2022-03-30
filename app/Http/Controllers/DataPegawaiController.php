@@ -37,7 +37,7 @@ class DataPegawaiController extends Controller
         try {
             $validator = Validator::make($request->all(), [
                 'namapegawai' => 'required',
-                'nip' => 'required|numeric|digits:5',
+                'nip' => 'required|numeric|digits:18',
                 'ttl' => 'required',
                 'pangkat' => 'required',
                 'jabatan' => 'required',
@@ -71,10 +71,12 @@ class DataPegawaiController extends Controller
 
     public function update(Request $request, DataPegawai $dataPegawai)
     {
+
+        // dd($request->all());
         try {
             $validator = Validator::make($request->all(), [
                 'namapegawai' => 'required',
-                'nip' => 'required|integer|min:18|max:18',
+                'nip' => 'required|numeric|digits:18',
                 'ttl' => 'required',
                 'pangkat' => 'required',
                 'jabatan' => 'required',
@@ -85,16 +87,14 @@ class DataPegawaiController extends Controller
                 'gajipokok' => 'required',
                 'keterangan' => 'required',
             ]);
-        } catch (Throwback $validator) {
-            if ($validator->fails()) {
-                Alert::error('Gagal', 'Gagal Mengupdate Data Pegawai');
-                return back();
-            }
+            $dataPegawai->update($validator->validate());
+
+            return redirect('admin/datapegawai')->with('success', 'Data Pegawai Berhasil di Update');
+        } catch (Exception $e) {
+            // dd($e);
+            Alert::error('Gagal', 'Gagal Mengupdate Data Pegawai');
+            return back();
         }
-
-        $dataPegawai->update($request->all());
-
-        return redirect('admin/datapegawai')->with('success', 'Data Pegawai Berhasil di Update');
     }
 
     public function destroy(DataPegawai $dataPegawai)
