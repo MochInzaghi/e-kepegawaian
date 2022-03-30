@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\DataPegawai;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Validator as ValidationValidator;
 use Nette\Utils\Validators;
@@ -33,28 +34,34 @@ class DataPegawaiController extends Controller
 
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'namapegawai' => 'required',
-            'nip' => 'required|integer|min:18|max:18',
-            'ttl' => 'required',
-            'pangkat' => 'required',
-            'jabatan' => 'required',
-            'jenjang' => 'required',
-            'notelp' => 'required',
-            'kgb' => 'required',
-            'kp' => 'required',
-            'gajipokok' => 'required',
-            'keterangan' => 'required',
-        ]);
+        try {
+            $validator = Validator::make($request->all(), [
+                'namapegawai' => 'required',
+                'nip' => 'required|numeric|digits:5',
+                'ttl' => 'required',
+                'pangkat' => 'required',
+                'jabatan' => 'required',
+                'jenjang' => 'required',
+                'notelp' => 'required',
+                'kgb' => 'required',
+                'kp' => 'required',
+                'gajipokok' => 'required',
+                'keterangan' => 'required',
+            ]);
 
-        if ($validator->fails()) {
+            // if ($validator->fails()) {
+            //     Alert::error('Gagal', 'Gagal Menambahkan Data Pegawai');
+            //     return back();
+            // }
+
+            DataPegawai::create($validator->validate());
+
+            return redirect('admin/datapegawai')->with('success', 'Data Pegawai Berhasil di Tambahkan');
+        } catch (Exception $e) {
+            // dd($e);
             Alert::error('Gagal', 'Gagal Menambahkan Data Pegawai');
             return back();
         }
-
-        DataPegawai::create($request->all());
-
-        return redirect('admin/datapegawai')->with('success', 'Data Pegawai Berhasil di Tambahkan');
     }
 
     public function edit(DataPegawai $dataPegawai)
@@ -78,8 +85,7 @@ class DataPegawaiController extends Controller
                 'gajipokok' => 'required',
                 'keterangan' => 'required',
             ]);
-
-        } catch(Throwback $validator) {
+        } catch (Throwback $validator) {
             if ($validator->fails()) {
                 Alert::error('Gagal', 'Gagal Mengupdate Data Pegawai');
                 return back();
