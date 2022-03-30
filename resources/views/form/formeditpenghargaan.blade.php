@@ -329,6 +329,7 @@
                   <p class="card-description">
                     Silhkan Edit Data Penghargaan
                   </p>
+                  @include('sweetalert::alert')
                   <form class="forms-sample" action="/admin/datapenghargaan/update" method="POST" enctype="multipart/form-data">
                   {{csrf_field()}}
                   <input type="hidden" name="data_pegawai_id" value="{{ $data_pegawai->id }}">

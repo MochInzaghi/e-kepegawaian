@@ -329,6 +329,7 @@
                   <p class="card-description">
                     Silhkan Edit Data Pensiun
                   </p>
+                  @include('sweetalert::alert')
                   <form class="forms-sample" action="/admin/datapensiun/update" method="POST" enctype="multipart/form-data">
                   {{csrf_field()}}
                   <input type="hidden" name="data_pegawai_id" value="{{ $data_pegawai->id }}">

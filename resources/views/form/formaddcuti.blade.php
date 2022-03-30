@@ -329,43 +329,24 @@
                   <p class="card-description">
                     Silhkan Masukkan Data Cuti
                   </p>
+                  @include('sweetalert::alert')
                   <form class="forms-sample" action="{{route('store.cuti')}}" method="POST" enctype="multipart/form-data">
                   {{csrf_field()}}
                     <div class="form-group">
                       <label for="nama">Nama Pegawai</label>
-                      <input type="text" class="form-control @error('namapegawai') is invalid @enderror" id="nama" placeholder="Nama Pegawai" name="namapegawai">
-                      @error('namapegawai')
-                        <div class="text-danger">
-                            Mohon Isi Kolom Nama Pegawai
-                        </div>
-                      @enderror
+                      <input type="text" class="form-control" id="nama" placeholder="Nama Pegawai" name="namapegawai">
                     </div>
                     <div class="form-group">
                       <label for="NIP">NIP</label>
-                      <input type="text" class="form-control @error('nip') is invalid @enderror" id="nip" placeholder="NIP" name="nip">
-                      @error('nip')
-                        <div class="text-danger">
-                            Mohon Isi Kolom NIP
-                        </div>
-                      @enderror
+                      <input type="text" class="form-control" id="nip" placeholder="NIP" name="nip">
                     </div>
                     <div class="form-group">
                       <label for="jabatan">Jabatan</label>
-                      <input type="text" class="form-control @error('jabatan') is invalid @enderror" id="jabatan" placeholder="Jabatan" name="jabatan">
-                      @error('jabatan')
-                        <div class="text-danger">
-                            Mohon Isi Kolom Jabatan
-                        </div>
-                      @enderror
+                      <input type="text" class="form-control" id="jabatan" placeholder="Jabatan" name="jabatan">
                     </div>
                     <div class="form-group">
                       <label for="jeniscuti">Jenis Cuti</label>
-                      <input type="text" class="form-control @error('jeniscuti') is invalid @enderror" id="jeniscuti" placeholder="Jenis Cuti" name="jeniscuti">
-                      @error('jeniscuti')
-                        <div class="text-danger">
-                            Mohon Isi Kolom Jenis Cuti
-                        </div>
-                      @enderror
+                      <input type="text" class="form-control" id="jeniscuti" placeholder="Jenis Cuti" name="jeniscuti">
                     </div>
                     <div class="form-group">
                       <label for="daritgl">Dari Tanggal</label>
@@ -377,57 +358,27 @@
                     </div>
                     <div class="form-group">
                       <label for="jmlhrkrj">Jumlah Hari Kerja</label>
-                      <input type="text" class="form-control @error('jmlhrkrj') is invalid @enderror" id="jmlhrkrj" placeholder="Jumlah Hari Kerja" name="jmlhrkrj">
-                      @error('jmlhrkrj')
-                        <div class="text-danger">
-                            Mohon Isi Kolom Jumlah Hari Kerja
-                        </div>
-                      @enderror
+                      <input type="text" class="form-control" id="jmlhrkrj" placeholder="Jumlah Hari Kerja" name="jmlhrkrj">
                     </div>
                     <div class="form-group">
                       <label for="sisacuti">Sisa Cuti Tahunan YBS</label>
-                      <input type="text" class="form-control @error('sisacuti') is invalid @enderror" id="sisacuti" placeholder="Sisa Cuti Tahunan YBS" name="sisacuti">
-                      @error('sisacuti')
-                        <div class="text-danger">
-                            Mohon Isi Kolom Sisa Cuti Tahunan YBS
-                        </div>
-                      @enderror
+                      <input type="text" class="form-control" id="sisacuti" placeholder="Sisa Cuti Tahunan YBS" name="sisacuti">
                     </div>
                     <div class="form-group">
                       <label for="pejabat">Pejabat</label>
-                      <input type="text" class="form-control @error('pejabat') is invalid @enderror" id="pejabat" placeholder="Pejabat" name="pejabat">
-                      @error('pejabat')
-                        <div class="text-danger">
-                            Mohon Isi Kolom Pejabat
-                        </div>
-                      @enderror
+                      <input type="text" class="form-control" id="pejabat" placeholder="Pejabat" name="pejabat">
                     </div>
                     <div class="form-group">
                       <label for="nosurat">No. Surat</label>
-                      <input type="text" class="form-control @error('nosurat') is invalid @enderror" id="nosurat" placeholder="No. Surat" name="nosurat">
-                      @error('nosurat')
-                        <div class="text-danger">
-                            Mohon Isi Kolom No. Surat
-                        </div>
-                      @enderror
+                      <input type="text" class="form-control" id="nosurat" placeholder="No. Surat" name="nosurat">
                     </div>
                     <div class="form-group">
                       <label for="tanggal">Tanggal</label>
-                      <input type="text" class="form-control @error('tanggal') is invalid @enderror" id="tanggal" placeholder="Tanggal" name="tanggal">
-                      @error('tanggal')
-                        <div class="text-danger">
-                            Mohon Isi Kolom Tanggal
-                        </div>
-                      @enderror
+                      <input type="text" class="form-control" id="tanggal" placeholder="Tanggal" name="tanggal">
                     </div>
                     <div class="form-group">
                       <label for="keterangan">Keterangan</label>
-                      <input type="text" class="form-control @error('keterangan') is invalid @enderror" id="keterangan" placeholder="Keterangan" name="keterangan">
-                      @error('keterangan')
-                        <div class="text-danger">
-                            Mohon Isi Kolom Keterangan
-                        </div>
-                      @enderror
+                      <input type="text" class="form-control  id="keterangan" placeholder="Keterangan" name="keterangan">
                     </div>
                     <button type="submit" class="btn btn-primary me-2">Submit</button>
                   </form>

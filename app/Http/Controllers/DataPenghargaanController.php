@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\DataPenghargaan;
 use App\Models\DataPegawai;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class DataPenghargaanController extends Controller
 {
@@ -89,8 +90,7 @@ class DataPenghargaanController extends Controller
             ]
         );
 
-        session()->flash('success', 'Data Penghargaan Berhasil di Update');
-        return redirect('/admin/datapenghargaan');
+        return redirect('/admin/datapenghargaan')->with('success', 'Data Penghargaan Berhasil di Update');
 
     }
 

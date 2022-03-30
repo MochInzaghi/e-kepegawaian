@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\DataDuk;
 use App\Models\DataPegawai;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class DataDukController extends Controller
 {
@@ -97,8 +98,7 @@ class DataDukController extends Controller
             ]
         );
 
-        session()->flash('success', 'Data Duk Berhasil di Update');
-        return redirect('/admin/dataduk');
+        return redirect('/admin/dataduk')->with('success', 'Data DUK Berhasil di Update');;
 
         //return redirect('admin/dataduk', $data_duk);
     }

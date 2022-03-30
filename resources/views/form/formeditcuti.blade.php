@@ -329,6 +329,7 @@
                   <p class="card-description">
                     Silhkan Edit Data Cuti
                   </p>
+                  @include('sweetalert::alert')
                   <form class="forms-sample" action="update" method="POST" enctype="multipart/form-data">
                   @method('patch')
                   {{csrf_field()}}

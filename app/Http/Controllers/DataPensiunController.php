@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\DataPensiun;
 use App\Models\DataPegawai;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class DataPensiunController extends Controller
 {
@@ -92,8 +93,7 @@ class DataPensiunController extends Controller
             ]
         );
 
-        session()->flash('success', 'Data Pensiun Berhasil di Update');
-        return redirect('/admin/datapensiun');
+        return redirect('/admin/datapensiun')->with('success', 'Data Pensiun Berhasil di Update');
     }
 
     /**

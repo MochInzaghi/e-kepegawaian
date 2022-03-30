@@ -63,6 +63,7 @@ Route::post('admin/datacuti/store', '\App\Http\Controllers\DataCutiController@st
 Route::get('admin/datacuti/{data_cuti:id}/edit', '\App\Http\Controllers\DataCutiController@edit')->name('edit.cuti');
 Route::patch('admin/datacuti/{data_cuti:id}/update', '\App\Http\Controllers\DataCutiController@update')->name('update.cuti');
 Route::delete('admin/datacuti/{data_cuti:id}/delete', '\App\Http\Controllers\DataCutiController@destroy')->name('hapus.cuti');
+Route::get('admin/datacuti/print', '\App\Http\Controllers\DataCutiController@print')->name('print.cuti');
 
 
 //Route::post('/test', [DataDukController::class, 'newUpdate']);

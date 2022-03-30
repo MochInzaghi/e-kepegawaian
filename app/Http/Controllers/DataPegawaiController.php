@@ -35,7 +35,7 @@ class DataPegawaiController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'namapegawai' => 'required',
-            'nip' => 'required',
+            'nip' => 'required|integer|min:18|max:18',
             'ttl' => 'required',
             'pangkat' => 'required',
             'jabatan' => 'required',
@@ -64,31 +64,36 @@ class DataPegawaiController extends Controller
 
     public function update(Request $request, DataPegawai $dataPegawai)
     {
-        $attr = request()->validate([
-            'namapegawai' => 'required',
-            'nip' => 'required',
-            'ttl' => 'required',
-            'pangkat' => 'required',
-            'jabatan' => 'required',
-            'jenjang' => 'required',
-            'notelp' => 'required',
-            'kgb' => 'required',
-            'kp' => 'required',
-            'gajipokok' => 'required',
-            'keterangan' => 'required',
-        ]);
+        try {
+            $validator = Validator::make($request->all(), [
+                'namapegawai' => 'required',
+                'nip' => 'required|integer|min:18|max:18',
+                'ttl' => 'required',
+                'pangkat' => 'required',
+                'jabatan' => 'required',
+                'jenjang' => 'required',
+                'notelp' => 'required',
+                'kgb' => 'required',
+                'kp' => 'required',
+                'gajipokok' => 'required',
+                'keterangan' => 'required',
+            ]);
 
-        $dataPegawai->update($attr);
+        } catch(Throwback $validator) {
+            if ($validator->fails()) {
+                Alert::error('Gagal', 'Gagal Mengupdate Data Pegawai');
+                return back();
+            }
+        }
 
-        session()->flash('success', 'Data Pegawai Berhasil di Update');
+        $dataPegawai->update($request->all());
 
-        return redirect('admin/datapegawai');
+        return redirect('admin/datapegawai')->with('success', 'Data Pegawai Berhasil di Update');
     }
 
     public function destroy(DataPegawai $dataPegawai)
     {
         $dataPegawai->delete();
-        session()->flash('success', 'Data Pegawai Berhasil di Hapus');
-        return redirect('admin/datapegawai');
+        return redirect('admin/datapegawai')->with('success', 'Data Pegawai Berhasil di Hapus');;
     }
 }
