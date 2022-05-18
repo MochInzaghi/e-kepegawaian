@@ -40,7 +40,7 @@ class DataKgbController extends Controller
 
         // dd($dates, $datapegawai, $dpAddTwoYears);
 
-        return view('tabel.tabeldatakgb2021-2025', compact('dates', 'datapegawai', 'dpAddTwoYears'));
+        return view('tabel.tabeldatakgb2021-2025', compact('dates', 'datapegawai'));
     }
 
     /**
