@@ -535,6 +535,7 @@ class ComposerStaticInit5b353266855761d1705bc63883f8dbca
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/DashboardController.php',
         'App\\Http\\Controllers\\DataCutiController' => __DIR__ . '/../..' . '/app/Http/Controllers/DataCutiController.php',
         'App\\Http\\Controllers\\DataDukController' => __DIR__ . '/../..' . '/app/Http/Controllers/DataDukController.php',
         'App\\Http\\Controllers\\DataKgbController' => __DIR__ . '/../..' . '/app/Http/Controllers/DataKgbController.php',

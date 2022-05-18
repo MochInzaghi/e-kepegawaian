@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\DataKgb;
 use App\Models\DataPegawai;
 use Carbon\Carbon;
+use Carbon\CarbonPeriod;
+use DateInterval;
+use DatePeriod;
 use Illuminate\Http\Request;
 
 class DataKgbController extends Controller
@@ -19,7 +22,25 @@ class DataKgbController extends Controller
         // $datapegawai1 = DataPegawai::first();
         // $test = Carbon::createFromFormat('Y-m-d', $datapegawai1->kgb);
         // dd($test->addYear(2));
-        return view('tabel.tabeldatakgb2021-2025');
+
+        $start_date = date_create("2021-01-01");
+        $end_date   = date_create("2025-12-31");
+        $interval = new DateInterval('P1Y');
+        $daterange = new DatePeriod($start_date, $interval, $end_date);
+
+        $dates = [];
+        foreach ($daterange as $date) {
+            $dates[] = $date->format('Y');
+        }
+
+        $datapegawai = DataPegawai::get();
+        foreach ($datapegawai as $dp) {
+            $dp->kgb = Carbon::createFromFormat('Y-m-d', $dp->kgb)->addYear(2)->format('Y-m-d');
+        }
+
+        // dd($dates, $datapegawai, $dpAddTwoYears);
+
+        return view('tabel.tabeldatakgb2021-2025', compact('dates', 'datapegawai', 'dpAddTwoYears'));
     }
 
     /**
