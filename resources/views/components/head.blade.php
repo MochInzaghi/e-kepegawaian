@@ -10,5 +10,5 @@
     <link rel="stylesheet" href="{{ asset('template') }}/vendors/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="{{ asset('template') }}/vendors/css/vendor.bundle.base.css">
     <link rel="stylesheet" href="{{ asset('template') }}/css/vertical-layout-light/style.css">
-    <link rel="shortcut icon" href="{{ asset('template') }}/images/kementrian.png" />
+    <link rel="shortcut icon" href="{{ asset('template') }}/images/kementrian.png">
 </head>

@@ -33,6 +33,7 @@ class DataCutiController extends Controller
 
     public function store(Request $request)
     {
+        try {
         $validator = Validator::make($request->all(), [
             'namapegawai' => 'required',
             'nip' => 'required',
@@ -48,14 +49,19 @@ class DataCutiController extends Controller
             'keterangan' => 'required',
         ]);
 
-        if ($validator->fails()) {
-            Alert::error('Gagal', 'Gagal Menambahkan Data Cuti');
-            return back();
-        }
+        // if ($validator->fails()) {
+        //     Alert::error('Gagal', 'Gagal Menambahkan Data Cuti');
+        //     return back();
+        // }
 
-        DataCuti::create($request->all());
+        DataCuti::create($validator->validate());
 
         return redirect('admin/datacuti')->with('success', 'Data Cuti Berhasil di Tambahkan');
+    } catch (Exception $e) {
+        // dd($e);
+        Alert::error('Gagal', 'Gagal Menambahkan Data Cuti');
+        return back();
+    }
     }
 
     public function show(DataCuti $dataCuti)
@@ -70,37 +76,49 @@ class DataCutiController extends Controller
 
     public function update(Request $request, DataCuti $dataCuti)
     {
-        $attr = request()->validate([
-            'namapegawai' => 'required',
-            'nip' => 'required',
-            'jabatan' => 'required',
-            'jeniscuti' => 'required',
-            'daritgl' => 'required',
-            'sampaitgl' => 'required',
-            'jmlhrkrj' => 'required',
-            'sisacuti' => 'required',
-            'pejabat' => 'required',
-            'nosurat' => 'required',
-            'tanggal' => 'required',
-            'keterangan' => 'required',
+        try {
+            $validator = Validator::make($request->all(), [
+                'namapegawai' => 'required',
+                'nip' => 'required',
+                'jabatan' => 'required',
+                'jeniscuti' => 'required',
+                'daritgl' => 'required',
+                'sampaitgl' => 'required',
+                'jmlhrkrj' => 'required',
+                'sisacuti' => 'required',
+                'pejabat' => 'required',
+                'nosurat' => 'required',
+                'tanggal' => 'required',
+                'keterangan' => 'required',
         ]);
 
-        $dataPegawai->update($attr);
+        $dataCuti->update($validator->validate());
 
-        session()->flash('success', 'Data Cuti Berhasil di Update');
+        return redirect('admin/datacuti')->with('success', 'Data Cuti Berhasil di Update');
 
-        return redirect('admin/datacuti');
+    } catch (Exception $e) {
+        // dd($e);
+        Alert::error('Gagal', 'Gagal Mengupdate Data Cuti');
+        return back();
+        }
     }
 
     public function destroy(DataCuti $dataCuti)
     {
         $dataCuti->delete();
-        session()->flash('success', 'Data Cuti Berhasil di Hapus');
-        return redirect('admin/datacuti');
+        return redirect('admin/datacuti')->with('success', 'Data Cuti Berhasil di Hapus');
     }
 
-    public function print(){
-        $data_cuti = \App\Models\DataCuti::all();
+    public function print(Request $request){
+
+        //dd($request->all());
+        if ($request->input('bulan') && $request->input('tahun')) {
+            $bulan = $request->input('bulan');
+            $tahun = $request->input('tahun');
+            $data_cuti = DataCuti::whereMonth('updated_at', $bulan)->whereYear('updated_at', $tahun)->get();
+        }else{
+            $data_cuti = DataCuti::all();
+        }
         return view('laporan.datacuti', compact('data_cuti'));
     }
 }

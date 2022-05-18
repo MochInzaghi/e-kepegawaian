@@ -80,7 +80,8 @@ class DataDukController extends Controller
      */
     public function update(Request $request)
     {
-        $data_duk = DataDuk::updateorCreate(
+        try {
+        DataDuk::updateorCreate(
             ['data_pegawai_id' => $request->data_pegawai_id],
             [
                 'tmt' => $request->tmt,
@@ -98,7 +99,12 @@ class DataDukController extends Controller
             ]
         );
 
-        return redirect('/admin/dataduk')->with('success', 'Data DUK Berhasil di Update');;
+        return redirect('/admin/dataduk')->with('success', 'Data DUK Berhasil di Update');
+    } catch (Exception $e) {
+        // dd($e);
+        Alert::error('Gagal', 'Gagal Mengupdate Data DUK');
+        return back();
+    }
 
         //return redirect('admin/dataduk', $data_duk);
     }
@@ -112,4 +118,16 @@ class DataDukController extends Controller
     {
         //
     }
+
+    public function print(){
+        if ($request->input('bulan') && $request->input('tahun')) {
+            $bulan = $request->input('bulan');
+            $tahun = $request->input('tahun');
+            $data_duk = DataDuk::whereMonth('updated_at', $bulan)->whereYear('updated_at', $tahun)->get();
+        }else{
+            $data_duk = DataDuk::all();
+        }
+        return view('laporan.dataduk', compact('data_duk'));
+    }
+
 }

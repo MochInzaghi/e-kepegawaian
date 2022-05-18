@@ -16,7 +16,7 @@ class CreateDataPensiunsTable extends Migration
         Schema::create('data_pensiuns', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->foreignId('data_pegawai_id');
-            $table->text('tl_sk_pertama');
+            $table->date('tl_sk_pertama');
             $table->text('tmt_58');
             $table->text('tmt_60');
             $table->date('tanggal');

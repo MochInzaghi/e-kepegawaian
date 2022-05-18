@@ -347,7 +347,7 @@
                     </div>
                     <div class="form-group">
                       <label for="tlskpertama">Tanggal Lahir Pada SK Pengangkatan Pertama</label>
-                      <input type="text" class="form-control" id="tl_sk_pertama" name="tl_sk_pertama" value="{{ old('tl_sk_pertama') ??  $data_pegawai->pegawaiPensiun->tl_sk_pertama ?? '' }}">
+                      <input type="date" class="form-control" id="tl_sk_pertama" name="tl_sk_pertama" value="{{ old('tl_sk_pertama') ??  $data_pegawai->pegawaiPensiun->tl_sk_pertama ?? '' }}">
                     </div>
                     <div class="form-group">
                       <label for="tmt58">58 Tahun Yang Akan Datang Pada (TMT)</label>

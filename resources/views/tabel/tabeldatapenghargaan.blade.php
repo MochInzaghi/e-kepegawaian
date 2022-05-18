@@ -1,5 +1,5 @@
-@extends('layouts.tabellayout')
-@section('title','Tabel Data Penghargaan')
+@extends('layouts.tabellayoutpenghargaan')
+@section('title','Kelola Data Penghargaan')
 @section('tabel','Penghargaan')
 
 @section('content')
@@ -8,7 +8,7 @@
     <div class="col-lg-12 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">Tabel Data Penghargaan</h4>
+          <h4 class="card-title">Kelola Data Penghargaan</h4>
           <div class="table-responsive pt-3">
             <table class="table table-bordered">
               <thead>

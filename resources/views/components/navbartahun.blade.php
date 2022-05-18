@@ -7,10 +7,10 @@
             </button>
         </div>
         <div>
-            <a class="navbar-brand brand-logo" href="index.html">
+            <a class="navbar-brand brand-logo" href="/">
                 <img src="{{ asset('template') }}/images/kemkominfo.png" alt="logo" />
             </a>
-            <a class="navbar-brand brand-logo-mini" href="index.html">
+            <a class="navbar-brand brand-logo-mini" href="/">
                 <img src="{{ asset('template') }}/images/kementrian.png" alt="logo" />
             </a>
         </div>

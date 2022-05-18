@@ -15,10 +15,10 @@ class DataKpController extends Controller
      */
     public function index()
     {
-        $datapegawai1 = DataPegawai::first();
-        $test = Carbon::createFromFormat('Y-m-d', $datapegawai1->kp);
-        dd($test->addYear(5));
-        //return view('tabel.tabeldatakp2021-2025');
+        // $datapegawai1 = DataPegawai::first();
+        // $test = Carbon::createFromFormat('Y-m-d', $datapegawai1->kp);
+        // dd($test->addYear(5));
+        return view('tabel.tabeldatakp2021-2025');
     }
 
     /**

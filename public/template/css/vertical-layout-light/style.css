@@ -30782,5 +30782,13 @@ div.tagsinput span.tag a {
   }
 }
 
+.optionstyle{
+  background-color: #fff;
+  margin-top: 25px;
+  height: 33px;
+  font-size: 12px;
+  width: 175px;
+}
+
 
 /*# sourceMappingURL=../maps/vertical-layout-light/style.css.map */

@@ -5,7 +5,7 @@
 
 <body>
     <div class="container-scroller">
-        @include('components.navbarprint')
+        @include('components.navbarprintcuti')
         <div class="container-fluid page-body-wrapper">
             <div class="theme-setting-wrapper">
                 <div id="settings-trigger"><i class="ti-settings"></i></div>

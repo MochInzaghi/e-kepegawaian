@@ -72,7 +72,9 @@
                                     <div class="fw-bold fntsz">Fitur Pengelolaan <br>Data Pegawai</div>
                                     <div class="text-break mt-2 fontsize">admin dapat melakukan<br>pengelolaan berupa tambah,<br>edit, dan hapus data pegawai</div>
                                     <div class="d-flex justify-content-center mgtop">
-                                        <button class="mt-3 btn btn-primary text-white rounded bottom-auto">Kelola<i style="font-size:15px; margin-left:5px;" class="fa fa-arrow-right"></i></button>
+                                        <form method="get" action="{{route('admin.pegawai')}}">
+                                            <button type="submit" class="mt-3 btn btn-primary text-white rounded bottom-auto">Kelola<i style="font-size:15px; margin-left:5px;" class="fa fa-arrow-right"></i></button>
+                                        </form>    
                                     </div>
                                 </div>
                             </div>
@@ -81,7 +83,9 @@
                                     <div class="fw-bold fntsz">Fitur Pengelolaan <br>Data KGB</div>
                                     <div class="text-break mt-2 fontsize">admin dapat melakukan<br>pengelolaan berupa edit dan<br>print laporan setiap kenaikan gaji<br>per karyawan</div>
                                     <div class="d-flex justify-content-center">
-                                        <button class="mt-3 btn btn-primary text-white rounded bottom-auto">Kelola<i style="font-size:15px; margin-left:5px;" class="fa fa-arrow-right"></i></button>
+                                        <form method="get" action="{{route('admin.kgb')}}">
+                                            <button type="submit" class="mt-3 btn btn-primary text-white rounded bottom-auto">Kelola<i style="font-size:15px; margin-left:5px;" class="fa fa-arrow-right"></i></button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -90,7 +94,9 @@
                                     <div class="fw-bold fntsz">Fitur Pengelolaan <br>Data KP</div>
                                     <div class="text-break mt-2 fontsize">admin dapat melakukan<br>pengelolaan berupa edit dan<br>print laporan setiap kenaikan<br>pangkat per karyawan</div>
                                     <div class="d-flex justify-content-center">
-                                        <button class="mt-3 btn btn-primary text-white rounded bottom-auto">Kelola<i style="font-size:15px; margin-left:5px;" class="fa fa-arrow-right"></i></button>
+                                        <form method="get" action="{{route('admin.kp')}}">
+                                            <button type="submit" class="mt-3 btn btn-primary text-white rounded bottom-auto">Kelola<i style="font-size:15px; margin-left:5px;" class="fa fa-arrow-right"></i></button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -99,7 +105,9 @@
                                     <div class="fw-bold fntsz">Fitur Pengelolaan <br>Data Penghargaan</div>
                                     <div class="text-break mt-2 fontsize">admin dapat melakukan<br>pengelolaan berupa edit dan<br>print laporan setiap bulan</div>
                                     <div class="d-flex justify-content-center mgtop">
-                                        <button class="mt-3 btn btn-primary text-white rounded bottom-auto">Kelola<i style="font-size:15px; margin-left:5px;" class="fa fa-arrow-right"></i></button>
+                                        <form method="get" action="{{route('admin.penghargaan')}}">
+                                            <button type="submit" class="mt-3 btn btn-primary text-white rounded bottom-auto">Kelola<i style="font-size:15px; margin-left:5px;" class="fa fa-arrow-right"></i></button>
+                                        </form>    
                                     </div>
                                 </div>
                             </div>
@@ -108,7 +116,9 @@
                                     <div class="fw-bold fntsz">Fitur Pengelolaan <br>Data DUK</div>
                                     <div class="text-break mt-2 fontsize">admin dapat melakukan<br>pengelolaan berupa edit dan <br>print laporan setiap bulan</div>
                                     <div class="d-flex justify-content-center mgtop">
-                                        <button class="mt-3 btn btn-primary text-white rounded bottom-auto">Kelola<i style="font-size:15px; margin-left:5px;" class="fa fa-arrow-right"></i></button>
+                                        <form method="get" action="{{route('admin.duk')}}">
+                                            <button type="submit" class="mt-3 btn btn-primary text-white rounded bottom-auto">Kelola<i style="font-size:15px; margin-left:5px;" class="fa fa-arrow-right"></i></button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -117,7 +127,9 @@
                                     <div class="fw-bold fntsz">Fitur Pengelolaan <br>Data Pensiun</div>
                                     <div class="text-break mt-2 fontsize">admin dapat melakukan<br>pengelolaan berupa edit dan<br>print laporan setiap bulan</div>
                                     <div class="d-flex justify-content-center mgtop">
-                                        <button class="mt-3 btn btn-primary text-white rounded bottom-auto">Kelola<i style="font-size:15px; margin-left:5px;" class="fa fa-arrow-right"></i></button>
+                                        <form method="get" action="{{route('admin.pensiun')}}">
+                                            <button type="submit" class="mt-3 btn btn-primary text-white rounded bottom-auto">Kelola<i style="font-size:15px; margin-left:5px;" class="fa fa-arrow-right"></i></button>
+                                        </form>    
                                     </div>
                                 </div>
                             </div>
@@ -126,7 +138,9 @@
                                     <div class="fw-bold fntsz">Fitur Pengelolaan <br>Data Cuti</div>
                                     <div class="text-break mt-2 fontsize">admin dapat melakukan<br>pengelolaan berupa tambah,<br>edit, hapus, dan print laporan <br>data pegawai setiap bulan</div>
                                     <div class="d-flex justify-content-center">
-                                        <button class="mt-3 btn btn-primary text-white rounded bottom-auto">Kelola <i style="font-size:15px; margin-left:5px;" class="fa fa-arrow-right"></i></button>
+                                        <form method="get" action="{{route('admin.cuti')}}">
+                                            <button type="submit" class="mt-3 btn btn-primary text-white rounded bottom-auto">Kelola<i style="font-size:15px; margin-left:5px;" class="fa fa-arrow-right"></i></button>
+                                        </form>    
                                     </div>
                                 </div>
                             </div>

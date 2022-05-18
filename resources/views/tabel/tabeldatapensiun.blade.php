@@ -1,5 +1,5 @@
-@extends('layouts.tabellayout')
-@section('title','Tabel Data Pensiun')
+@extends('layouts.tabellayoutpensiun')
+@section('title','Kelola Data Pensiun')
 @section('tabel','Pensiun')
 
 @section('content')
@@ -8,7 +8,7 @@
     <div class="col-lg-12 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">Tabel Data Pensiun</h4>
+          <h4 class="card-title">Kelola Data Pensiun</h4>
           <div class="table-responsive pt-3">
             <table class="table table-bordered">
               <thead>
@@ -58,7 +58,7 @@
                   <td>{{ $pensiun->pegawaiPensiun->tl_sk_pertama ?? '' }}</td> 
                   <td>{{ $pensiun->pegawaiPensiun->tmt_58 ?? '' }}</td>
                   <td>{{ $pensiun->pegawaiPensiun->tmt_60 ?? '' }}</td>
-                  <td>{{ $pensiun->pegawaiPensiun->tanggal ?? '' }}</td>
+                  <td>{{  date('d F Y', strtotime($pensiun->pegawaiPensiun->tanggal ?? '')) }}</td>
                   <td>{{ $pensiun->pegawaiPensiun->no_sk ?? '' }}</td>
                   <td>{{ $pensiun->pegawaiPensiun->keterangan_pensiun ?? '' }}</td>
                   <td>

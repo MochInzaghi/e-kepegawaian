@@ -1,5 +1,5 @@
 @extends('layouts.tabellayoutkenaikan')
-@section('title','Tabel Data KP 2021-2025')
+@section('title','Kelola Data KP')
 @section('kenaikan','Pangkat')
 
 
@@ -9,7 +9,7 @@
     <div class="col-lg-12 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">Tabel Data KP Tahun 2021-2025</h4>
+          <h4 class="card-title">Kelola Data Kenaikan Pangkat</h4>
           <div class="table-responsive pt-3">
             <table class="table table-bordered">
               <thead>
@@ -37,7 +37,7 @@
                   </th>
                 </tr>
               </thead>
-              <tbody>
+              {{-- <tbody>
                 <tr>
                   <td></td>
                   <td></td>
@@ -48,7 +48,7 @@
                   <td></td>
                   <td></td>
                 </tr>
-              </tbody>
+              </tbody> --}}
             </table>
           </div>
         </div>

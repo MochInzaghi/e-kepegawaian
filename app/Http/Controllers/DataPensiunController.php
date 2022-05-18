@@ -81,7 +81,8 @@ class DataPensiunController extends Controller
      */
     public function update(Request $request, DataPensiun $dataPensiun)
     {
-        $data_pensiun = DataPensiun::updateorCreate(
+        try{
+        DataPensiun::updateorCreate(
             ['data_pegawai_id' => $request->data_pegawai_id],
             [
                 'tl_sk_pertama' => $request->tl_sk_pertama,
@@ -94,6 +95,11 @@ class DataPensiunController extends Controller
         );
 
         return redirect('/admin/datapensiun')->with('success', 'Data Pensiun Berhasil di Update');
+    }catch (Exception $e) {
+        // dd($e);
+        Alert::error('Gagal', 'Gagal Mengupdate Data Pensiun');
+        return back();
+    }
     }
 
     /**
@@ -105,5 +111,16 @@ class DataPensiunController extends Controller
     public function destroy(DataPensiun $dataPensiun)
     {
         //
+    }
+
+    public function print(){
+        if ($request->input('bulan') && $request->input('tahun')) {
+            $bulan = $request->input('bulan');
+            $tahun = $request->input('tahun');
+            $data_pensiun = DataPensiun::whereMonth('updated_at', $bulan)->whereYear('updated_at', $tahun)->get();
+        }else{
+            $data_pensiun = DataPensiun::all();
+        }
+        return view('laporan.datapensiun', compact('data_pensiun'));
     }
 }

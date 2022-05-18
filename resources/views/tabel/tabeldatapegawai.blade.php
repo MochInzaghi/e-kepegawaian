@@ -1,5 +1,5 @@
 @extends('layouts.tabellayoutpegawai')
-@section('title', 'Tabel Data Pegawai')
+@section('title', 'Kelola Data Pegawai')
 @section('crud', 'Pegawai')
 
 @section('content')
@@ -8,7 +8,7 @@
             <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Tabel Data Pegawai</h4>
+                        <h4 class="card-title">Kelola Data Pegawai</h4>
                         <a href="{{ route('create.pegawai') }}" class="btn btn-primary btn-sm text-white me-0 btn-"><i
                                 class="icon-plus"></i> Tambah Data</a>
                         <div class="table-responsive pt-3">
@@ -67,9 +67,9 @@
                                             <td>{{ $pegawai->jabatan }}</td>
                                             <td>{{ $pegawai->jenjang }}</td>
                                             <td>{{ $pegawai->notelp }}</td>
-                                            <td>{{ $pegawai->kgb }}</td>
-                                            <td>{{ $pegawai->kp }}</td>
-                                            <td>{{ $pegawai->gajipokok }}</td>
+                                            <td>{{ date('d F Y', strtotime($pegawai->kgb)) }}</td>
+                                            <td>{{ date('d F Y', strtotime($pegawai->kp)) }}</td>
+                                            <td>Rp. {{ number_format($pegawai->gajipokok) }},000</td>
                                             <td>{{ $pegawai->keterangan }}</td>
                                             <td>
                                                 <a href="datapegawai/{{ $pegawai->id }}/edit"

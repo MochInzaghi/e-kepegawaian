@@ -7,10 +7,10 @@
             </button>
         </div>
         <div>
-            <a class="navbar-brand brand-logo" href="index.html">
+            <a class="navbar-brand brand-logo" href="/">
                 <img src="{{ asset('template') }}/images/kemkominfo.png" alt="logo" />
             </a>
-            <a class="navbar-brand brand-logo-mini" href="index.html">
+            <a class="navbar-brand brand-logo-mini" href="/">
                 <img src="{{ asset('template') }}/images/kementrian.png" alt="logo" />
             </a>
         </div>
@@ -35,8 +35,16 @@
                         <p class="mb-1 mt-3 font-weight-semibold">Dita Kominfo</p>
                         <p class="fw-light text-muted mb-0">lorepipsum@gmail.com</p>
                     </div>
-                    <a class="dropdown-item"><i
-                            class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a>
+                    <ul class="navbar-nav ms-auto">
+                        @auth
+                            <li class="nav-item">
+                                <form action="admin/logout" method="POST">
+                                    @csrf
+                                    <button type="submit" style="margin-left: 25px;" class="btn btn-danger btn-sm"><span class="mdi mdi-logout">Logout</span></button>
+                                </form>
+                            </li>    
+                        @endauth
+                    </ul>    
                 </div>
             </li>
         </ul>

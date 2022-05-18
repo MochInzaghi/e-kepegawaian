@@ -1,5 +1,6 @@
 @extends('layouts.tabellayoutcuti')
-@section('title','Tabel Data Cuti')
+@section('title','Kelola Data Cuti')
+@section('url','cuti')
 @section('tabel','Cuti')
 
 @section('content')
@@ -8,7 +9,7 @@
     <div class="col-lg-12 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">Tabel Data Cuti</h4>
+          <h4 class="card-title">Kelola Data Cuti</h4>
           <a href="#" class="btn btn-primary btn-sm text-white me-0 btn-"><i class="icon-plus"></i> Tambah Data</a>
           <div class="table-responsive pt-3">
             <table class="table table-bordered">
@@ -35,11 +36,11 @@
                   <th>
                     Sampai Tanggal
                   </th>
-                  <th>
-                    Jumlah Hari Kerja
+                  <th class="thratakiri">
+                    Jumlah <br>Hari Kerja
                   </th>
-                  <th>
-                    Sisa Cuti Tahunan YBS
+                  <th class="thratakiri">
+                    Sisa Cuti <br>Tahunan YBS
                   </th>
                   <th>
                     Pejabat
@@ -66,13 +67,13 @@
                   <td>{{$cuti->nip}}</td>
                   <td>{{$cuti->jabatan}}</td>
                   <td>{{$cuti->jeniscuti}}</td>
-                  <td>{{$cuti->daritgl}}</td> 
-                  <td>{{$cuti->sampaitgl}}</td>
+                  <td>{{ date('d F Y', strtotime( $cuti->daritgl )) }}</td> 
+                  <td>{{ date('d F Y', strtotime($cuti->sampaitgl)) }}</td>
                   <td>{{$cuti->jmlhrkrj}}</td>
                   <td>{{$cuti->sisacuti}}</td>
                   <td>{{$cuti->pejabat}}</td>
                   <td>{{$cuti->nosurat}}</td>
-                  <td>{{$cuti->tanggal}}</td>
+                  <td>{{ date('d F Y', strtotime($cuti->tanggal)) }}</td>
                   <td>{{$cuti->keterangan}}</td>
                   <td>
                   <a href="datacuti/{{ $cuti->id }}/edit" class="btn btn-primary d-inline ml-3">Edit</a>

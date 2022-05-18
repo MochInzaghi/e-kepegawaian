@@ -96,7 +96,7 @@ class DataPenghargaanController extends Controller
             return redirect('/admin/datapenghargaan')->with('success', 'Data Penghargaan Berhasil di Update');
         } catch (Exception $e) {
             // dd($e);
-            Alert::error('Gagal', 'Gagal Mengupdate Data Pegawai');
+            Alert::error('Gagal', 'Gagal Mengupdate Data Penghargaan');
             return back();
         }
     }
@@ -110,5 +110,16 @@ class DataPenghargaanController extends Controller
     public function destroy(DataPenghargaan $dataPenghargaan)
     {
         //
+    }
+
+    public function print(){
+        if ($request->input('bulan') && $request->input('tahun')) {
+            $bulan = $request->input('bulan');
+            $tahun = $request->input('tahun');
+            $data_penghargaan = DataPenghargaan::whereMonth('updated_at', $bulan)->whereYear('updated_at', $tahun)->get();
+        }else{
+            $data_penghargaan = DataPenghargaan::all();
+        }
+        return view('laporan.datapenghargaan', compact('data_penghargaan'));
     }
 }

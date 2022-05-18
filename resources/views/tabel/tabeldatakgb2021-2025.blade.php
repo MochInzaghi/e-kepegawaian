@@ -1,5 +1,5 @@
 @extends('layouts.tabellayoutkenaikan')
-@section('title','Tabel Data KGB 2021-2025')
+@section('title','Kelola Data KGB')
 @section('kenaikan','Gaji Berkala')
 
 @section('content')
@@ -8,7 +8,7 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Tabel Data KGB Tahun 2021-2025</h4>
+                    <h4 class="card-title">Kelola Data Kenaikan Gaji Berkala</h4>
                     <div class="table-responsive pt-3">
                         <table class="table table-bordered">
                             <thead>
@@ -36,19 +36,42 @@
                                     </th>
                                 </tr>
                             </thead>
-                                <tbody>
+                                {{-- <tbody>
                                     @foreach ($datapegawai as $itempegawai)
                                         <tr>
                                             <td></td>
-                                            <td>{{ $itempegawai->namapegawai }}</td>
                                             <td></td>
+                                            <td>
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">View</button>
+                                            </td>
                                             <td></td>
                                             <td></td>
                                             <td></td>
                                             <td></td>
                                         </tr>
                                     @endforeach
-                                </tbody>
+                                </tbody> --}}
+                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="exampleModalLabel">Detail Data</h5>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                          </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <label for="recipient-name" class="col-form-label">Nama Pegawai :</label>
+                                                <input type="text" class="form-control" id="recipient-name">
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                </div>
                         </table>
                     </div>
                 </div>

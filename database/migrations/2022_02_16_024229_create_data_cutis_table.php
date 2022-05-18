@@ -19,13 +19,13 @@ class CreateDataCutisTable extends Migration
             $table->string('nip');
             $table->string('jabatan');
             $table->string('jeniscuti');
-            $table->string('daritgl');
-            $table->string('sampaitgl');
+            $table->date('daritgl');
+            $table->date('sampaitgl');
             $table->string('jmlhrkrj');
             $table->string('sisacuti');
             $table->string('pejabat');
             $table->string('nosurat');
-            $table->string('tanggal');
+            $table->date('tanggal');
             $table->string('keterangan');
             $table->timestamps();
         });

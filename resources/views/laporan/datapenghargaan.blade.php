@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>Cetak Laporan Data Cuti</title>
+        <title>Cetak Laporan Data Penghargaan</title>
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJISAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="{{ asset('template') }}/vendors/feather/feather.css">
@@ -84,42 +84,35 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <h3>LAPORAN DATA CUTI PEGAWAI</h3>
+                                <h3>LAPORAN DATA PENGHARGAAN PEGAWAI</h3>
                                 <h3>Bulan  Tahun </h3>
                             </div>
                         <table class="table table-bordered solid" style="margin-top: 10px; border:1px solid black;">
                             <tr>
-                                <th>No</th>
-                                <th>Nama Pegawai</th>
-                                <th>NIP</th>
-                                <th>Jabatan</th>
-                                <th>Jenis Cuti</th>
-                                <th>Dari Tanggal</th>
-                                <th>Sampai Tanggal</th>
-                                <th>Jumlah Hari Kerja</th>
-                                <th>Sisa Cuti Tahunan YBS</th>
-                                <th>Pejabat</th>
-                                <th>No. Surat</th>
-                                <th>Tanggal</th>
-                                <th>Keterangan</th>
+                                <th class="thratakiri">
+                                No
+                                </th>
+                                <th class="thratakiri">
+                                Nama Pegawai
+                                </th>
+                                <th class="thratakiri">
+                                Gelar Tanda Kehormatan<br>10 Tahun
+                                </th>
+                                <th class="thratakiri">
+                                Gelar Tanda Kehormatan<br>20 Tahun
+                                </th>
+                                <th class="thratakiri">
+                                Gelar Tanda Kehormatan<br>30 Tahun
+                                </th>
                             </tr>
 
                             @php $no=1; @endphp
-                            @foreach ($data_cuti as $cuti)
+                            @foreach ($data_penghargaan as $penghargaan)
                                 <tr>
-                                    <td>{{ $no++ }}</td>
-                                    <td>{{$cuti->namapegawai}}</td>
-                                    <td>{{$cuti->nip}}</td>
-                                    <td>{{$cuti->jabatan}}</td>
-                                    <td>{{$cuti->jeniscuti}}</td>
-                                    <td>{{ date('d F Y', strtotime( $cuti->daritgl )) }}</td> 
-                                    <td>{{ date('d F Y', strtotime($cuti->sampaitgl)) }}</td>
-                                    <td>{{$cuti->jmlhrkrj}}</td>
-                                    <td>{{$cuti->sisacuti}}</td>
-                                    <td>{{$cuti->pejabat}}</td>
-                                    <td>{{$cuti->nosurat}}</td>
-                                    <td>{{ date('d F Y', strtotime( $cuti->tanggal )) }}</td> 
-                                    <td>{{$cuti->keterangan}}</td>
+                                    <td>{{ $penghargaan->namapegawai }}</td>
+                                    <td>{{ $penghargaan->pegawaiPenghargaan->thn_10 ?? '' }}</td>
+                                    <td>{{ $penghargaan->pegawaiPenghargaan->thn_20 ?? '' }}</td>
+                                    <td>{{ $penghargaan->pegawaiPenghargaan->thn_30 ?? '' }}</td>
                                 </tr>
                             @endforeach
                         </table>
