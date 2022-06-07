@@ -38,7 +38,7 @@ class DataKgbController extends Controller
             $dp->kgb = Carbon::createFromFormat('Y-m-d', $dp->kgb)->addYear(2)->format('Y-m-d');
         }
 
-        // dd($dates, $datapegawai, $dpAddTwoYears);
+        // dd($datapegawai);
 
         return view('tabel.tabeldatakgb2021-2025', compact('dates', 'datapegawai'));
     }

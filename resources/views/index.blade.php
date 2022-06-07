@@ -34,7 +34,7 @@
                                                 <div class="row">
                                                     <div class="col-sm-4">
                                                         <p class="status-summary-ight-white mb-1">Pegawai Dinas</p>
-                                                        <h2 class="text-info">32</h2>
+                                                        <h2 class="text-info">{{$datadinas->count()}}</h2>
                                                     </div>
                                                     <div class="col-sm-8">
                                                         <div class="status-summary-chart-wrapper pb-4">
@@ -52,7 +52,7 @@
                                                 <div class="row">
                                                     <div class="col-sm-4">
                                                         <p class="status-summary-ight-white mb-1">Pegawai Honorer</p>
-                                                        <h2 class="text-info">50</h2>
+                                                        <h2 class="text-info">{{$datahonorer->count()}}</h2>
                                                     </div>
                                                     <div class="col-sm-8">
                                                         <div class="status-summary-chart-wrapper pb-4">

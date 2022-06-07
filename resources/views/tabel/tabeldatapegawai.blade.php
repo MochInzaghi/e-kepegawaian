@@ -72,14 +72,11 @@
                                             <td>Rp. {{ number_format($pegawai->gajipokok) }},000</td>
                                             <td>{{ $pegawai->keterangan }}</td>
                                             <td>
-                                                <a href="datapegawai/{{ $pegawai->id }}/edit"
-                                                    class="btn btn-primary btn sm inline">Edit</a>
-                                                <form class="d-inline ml-3"
-                                                    action="datapegawai/{{ $pegawai->id }}/delete" method="POST">
+                                                <a href="datapegawai/{{ $pegawai->id }}/edit" class="btn btn-primary btn sm inline">Edit</a>
+                                                <form class="d-inline ml-3 delete-confirm" action="datapegawai/{{ $pegawai->id }}/delete" method="POST">
                                                     @csrf
                                                     @method("delete")
-                                                    <button class="btn btn-danger btn sm inline delete-confirm"
-                                                        type="submit">Hapus</button>
+                                                    <button class="btn btn-danger btn sm inline" type="submit">Hapus</button>
                                                 </form>
                                             </td>
                                         </tr>

@@ -119,7 +119,7 @@ class DataDukController extends Controller
         //
     }
 
-    public function print(){
+    public function print(Request $request){
         if ($request->input('bulan') && $request->input('tahun')) {
             $bulan = $request->input('bulan');
             $tahun = $request->input('tahun');

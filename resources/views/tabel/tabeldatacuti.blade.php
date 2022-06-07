@@ -77,10 +77,10 @@
                   <td>{{$cuti->keterangan}}</td>
                   <td>
                   <a href="datacuti/{{ $cuti->id }}/edit" class="btn btn-primary d-inline ml-3">Edit</a>
-                  <form class="d-inline ml-3" action = "datacuti/{{ $cuti->id }}/delete" method="POST">
+                  <form class="d-inline ml-3 delete-confirm" action = "datacuti/{{ $cuti->id }}/delete" method="POST">
                     @csrf
                     @method("delete")
-                      <button class="btn btn-danger btn sm inline delete-confirm" type="submit">Hapus</button>
+                      <button class="btn btn-danger btn sm inline" type="submit">Hapus</button>
                   </form>  
                   </td>
                 </tr>

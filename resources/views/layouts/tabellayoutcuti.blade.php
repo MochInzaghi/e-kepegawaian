@@ -44,7 +44,7 @@
     <script>
     $('.delete-confirm').on('click', function (event) {
         event.preventDefault();
-        const url = $(this).attr('href');
+        const url = $(this).attr('action');
         swal({
             title: 'Apakah anda yakin ingin menghapus data ini?',
             text: 'Catatan ini dan detailnya akan dihapus secara permanen!',

@@ -426,7 +426,7 @@
                                                 <option value="Honorer">Pegawai Honorer</option>
                                             </select>
                                         </div>
-                                        <button type="submit" class="btn btn-primary me-2">Submit</button>
+                                        <button type="submit" class="btn btn-primary me-2">Update</button>
                                     </form>
                                 </div>
                             </div>
