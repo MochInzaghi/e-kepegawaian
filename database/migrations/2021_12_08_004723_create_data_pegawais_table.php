@@ -23,7 +23,7 @@ class CreateDataPegawaisTable extends Migration
             $table->string('jenjang');
             $table->string('notelp');
             $table->date('kgb');
-            $table->string('kp');
+            $table->date('kp');
             $table->string('gajipokok');
             $table->string('keterangan');
             $table->timestamps();

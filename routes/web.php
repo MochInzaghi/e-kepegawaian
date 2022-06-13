@@ -42,9 +42,13 @@ Route::delete('admin/datapegawai/{data_pegawai:id}/delete', '\App\Http\Controlle
 
 //tabel kgb
 Route::get('admin/datakgb', '\App\Http\Controllers\DataKgbController@index')->name('admin.kgb');
+Route::get('admin/datakgb/{id}/edit', '\App\Http\Controllers\DataKgbController@edit')->name('edit.kgb');
+Route::post('admin/datakgb/update', '\App\Http\Controllers\DataKgbController@update')->name('update.kgb');
 
 //tabel kp
 Route::get('admin/datakp', '\App\Http\Controllers\DataKpController@index')->name('admin.kp');
+Route::get('admin/datakp/{id}/edit', '\App\Http\Controllers\DataKpController@edit')->name('edit.kp');
+Route::post('admin/datakp/update', '\App\Http\Controllers\DataKpController@update')->name('update.kp');
 
 //tabel penghargaan
 Route::get('/admin/datapenghargaan', '\App\Http\Controllers\DataPenghargaanController@index')->name('admin.penghargaan');

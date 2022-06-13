@@ -14,7 +14,16 @@ class CreateDataKgbsTable extends Migration
     public function up()
     {
         Schema::create('data_kgbs', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->bigInteger('data_pegawai_id')->unsigned();
+            $table->date('tgl_lahir');
+            $table->date('tgl');
+            $table->date('tgl_gaji');
+            $table->string('masakerja_tgl');
+            $table->string('gajibaru');
+            $table->string('masakerja');
+            $table->string('gol_ruang');
+            $table->date('mulai_tgl');
             $table->timestamps();
         });
     }

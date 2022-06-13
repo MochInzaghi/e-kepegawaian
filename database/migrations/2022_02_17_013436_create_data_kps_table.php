@@ -14,7 +14,18 @@ class CreateDataKpsTable extends Migration
     public function up()
     {
         Schema::create('data_kps', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->bigInteger('data_pegawai_id')->unsigned();
+            $table->string('skp_struktural');
+            $table->string('sp_tugas');
+            $table->string('sp_pelantikan');
+            $table->string('ba_pengangkatansumpah');
+            $table->string('ijazah_terakhir');
+            $table->string('surat_tandalulus');
+            $table->string('skp_2020');
+            $table->string('skp_2021');
+            $table->string('skp_jabatan');
+            $table->string('sp_pengangkatanlama');
             $table->timestamps();
         });
     }

@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Form Edit Data Penghargaan </title>
+  <title>Form Edit Data KGB </title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="{{asset('template')}}/vendors/feather/feather.css">
   <link rel="stylesheet" href="{{asset('template')}}/vendors/mdi/css/materialdesignicons.min.css">
@@ -47,7 +47,7 @@
         <ul class="navbar-nav">
           <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
             <h1 class="welcome-text">Good Morning, <span class="text-black fw-bold">Admin</span></h1>
-            <h3 class="welcome-sub-text">Silahkan Mengedit Data Penghargaan </h3>
+            <h3 class="welcome-sub-text">Silahkan Mengedit Data KGB </h3>
           </li>
         </ul>
         <ul class="navbar-nav ms-auto">
@@ -325,29 +325,53 @@
             <div class="col-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Form Edit Data Penghargaan</h4>
+                  <h4 class="card-title">Form Edit Data Kenaikan Gaji Berkala</h4>
                   <p class="card-description">
-                    Silhkan Edit Data Penghargaan
+                    Silhkan Edit Data Kenaikan Gaji Berkala
                   </p>
                   @include('sweetalert::alert')
-                  <form class="forms-sample" action="/admin/datapenghargaan/update" method="POST" enctype="multipart/form-data">
+                  <form class="forms-sample" action="/admin/datakgb/update" method="POST" enctype="multipart/form-data">
                   {{csrf_field()}}
                   <input type="hidden" name="data_pegawai_id" value="{{ $data_pegawai->id }}">
                     <div class="form-group">
-                      <label for="nama">Nama Pegawai</label>
-                      <input type="text" class="form-control" id="nama" name="namapegawai" value="{{ old('namapegawai') ?? $data_pegawai->namapegawai }}" disabled>
+                        <label for="nama">Nama Pegawai</label>
+                        <input type="text" class="form-control" id="nama" name="namapegawai" value="{{ old('namapegawai') ?? $data_pegawai->namapegawai }}" disabled>
                     </div>
                     <div class="form-group">
-                      <label for="thn_10">Gelar Tanda Kehormatan 10 Tahun</label>
-                      <input type="date" class="form-control" id="thn_10" name="thn_10" value="{{ old('thn_10') ?? $data_pegawai->pegawaiPenghargaan->thn_10 ?? ''}}">
+                        <label for="nip">NIP</label>
+                        <input type="text" class="form-control" id="nip" name="nip" value="{{ old('nip') ?? $data_pegawai->nip }}" disabled>
                     </div>
                     <div class="form-group">
-                      <label for="thn_20">Gelar Tanda Kehormatan 20 Tahun</label>
-                      <input type="date" class="form-control" id="thn_20" name="thn_20" value="{{ old('thn_20') ?? $data_pegawai->pegawaiPenghargaan->thn_20 ?? ''}}">
+                        <label for="recipient-name" class="col-form-label">Tanggal Lahir</label>
+                        <input type="date" name="tgl_lahir" class="form-control" id="recipient-name" value="{{ old('tgl_lahir') ?? $data_pegawai->tgl_lahir }}">
                     </div>
                     <div class="form-group">
-                      <label for="thn_30">Gelar Tanda Kehormatan 30 Tahun</label>
-                      <input type="date" class="form-control" id="thn_30" name="thn_30" value="{{ old('thn_30') ?? $data_pegawai->pegawaiPenghargaan->thn_30 ?? ''}}">
+                        <label for="recipient-name" class="col-form-label">Tanggal </label>
+                        <input type="date" name="tgl" class="form-control" id="recipient-name" value="{{ old('tgl') ?? $data_pegawai->tgl }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Tanggal Mulai Berlakunya Gaji </label>
+                        <input type="date" name ="tgl_gaji" class="form-control" id="recipient-name" value="{{ old('tgl_gaji') ?? $data_pegawai->tgl_gaji }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Masa Kerja Golongan Pada Tanggal Tersebut </label>
+                        <input type="text" name="masakerja_tgl" class="form-control" id="recipient-name" value="{{ old('masakerja_tgl') ?? $data_pegawai->masakerja_tgl }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Gaji Pokok Baru </label> 
+                        <input type="text" name="gajibaru" class="form-control" id="recipient-name" value="{{ old('gajibaru') ?? $data_pegawai->gajibaru }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Berdasarkan Masa Kerja </label>
+                        <input type="text" name="masakerja" class="form-control" id="recipient-name" value="{{ old('masakerja') ?? $data_pegawai->masakerja }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Dalam Golongan Ruang </label>
+                        <input type="text" name="gol_ruang" class="form-control" id="recipient-name" value="{{ old('gol_ruang') ?? $data_pegawai->gol_ruang }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Mulai Tanggal </label>
+                        <input type="date" name="mulai_tgl" class="form-control" id="recipient-name" value="{{ old('mulai_tgl') ?? $data_pegawai->mulai_tgl }}">
                     </div>
                     <button type="submit" class="btn btn-primary me-2">Submit</button>
                   </form>

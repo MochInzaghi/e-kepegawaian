@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class DataKgb extends Model
 {
-    use HasFactory;
+    protected $table = 'data_kgbs' ;//sesuaikan nama table
+    protected $fillable = ['data_pegawai_id','tgl_lahir','tgl','tgl_gaji','masakerja_tgl','gajibaru','masakerja','gol_ruang','mulai_tgl'];
+
+    public function getPegawai(){
+        return $this->belongsTo(DataPegawai::class);
+    }
 }

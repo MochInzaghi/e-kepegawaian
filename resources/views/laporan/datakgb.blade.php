@@ -18,6 +18,10 @@
     </head>
     <body style="background-color: white;" onload="window.print()">
         <style>
+            .font{
+                font-size: 20px;
+                font-family: "Arial";
+            }
              .logomalang{
                 width: 300px;
                 height: 200px;
@@ -111,27 +115,109 @@
                             <div class="col-md-12 paragraf1">
                                 <p class="p1" style="text-indent: 5em;">Kepala Dinas Komunikasi dan Informatika Kabupaten Malang dengan ini <br>memberitahukan bahwa berhubung dengan telah dipenuhinya masa kerja dan syarat – syarat <br>lainnya kepada :</p>
                             </div>
-                            <div class="col-md-12 paragraf2">
-                                <p class="p3">1. Nama              &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;:   JUWARI</p>
-                                <p class="p3">2. NIP               &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;:   19790309 200701 1 010</p>
-                                <p class="p3">3. Tgl. Lahir        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;:   09-03-1979</p>
-                                <p class="p3">4. Pangkat / Gol     &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;:   Juru Tk. I - I/d</p>
-                                <p class="p3">5. Jabatan           &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;:   Pramu Bhakti</p>
-                                <p class="p3">6. Kantor / Tempat   &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;:   Dinas Komunikasi Dan Informatika Kabupaten Malang</p>
-                                <p class="p3">7. Gaji Pokok Lama   :   Rp. 2.307.200, -</p>
-                                <p class="p3">Atas dasar Surat Keputusan terakhir tentang gaji/pangkat yang ditetapkan : <strong>PP Nomor 30 Tahun 2015</strong></p>
-                                <p class="p3">a. Oleh Pejabat      :   Plt. Kepala Dinas Komunikasi dan Informatika</p>
-                                <p class="p3">b. Tanggal           :   28 Februari 2019</p>
-                                <p class="p3">Nomor                :   822.1/385/35.07.127/2019</p>
-                                <p class="p3">c. Tanggal mulai berlakunya</p>
-                                <p class="p3">Gaji Tersebut        :   01-04-2019</p>
-                                <p class="p3">d. Masa Kerja Golongan</p>
-                                <p class="p3">Pada tanggal tersebut    :   23 Tahun 00 Bulan</p>
-                                <p class="p3">Diberikan Kenaikan gaji berkala hingga memperoleh :</p>
-                                <p class="p3">8. Gaji Pokok Baru   :   <strong> Rp. 2.480.500,-</strong> <strong>PP Nomor 15 Tahun 2015</strong></p>
-                                <p class="p3">9. Berdasarkan Masa Kerja    :   25 Tahun 00 Bulan</p>
-                                <p class="p3">10. Dalam Golongan Ruang     :   I/d</p>
-                                <p class="p3">11. Mulai Tanggal            :   01-04-2021</p>
+                            <div class="container-fluid" style="margin-left: 170px;">
+                                <table class="table" style="border-color: #FFFFFF">
+                                    <tbody>
+                                        <tr class="d-flex">
+                                            <td class="font" scope="row">1.</td>
+                                            <td class="font" style="text-align: left;">Nama</td>
+                                            <td class="font" style="margin-left: 165px;">:</td>
+                                            <td class="font" style="text-align: left">JUWARI</td>
+                                        </tr>
+                                        <tr class="d-flex">
+                                            <td class="font" scope="row">2.</td>
+                                            <td class="font" style="text-align: left">NIP</td>
+                                            <td class="font" style="margin-left: 175px;">:</td>
+                                            <td class="font" style="text-align: left">19790309 200701 1 010</td>
+                                        </tr>
+                                        <tr class="d-flex">
+                                            <td class="font" scope="row">3.</td>
+                                            <td class="font" style="text-align: left">Tgl. Lahir</td>
+                                            <td class="font" style="margin-left: 145px;">:</td>
+                                            <td class="font" style="text-align: left">09-03-1979</td>
+                                        </tr>
+                                        <tr class="d-flex">
+                                            <td class="font" scope="row">4.</td>
+                                            <td class="font" style="text-align: left">Pangkat / Gol</td>
+                                            <td class="font" style="margin-left: 118px;">:</td>
+                                            <td class="font" style="text-align: left">Juru Tk. I - I/d</td>
+                                        </tr>
+                                        <tr class="d-flex">
+                                            <td class="font" scope="row">5.</td>
+                                            <td class="font" style="text-align: left">Jabatan</td>
+                                            <td class="font" style="margin-left: 148px;">:</td>
+                                            <td class="font" style="text-align: left">Pramu Bhakti</td>
+                                        </tr>
+                                        <tr class="d-flex">
+                                            <td class="font" scope="row">6.</td>
+                                            <td class="font" style="text-align: left">Kantor / Tempat</td>
+                                            <td class="font" style="margin-left: 101px;">:</td>
+                                            <td class="font" style="text-align: left">Dinas Komunikasi dan Informatika Kabupaten Malang</td>
+                                        </tr>
+                                        <tr class="d-flex">
+                                            <td class="font" scope="row">7.</td>
+                                            <td class="font" style="text-align: left">Gaji Pokok Lama</td>
+                                            <td class="font" style="margin-left: 101px;">:</td>
+                                            <td class="font" style="text-align: left">Rp. 2.307.200,-</td>
+                                        </tr>
+                                        <tr class="d-flex">
+                                            <td class="font" scope="row">Atas dasar Surat Keputusan terakhir tentang gaji/pangkat yang ditetapkan : <b>PP Nomor 30 Tahun 2015</b></td>
+                                        </tr>
+                                        <tr class="d-flex">
+                                            <td class="font" scope="row">a.</td>
+                                            <td class="font" style="text-align: left">Oleh Pejabat</td>
+                                            <td class="font" style="margin-left: 119px;">:</td>
+                                            <td class="font" style="text-align: left">Plt. Kepala Dinas Komunikasi dan Informatika</td>
+                                        </tr>
+                                        <tr class="d-flex">
+                                            <td class="font" scope="row">b.</td>
+                                            <td class="font" style="text-align: left">Tanggal<br>Nomor</td>
+                                            <td class="font" style="margin-left: 147px;">:<br>:</td>
+                                            <td class="font" style="text-align: left">28 Februari 2019<br>822.1/385/35.07.127/2019</td>                                            </td>
+                                        </tr>
+                                        </tr>
+                                        <tr class="d-flex">
+                                            <td class="font" scope="row">c.</td>
+                                            <td class="font" style="text-align: left">Tanggal mulai berlakunya<br>Gaji tersebut</td>
+                                            <td class="font" style="margin-left: 45px;"><br>:</td>
+                                            <td class="font" style="text-align: left"><br>01-04-2019</td>
+                                        </tr>
+                                        <tr class="d-flex">
+                                            <td class="font" scope="row">d.</td>
+                                            <td class="font" style="text-align: left">Masa Kerja Golongan<br>Pada tanggal  tersebut</td>
+                                            <td class="font" style="margin-left: 65px;"><br>:</td>
+                                            <td class="font" style="text-align: left"><br>23 Tahun	00    Bulan</td>
+                                        </tr>
+                                        <tr class="d-flex">
+                                            <td class="font" scope="row">Diberikan Kenaikan gaji berkala hingga memperoleh : <b>PP Nomor 15 Tahun 2015</b></td>
+                                        </tr>
+                                        <tr class="d-flex">
+                                            <td class="font" scope="row">8.</td>
+                                            <td class="font" style="text-align: left"><b>Gaji Pokok Baru</b></td>
+                                            <td class="font" style="margin-left: 99px;">:</td>
+                                            <td class="font" style="text-align: left"><b>Rp. 2.480.500,-</b></td>
+                                        </tr>
+                                        <tr class="d-flex">
+                                            <td class="font" scope="row">9.</td>
+                                            <td class="font" style="text-align: left">Berdasarkan Masa Kerja</td>
+                                            <td class="font" style="margin-left: 55px;">:</td>
+                                            <td class="font" style="text-align: left">25 Tahun    00  Bulan
+                                                </td>
+                                        </tr>
+                                        <tr class="d-flex">
+                                            <td class="font" scope="row">10.</td>
+                                            <td class="font" style="text-align: left">Dalam Golongan Ruang</td>
+                                            <td class="font" style="margin-left: 53px;">:</td>
+                                            <td class="font" style="text-align: left">I/d</td>
+                                        </tr>
+                                        <tr class="d-flex">
+                                            <td class="font" scope="row">11.</td>
+                                            <td class="font" style="text-align: left">Mulai Tanggalr</td>
+                                            <td class="font" style="margin-left: 108px;">:</td>
+                                            <td class="font" style="text-align: left">01-04-2021</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                             <div class="col-md-12 paragraf1">
                                 <p class="p1" style="text-indent: 5em;">Diharapkan agar sesuai dengan <u>Peraturan Pemerintah Repubik Indonesia Nomor 15 Tahun 2019</u> kepada Pegawai tersebut dapat dibayarkan penghasilanya berdasarkan gaji pokok <br>yang baru.</p>

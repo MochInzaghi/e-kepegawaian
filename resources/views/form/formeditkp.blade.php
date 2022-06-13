@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Form Edit Data Penghargaan </title>
+  <title>Form Edit Data KP </title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="{{asset('template')}}/vendors/feather/feather.css">
   <link rel="stylesheet" href="{{asset('template')}}/vendors/mdi/css/materialdesignicons.min.css">
@@ -47,7 +47,7 @@
         <ul class="navbar-nav">
           <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
             <h1 class="welcome-text">Good Morning, <span class="text-black fw-bold">Admin</span></h1>
-            <h3 class="welcome-sub-text">Silahkan Mengedit Data Penghargaan </h3>
+            <h3 class="welcome-sub-text">Silahkan Mengedit Data KP </h3>
           </li>
         </ul>
         <ul class="navbar-nav ms-auto">
@@ -325,29 +325,61 @@
             <div class="col-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Form Edit Data Penghargaan</h4>
+                  <h4 class="card-title">Form Edit Data Kenaikan Pangkat</h4>
                   <p class="card-description">
-                    Silhkan Edit Data Penghargaan
+                    Silhkan Edit Data Kenaikan Pangkat
                   </p>
                   @include('sweetalert::alert')
-                  <form class="forms-sample" action="/admin/datapenghargaan/update" method="POST" enctype="multipart/form-data">
+                  <form class="forms-sample" action="/admin/datakp/update" method="POST" enctype="multipart/form-data">
                   {{csrf_field()}}
                   <input type="hidden" name="data_pegawai_id" value="{{ $data_pegawai->id }}">
                     <div class="form-group">
-                      <label for="nama">Nama Pegawai</label>
-                      <input type="text" class="form-control" id="nama" name="namapegawai" value="{{ old('namapegawai') ?? $data_pegawai->namapegawai }}" disabled>
+                        <label for="nama">Nama Pegawai</label>
+                        <input type="text" class="form-control" id="nama" name="namapegawai" value="{{ old('namapegawai') ?? $data_pegawai->namapegawai }}" disabled>
                     </div>
                     <div class="form-group">
-                      <label for="thn_10">Gelar Tanda Kehormatan 10 Tahun</label>
-                      <input type="date" class="form-control" id="thn_10" name="thn_10" value="{{ old('thn_10') ?? $data_pegawai->pegawaiPenghargaan->thn_10 ?? ''}}">
+                        <label for="nip">NIP</label>
+                        <input type="text" class="form-control" id="nip" name="nip" value="{{ old('nip') ?? $data_pegawai->nip }}" disabled>
                     </div>
                     <div class="form-group">
-                      <label for="thn_20">Gelar Tanda Kehormatan 20 Tahun</label>
-                      <input type="date" class="form-control" id="thn_20" name="thn_20" value="{{ old('thn_20') ?? $data_pegawai->pegawaiPenghargaan->thn_20 ?? ''}}">
+                        <label for="recipient-name" class="col-form-label">FC SK Pengangkatan dalam Jabatan Struktural </label>
+                        <input type="file" name="skp_struktural" class="form-control" id="recipient-name" value="{{ old('skp_struktural') ?? $data_pegawai->skp_struktural }}">
                     </div>
                     <div class="form-group">
-                      <label for="thn_30">Gelar Tanda Kehormatan 30 Tahun</label>
-                      <input type="date" class="form-control" id="thn_30" name="thn_30" value="{{ old('thn_30') ?? $data_pegawai->pegawaiPenghargaan->thn_30 ?? ''}}">
+                        <label for="recipient-name" class="col-form-label">FC Surat Pernyataan Melaksanakan Tugas </label>
+                        <input type="file" name="sp_tugas" class="form-control" id="recipient-name" value="{{ old('sp_tugas') ?? $data_pegawai->sp_tugas }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">FC Surat Pernyataan Pelantikan </label>
+                        <input type="file" name ="sp_pelantikan" class="form-control" id="recipient-name" value="{{ old('sp_pelantikan') ?? $data_pegawai->sp_pelantikan }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">FC Berita Acara Pengangkatan Sumpah </label>
+                        <input type="file" name="ba_pengangkatansumpah" class="form-control" id="recipient-name" value="{{ old('ba_pengangkatansumpah') ?? $data_pegawai->ba_pengangkatansumpah }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">FC Ijazah Terakhir Legalisir </label>
+                        <input type="file" name="ijazah_terakhir"" class="form-control" id="recipient-name" value="{{ old('ijazah_terakhir') ?? $data_pegawai->ijazah_terakhir }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">FC Surat Tanda Lulus Diklatpim Tingkat III atau STLUD Tingkat II atau memiliki ijazah S-2 </label>
+                        <input type="file" name="surat_tandalulus" class="form-control" id="recipient-name" value="{{ old('surat_tandalulus') ?? $data_pegawai->surat_tandalulus }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">FC SKP Tahun 2020 </label>
+                        <input type="file" name="skp_2020" class="form-control" id="recipient-name" value="{{ old('skp_2020') ?? $data_pegawai->skp_2020 }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">FC SKP Tahun 2021 </label>
+                        <input type="file" name="skp_2021" class="form-control" id="recipient-name" value="{{ old('skp_2021') ?? $data_pegawai->skp_2021 }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">FC SKP Jabatan </label>
+                        <input type="file" name="skp_jabatan" class="form-control" id="recipient-name" value="{{ old('skp_jabatan') ?? $data_pegawai->skp_jabatan }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">FC Surat Pernyataan Pengangkatan yang lama </label>
+                        <input type="file" name="sp_pengangkatanlama" class="form-control" id="recipient-name" value="{{ old('sp_pengangkatanlama') ?? $data_pegawai->sp_pengangkatanlama }}">
                     </div>
                     <button type="submit" class="btn btn-primary me-2">Submit</button>
                   </form>

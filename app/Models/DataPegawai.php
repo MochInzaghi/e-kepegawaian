@@ -12,6 +12,16 @@ class DataPegawai extends Model
 
     use HasFactory;
 
+    public function pegawaiKgb()
+    {
+        return $this->hasMany(DataPensiun::class);
+    }
+
+    public function pegawaiKp()
+    {
+        return $this->hasMany(DataPensiun::class);
+    }
+
     public function pegawaiDuk()
     {
         return $this->hasOne(DataDuk::class);

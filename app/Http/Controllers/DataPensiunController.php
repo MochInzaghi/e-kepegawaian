@@ -99,7 +99,7 @@ class DataPensiunController extends Controller
         // dd($e);
         Alert::error('Gagal', 'Gagal Mengupdate Data Pensiun');
         return back();
-    }
+        }
     }
 
     /**
