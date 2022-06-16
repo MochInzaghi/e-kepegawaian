@@ -107,7 +107,7 @@ class DataKgbController extends Controller
      */
     public function update(Request $request, DataKgb $dataKgb)
     {
-        try{
+        try {
             DataKgb::updateorCreate(
                 ['data_pegawai_id' => $request->data_pegawai_id],
                 [
@@ -121,13 +121,13 @@ class DataKgbController extends Controller
                     'mulai_tgl' => $request->mulai_tgl,
                 ]
             );
-    
+
             return redirect('/admin/datakgb')->with('success', 'Data KGB Berhasil di Update');
-        }catch (Exception $e) {
+        } catch (Exception $e) {
             // dd($e);
             Alert::error('Gagal', 'Gagal Mengupdate Data KGB');
             return back();
-            }
+        }
     }
 
     public function View($id)
@@ -145,5 +145,11 @@ class DataKgbController extends Controller
     public function destroy(DataKgb $dataKgb)
     {
         //
+    }
+
+    public function showModalKgb(Request $request, $id)
+    {
+        $datakgb = DataKgb::where('data_pegawai_id', $id)->first();
+        return view('modal.modal-view-kgb', compact('datakgb'));
     }
 }
