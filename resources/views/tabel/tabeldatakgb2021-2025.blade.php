@@ -40,16 +40,18 @@
                                                     @if ($date == date('Y', strtotime($itempegawai->kgb)))
                                                         {{ date('Y d F', strtotime($itempegawai->kgb)) }}
                                                         <button class="btn btn-info btn sm inline"
-                                                            onclick="showModalKgb([{{ $itempegawai->id }},{{ $itempegawai->kgb }}])">View</button>
+                                                            onclick="showModalKgb({{ $itempegawai->id }})">View
+                                                            Guys</button>
                                                         {{-- <button class="btn btn-info btn sm inline" data-toggle="modal"
                                                             data-target="#view">View</button> --}}
-                                                            
-                                                            @foreach ($datakgb as $kgb)
-                                                                <a href="datakgb/{{ $kgb->id }}/edit"
-                                                                    class="btn btn-success btn sm inline">Edit</a>
-                                                                <a href="datakgb/{{ $kgb->id }}/print" class="btn btn-primary btn sm inline"
+
+                                                        @foreach ($datakgb as $kgb)
+                                                            <a href="datakgb/{{ $kgb->id }}/edit"
+                                                                class="btn btn-success btn sm inline">Edit</a>
+                                                            <a href="datakgb/{{ $kgb->id }}/print"
+                                                                class="btn btn-primary btn sm inline"
                                                                 type="submit">Print</button>
-                                                            @endforeach
+                                                        @endforeach
                                                     @endif
                                                 </td>
                                             @endforeach
@@ -158,8 +160,8 @@
                                 </div> --}}
 
                                 {{-- modal --}}
-                                <div class="modal fade" id="showModal" tabindex="-1"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                    aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
