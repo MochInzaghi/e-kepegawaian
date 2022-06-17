@@ -44,10 +44,12 @@
                                                             Guys</button>
                                                         {{-- <button class="btn btn-info btn sm inline" data-toggle="modal"
                                                             data-target="#view">View</button> --}}
-                                                        <a href="datakgb/{{ $itempegawai->id }}/edit"
+                                                        @foreach ($datakgb as $kgb)
+                                                        <a href="datakgb/{{ $kgb->id }}/edit"
                                                             class="btn btn-success btn sm inline">Edit</a>
-                                                        <a href="" class="btn btn-primary btn sm inline"
+                                                        <a href="datakgb/{{ $kgb->id }}/print" class="btn btn-primary btn sm inline"
                                                             type="submit">Print</button>
+                                                            @endforeach
                                                     @endif
                                                 </td>
                                             @endforeach
@@ -56,7 +58,7 @@
                                 </tbody>
 
                                 {{-- modal bawaan --}}
-                                <div class="modal fade" id="view" tabindex="-1" role="dialog"
+                                {{-- <div class="modal fade" id="view" tabindex="-1" role="dialog"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
@@ -153,7 +155,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 {{-- modal --}}
                                 <div class="modal fade" id="showModal" tabindex="-1"
@@ -161,7 +163,7 @@
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="modalLabel"></h5>
+                                                <h5 class="modal-title" id="modalLabel">Detail Data</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>

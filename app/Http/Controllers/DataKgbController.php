@@ -23,17 +23,17 @@ class DataKgbController extends Controller
         // $test = Carbon::createFromFormat('Y-m-d', $datapegawai1->kgb);
         // dd($test->addYear(2));
 
-        if ($request->has('cari')) {
-            $data_kgb = \App\Models\DataPegawai::where('namapegawai', 'LIKE', '%' . $request->cari . '%')->get();
-        } else {
-            $data_kgb = \App\Models\DataPegawai::all();
-        }
+        // if ($request->has('cari')) {
+        //     $data_kgb = \App\Models\DataPegawai::where('namapegawai', 'LIKE', '%' . $request->cari . '%')->get();
+        // } else {
+        //     $data_kgb = \App\Models\DataPegawai::all();
+        // }
 
         $start_date = date_create("2021-01-01");
         $end_date   = date_create("2025-12-31");
         $interval = new DateInterval('P1Y');
         $daterange = new DatePeriod($start_date, $interval, $end_date);
-        $data_view = DataKgb::all();
+
 
         $dates = [];
         foreach ($daterange as $date) {
@@ -45,9 +45,9 @@ class DataKgbController extends Controller
             $dp->kgb = Carbon::createFromFormat('Y-m-d', $dp->kgb)->addYear(2)->format('Y-m-d');
         }
 
-        // dd($datapegawai);
+        $datakgb = DataKgb::all();
 
-        return view('tabel.tabeldatakgb2021-2025', compact('dates', 'datapegawai', 'data_kgb', 'data_view'));
+        return view('tabel.tabeldatakgb2021-2025', compact('dates', 'datapegawai', 'datakgb'));
     }
 
     /**
@@ -90,12 +90,12 @@ class DataKgbController extends Controller
      */
     public function edit($id)
     {
-        $data_pegawai = DataPegawai::find($id);
-        if (!$data_pegawai) {
+        $datakgb = DataKgb::find($id);
+        if (!$datakgb) {
             abort(404);
         }
 
-        return view('form.formeditkgb', ['data_pegawai' => $data_pegawai]);
+        return view('form.formeditkgb', compact('datakgb'));
     }
 
     /**
@@ -147,9 +147,14 @@ class DataKgbController extends Controller
         //
     }
 
+    public function print(Request $request, $id){
+        $datakgb = DataKgb::find($id);
+        return view('laporan.datakgb', compact('datakgb'));
+    }
+
     public function showModalKgb(Request $request, $id)
     {
-        $datakgb = DataKgb::where('data_pegawai_id', $id)->first();
+        $datakgb = DataKgb::where('data_pegawai_id', $id)->with('getPegawai')->first();
         return view('modal.modal-view-kgb', compact('datakgb'));
     }
 }

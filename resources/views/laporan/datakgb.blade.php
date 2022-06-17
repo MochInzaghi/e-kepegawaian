@@ -122,31 +122,31 @@
                                             <td class="font" scope="row">1.</td>
                                             <td class="font" style="text-align: left;">Nama</td>
                                             <td class="font" style="margin-left: 165px;">:</td>
-                                            <td class="font" style="text-align: left">JUWARI</td>
+                                            <td class="font" style="text-align: left">{{  $datakgb->getPegawai->namapegawai  }}</td>
                                         </tr>
                                         <tr class="d-flex">
                                             <td class="font" scope="row">2.</td>
                                             <td class="font" style="text-align: left">NIP</td>
                                             <td class="font" style="margin-left: 175px;">:</td>
-                                            <td class="font" style="text-align: left">19790309 200701 1 010</td>
+                                            <td class="font" style="text-align: left">{{  $datakgb->getPegawai->nip  }}</td>
                                         </tr>
                                         <tr class="d-flex">
                                             <td class="font" scope="row">3.</td>
                                             <td class="font" style="text-align: left">Tgl. Lahir</td>
                                             <td class="font" style="margin-left: 145px;">:</td>
-                                            <td class="font" style="text-align: left">09-03-1979</td>
+                                            <td class="font" style="text-align: left">{{  $datakgb->tgl_lahir  }}</td>
                                         </tr>
                                         <tr class="d-flex">
                                             <td class="font" scope="row">4.</td>
                                             <td class="font" style="text-align: left">Pangkat / Gol</td>
                                             <td class="font" style="margin-left: 118px;">:</td>
-                                            <td class="font" style="text-align: left">Juru Tk. I - I/d</td>
+                                            <td class="font" style="text-align: left">{{  $datakgb->getPegawai->pangkat  }}</td>
                                         </tr>
                                         <tr class="d-flex">
                                             <td class="font" scope="row">5.</td>
                                             <td class="font" style="text-align: left">Jabatan</td>
                                             <td class="font" style="margin-left: 148px;">:</td>
-                                            <td class="font" style="text-align: left">Pramu Bhakti</td>
+                                            <td class="font" style="text-align: left">{{  $datakgb->getPegawai->jabatan  }}</td>
                                         </tr>
                                         <tr class="d-flex">
                                             <td class="font" scope="row">6.</td>
@@ -158,7 +158,7 @@
                                             <td class="font" scope="row">7.</td>
                                             <td class="font" style="text-align: left">Gaji Pokok Lama</td>
                                             <td class="font" style="margin-left: 101px;">:</td>
-                                            <td class="font" style="text-align: left">Rp. 2.307.200,-</td>
+                                            <td class="font" style="text-align: left">Rp. {{  $datakgb->getPegawai->gajipokok  }},-</td>
                                         </tr>
                                         <tr class="d-flex">
                                             <td class="font" scope="row">Atas dasar Surat Keputusan terakhir tentang gaji/pangkat yang ditetapkan : <b>PP Nomor 30 Tahun 2015</b></td>
@@ -173,20 +173,20 @@
                                             <td class="font" scope="row">b.</td>
                                             <td class="font" style="text-align: left">Tanggal<br>Nomor</td>
                                             <td class="font" style="margin-left: 147px;">:<br>:</td>
-                                            <td class="font" style="text-align: left">28 Februari 2019<br>822.1/385/35.07.127/2019</td>                                            </td>
+                                            <td class="font" style="text-align: left">{{  $datakgb->tanggal  }}<br>822.1/385/35.07.127/2019</td>                                            </td>
                                         </tr>
                                         </tr>
                                         <tr class="d-flex">
                                             <td class="font" scope="row">c.</td>
                                             <td class="font" style="text-align: left">Tanggal mulai berlakunya<br>Gaji tersebut</td>
                                             <td class="font" style="margin-left: 45px;"><br>:</td>
-                                            <td class="font" style="text-align: left"><br>01-04-2019</td>
+                                            <td class="font" style="text-align: left"><br>{{  $datakgb->tgl_gaji  }}</td>
                                         </tr>
                                         <tr class="d-flex">
                                             <td class="font" scope="row">d.</td>
                                             <td class="font" style="text-align: left">Masa Kerja Golongan<br>Pada tanggal  tersebut</td>
                                             <td class="font" style="margin-left: 65px;"><br>:</td>
-                                            <td class="font" style="text-align: left"><br>23 Tahun	00    Bulan</td>
+                                            <td class="font" style="text-align: left"><br>{{  $datakgb->masakerja_tgl  }}</td>
                                         </tr>
                                         <tr class="d-flex">
                                             <td class="font" scope="row">Diberikan Kenaikan gaji berkala hingga memperoleh : <b>PP Nomor 15 Tahun 2015</b></td>
@@ -195,26 +195,26 @@
                                             <td class="font" scope="row">8.</td>
                                             <td class="font" style="text-align: left"><b>Gaji Pokok Baru</b></td>
                                             <td class="font" style="margin-left: 99px;">:</td>
-                                            <td class="font" style="text-align: left"><b>Rp. 2.480.500,-</b></td>
+                                            <td class="font" style="text-align: left"><b>Rp. {{  $datakgb->gajibaru  }},-</b></td>
                                         </tr>
                                         <tr class="d-flex">
                                             <td class="font" scope="row">9.</td>
                                             <td class="font" style="text-align: left">Berdasarkan Masa Kerja</td>
                                             <td class="font" style="margin-left: 55px;">:</td>
-                                            <td class="font" style="text-align: left">25 Tahun    00  Bulan
+                                            <td class="font" style="text-align: left">{{  $datakgb->masakerja  }}
                                                 </td>
                                         </tr>
                                         <tr class="d-flex">
                                             <td class="font" scope="row">10.</td>
                                             <td class="font" style="text-align: left">Dalam Golongan Ruang</td>
                                             <td class="font" style="margin-left: 53px;">:</td>
-                                            <td class="font" style="text-align: left">I/d</td>
+                                            <td class="font" style="text-align: left">{{  $datakgb->gol_ruang  }}</td>
                                         </tr>
                                         <tr class="d-flex">
                                             <td class="font" scope="row">11.</td>
                                             <td class="font" style="text-align: left">Mulai Tanggalr</td>
                                             <td class="font" style="margin-left: 108px;">:</td>
-                                            <td class="font" style="text-align: left">01-04-2021</td>
+                                            <td class="font" style="text-align: left">{{  $datakgb->mulai_tgl  }}</td>
                                         </tr>
                                     </tbody>
                                 </table>

@@ -332,46 +332,46 @@
                   @include('sweetalert::alert')
                   <form class="forms-sample" action="/admin/datakgb/update" method="POST" enctype="multipart/form-data">
                   {{csrf_field()}}
-                  <input type="hidden" name="data_pegawai_id" value="{{ $data_pegawai->id }}">
+                  <input type="hidden" name="data_pegawai_id" value="{{ $datakgb->getPegawai->id }}">
                     <div class="form-group">
                         <label for="nama">Nama Pegawai</label>
-                        <input type="text" class="form-control" id="nama" name="namapegawai" value="{{ old('namapegawai') ?? $data_pegawai->namapegawai }}" disabled>
+                        <input type="text" class="form-control" id="nama" name="namapegawai" value="{{ old('namapegawai') ?? $datakgb->getPegawai->namapegawai }}" disabled>
                     </div>
                     <div class="form-group">
                         <label for="nip">NIP</label>
-                        <input type="text" class="form-control" id="nip" name="nip" value="{{ old('nip') ?? $data_pegawai->nip }}" disabled>
+                        <input type="text" class="form-control" id="nip" name="nip" value="{{ old('nip') ?? $datakgb->getPegawai->nip }}" disabled>
                     </div>
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Tanggal Lahir</label>
-                        <input type="date" name="tgl_lahir" class="form-control" id="recipient-name" value="{{ old('tgl_lahir') ?? $data_pegawai->tgl_lahir }}">
+                        <input type="date" name="tgl_lahir" class="form-control" id="recipient-name" value="{{ old('tgl_lahir') ?? $datakgb->tgl_lahir }}">
                     </div>
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Tanggal </label>
-                        <input type="date" name="tgl" class="form-control" id="recipient-name" value="{{ old('tgl') ?? $data_pegawai->tgl }}">
+                        <input type="date" name="tgl" class="form-control" id="recipient-name" value="{{ old('tgl') ?? $datakgb->tgl }}">
                     </div>
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Tanggal Mulai Berlakunya Gaji </label>
-                        <input type="date" name ="tgl_gaji" class="form-control" id="recipient-name" value="{{ old('tgl_gaji') ?? $data_pegawai->tgl_gaji }}">
+                        <input type="date" name ="tgl_gaji" class="form-control" id="recipient-name" value="{{ old('tgl_gaji') ?? $datakgb->tgl_gaji }}">
                     </div>
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Masa Kerja Golongan Pada Tanggal Tersebut </label>
-                        <input type="text" name="masakerja_tgl" class="form-control" id="recipient-name" value="{{ old('masakerja_tgl') ?? $data_pegawai->masakerja_tgl }}">
+                        <input type="text" name="masakerja_tgl" class="form-control" id="recipient-name" value="{{ old('masakerja_tgl') ?? $datakgb->masakerja_tgl }}">
                     </div>
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Gaji Pokok Baru </label> 
-                        <input type="text" name="gajibaru" class="form-control" id="recipient-name" value="{{ old('gajibaru') ?? $data_pegawai->gajibaru }}">
+                        <input type="text" name="gajibaru" class="form-control" id="recipient-name" value="{{ old('gajibaru') ?? $datakgb->gajibaru }}">
                     </div>
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Berdasarkan Masa Kerja </label>
-                        <input type="text" name="masakerja" class="form-control" id="recipient-name" value="{{ old('masakerja') ?? $data_pegawai->masakerja }}">
+                        <input type="text" name="masakerja" class="form-control" id="recipient-name" value="{{ old('masakerja') ?? $datakgb->masakerja }}">
                     </div>
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Dalam Golongan Ruang </label>
-                        <input type="text" name="gol_ruang" class="form-control" id="recipient-name" value="{{ old('gol_ruang') ?? $data_pegawai->gol_ruang }}">
+                        <input type="text" name="gol_ruang" class="form-control" id="recipient-name" value="{{ old('gol_ruang') ?? $datakgb->gol_ruang }}">
                     </div>
                     <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Mulai Tanggal </label>
-                        <input type="date" name="mulai_tgl" class="form-control" id="recipient-name" value="{{ old('mulai_tgl') ?? $data_pegawai->mulai_tgl }}">
+                        <input type="date" name="mulai_tgl" class="form-control" id="recipient-name" value="{{ old('mulai_tgl') ?? $datakgb->mulai_tgl }}">
                     </div>
                     <button type="submit" class="btn btn-primary me-2">Submit</button>
                   </form>

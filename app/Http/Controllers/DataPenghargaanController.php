@@ -112,14 +112,18 @@ class DataPenghargaanController extends Controller
         //
     }
 
-    public function print(){
-        if ($request->input('bulan') && $request->input('tahun')) {
+    public function print(Request $request){
+        if ($request->input('bulan') != '1' && $request->input('tahun') != '1') {
             $bulan = $request->input('bulan');
             $tahun = $request->input('tahun');
             $data_penghargaan = DataPenghargaan::whereMonth('updated_at', $bulan)->whereYear('updated_at', $tahun)->get();
         }else{
-            $data_penghargaan = DataPenghargaan::all();
+            return redirect('/admin/datapenghargaan/404')->with('error', 'Data Penghargaan Tidak Ditemukan');
         }
-        return view('laporan.datapenghargaan', compact('data_penghargaan'));
+        return view('laporan.datapenghargaan', compact('data_penghargaan', 'bulan', 'tahun'));
+    }
+
+    public function notfound(){
+        return view('errors.404');
     }
 }

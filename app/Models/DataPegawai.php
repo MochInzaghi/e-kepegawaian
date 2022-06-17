@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\DataKgb;
 
 class DataPegawai extends Model
 {
@@ -14,12 +15,12 @@ class DataPegawai extends Model
 
     public function pegawaiKgb()
     {
-        return $this->hasMany(DataPensiun::class);
+        return $this->hasMany(DataKgb::class);
     }
 
     public function pegawaiKp()
     {
-        return $this->hasMany(DataPensiun::class);
+        return $this->hasMany(DataKp::class);
     }
 
     public function pegawaiDuk()

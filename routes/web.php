@@ -46,6 +46,7 @@ Route::middleware('auth')->group(function () {
     Route::get('admin/datakgb', '\App\Http\Controllers\DataKgbController@index')->name('admin.kgb');
     Route::get('admin/datakgb/{id}/edit', '\App\Http\Controllers\DataKgbController@edit')->name('edit.kgb');
     Route::post('admin/datakgb/update', '\App\Http\Controllers\DataKgbController@update')->name('update.kgb');
+    Route::get('admin/datakgb/{id}/print', '\App\Http\Controllers\DataKgbController@print')->name('print.kgb');
 
     //tabel kp
     Route::get('admin/datakp', '\App\Http\Controllers\DataKpController@index')->name('admin.kp');
@@ -57,6 +58,7 @@ Route::middleware('auth')->group(function () {
     Route::get('admin/datapenghargaan/{id}/edit', '\App\Http\Controllers\DatapenghargaanController@edit');
     Route::post('/admin/datapenghargaan/update', '\App\Http\Controllers\DataPenghargaanController@update')->name('update.penghargaan');
     Route::get('admin/datapenghargaan/print', '\App\Http\Controllers\DataPenghargaanController@print')->name('print.penghargaan');
+    Route::get('admin/datapenghargaan/404', '\App\Http\Controllers\DataPenghargaanController@notfound')->name('404.penghargaan');
 
     //tabel duk
     Route::get('/admin/dataduk', '\App\Http\Controllers\DataDukController@index')->name('admin.duk');
