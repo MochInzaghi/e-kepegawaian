@@ -26,7 +26,7 @@
         <form action="{{route('print.cuti')}}" method="GET">
           <div class="form-group">
             <select class="optionstyle form-select" name="tahun">
-                <option selected>Pilih Tahun</option>
+                <option value="1" selected>Pilih Tahun</option>
                 <option value="2021">2021</option>
                 <option value="2022">2022</option>
                 <option value="2023">2023</option>
@@ -43,19 +43,19 @@
         <li class="nav-item dropdown d-none d-lg-block">
           <div class="form-group">
             <select class="optionstyle form-select" name="bulan">
-                <option selected>Pilih Bulan</option>
-                <option value="01">Januari</option>
-                <option value="02">Februari</option>
-                <option value="03">Maret</option>
-                <option value="04">April</option>
-                <option value="05">Mei</option>
-                <option value="06">Juni</option>
-                <option value="07">Juli</option>
-                <option value="08">Agustus</option>
-                <option value="09">September</option>
-                <option value="10">Oktober</option>
-                <option value="11">November</option>
-                <option value="12">Desember</option>
+                <option value="1" selected>Pilih Bulan</option>
+                <option value="Januari">Januari</option>
+                <option value="Februari">Februari</option>
+                <option value="Maret">Maret</option>
+                <option value="April">April</option>
+                <option value="Mei">Mei</option>
+                <option value="Juni">Juni</option>
+                <option value="Juli">Juli</option>
+                <option value="Agustus">Agustus</option>
+                <option value="September">September</option>
+                <option value="Oktober">Oktober</option>
+                <option value="November">November</option>
+                <option value="Desember">Desember</option>
             </select>
           </div>
         </li>

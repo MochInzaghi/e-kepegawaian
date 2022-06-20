@@ -84,6 +84,11 @@ class DataPenghargaanController extends Controller
     {
         // dd($request->all());
         try {
+            $request->validate([
+                    'thn_10' => 'required',
+                    'thn_20' => 'required',
+                    'thn_30' => 'required',
+            ]);
             DataPenghargaan::updateorCreate(
                 ['data_pegawai_id' => $request->data_pegawai_id],
                 [
@@ -117,13 +122,11 @@ class DataPenghargaanController extends Controller
             $bulan = $request->input('bulan');
             $tahun = $request->input('tahun');
             $data_penghargaan = DataPenghargaan::whereMonth('updated_at', $bulan)->whereYear('updated_at', $tahun)->get();
+           
+            return view('laporan.datapenghargaan', compact('data_penghargaan', 'bulan', 'tahun'));
         }else{
-            return redirect('/admin/datapenghargaan/404')->with('error', 'Data Penghargaan Tidak Ditemukan');
+            Alert::error('Not Found', 'Data Penghargaan Tidak Ditemukan');
+            return view('errors.404');
         }
-        return view('laporan.datapenghargaan', compact('data_penghargaan', 'bulan', 'tahun'));
-    }
-
-    public function notfound(){
-        return view('errors.404');
     }
 }

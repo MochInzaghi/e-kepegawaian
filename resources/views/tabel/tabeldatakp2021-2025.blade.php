@@ -40,41 +40,45 @@
                         @foreach ($dates as $date)
                             <td>
                                 @if ($date == date('Y', strtotime($itempegawai->kp)))
-                                    {{ date('d F', strtotime($itempegawai->kp)) }} <br>
-                                    <button class="btn btn-info btn sm inline" data-toggle="modal" data-target="#view">View</button>
-                                    <a href="datakp/{{ $itempegawai->id }}/edit" class="btn btn-success btn sm inline">Edit</a>
-                                    <a href="" class="btn btn-primary btn sm inline" type="submit">Print</button>
+                                    {{ date('Y d F', strtotime($itempegawai->kp)) }}
+                                    <button class="btn btn-info btn sm inline"
+                                        onclick="showModalKp([{{ $itempegawai->id }},{{ $itempegawai->kp }}])">View</button>
+                                    {{-- <button class="btn btn-info btn sm inline" data-toggle="modal"
+                                        data-target="#view">View</button> --}}
+                                    {{-- @foreach ($datakp as $kp) --}}
+                                    <a href="datakp/{{ $itempegawai->id }}/edit"
+                                        class="btn btn-success btn sm inline">Edit</a>
+                                    <a href="datakp/{{ $itempegawai->id }}/print" class="btn btn-primary btn sm inline"
+                                        type="submit">Print</button>
+                                        {{-- @endforeach --}}
                                 @endif
                             </td>
                         @endforeach
                     </tr>
                 @endforeach
             </tbody>
-            <div class="modal fade" id="view" tabindex="-1" role="dialog"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Detail Data</h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="form-group">
-                                                    <label for="recipient-name" class="col-form-label">Nama Pegawai
-                                                        :</label>
-                                                    <input type="text" class="form-control" id="recipient-name">
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-dismiss="modal">Close</button>
-                                            </div>
+                             <div class="modal fade" id="showModal" tabindex="-1"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="modalLabel">Detail Data</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body" id="showBodyModal">
+                                            {{-- dynamic modal --}}
+                                        </div>
+                                        <div class="modal-footer">
+                                            {{-- <button type="button" class="btn btn-danger"
+                                                id="deleteButton">Delete</button> --}}
+                                            {{-- <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button> --}}
+                                            {{-- <button type="button" class="btn btn-primary" id="btnSubmmit"></button> --}}
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                             </table>
                           </div>
                         </div>
@@ -82,4 +86,16 @@
                     </div>
                   </div>
                 </div>
+                <script>
+                  function showModalKp(id) {
+                      const url = '/showmodal-kp/' + id;
+                      $.get(url, function(data) {
+                          $('#showBodyModal').html(data);
+                          $('#showModal').modal('show');
+                      })
+                  }
+              </script>
+          
+              <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+                  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
           @endsection

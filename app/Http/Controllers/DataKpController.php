@@ -38,9 +38,9 @@ class DataKpController extends Controller
             $dp->kp = Carbon::createFromFormat('Y-m-d', $dp->kp)->addYear(4)->format('Y-m-d');
         }
 
-        // dd($datapegawai);
+        $datakp = DataKp::all();
 
-        return view('tabel.tabeldatakp2021-2025', compact('dates', 'datapegawai'));
+        return view('tabel.tabeldatakp2021-2025', compact('dates', 'datapegawai', 'datakp'));
     }
 
     /**
@@ -83,12 +83,12 @@ class DataKpController extends Controller
      */
     public function edit($id)
     {
-        $data_pegawai = DataPegawai::find($id);
-        if (!$data_pegawai) {
+        $datakp = DataKp::find($id);
+        if (!$datakp) {
             abort(404);
         }
 
-        return view('form.formeditkp', ['data_pegawai' => $data_pegawai]);
+        return view('form.formeditkp',  compact('datakp'));
     }
 
     /**
@@ -101,6 +101,19 @@ class DataKpController extends Controller
     public function update(Request $request, DataKp $dataKp)
     {
         try{
+
+            $request->validate([
+                    'skp_struktural' => 'required|image|mimes:jpeg,png,jpg',
+                    'sp_tugas' => 'required|image|mimes:jpeg,png,jpg',
+                    'sp_pelantikan' => 'required|image|mimes:jpeg,png,jpg',
+                    'ba_pengangkatansumpah' => 'required|image|mimes:jpeg,png,jpg',
+                    'ijazah_terakhir' => 'required|image|mimes:jpeg,png,jpg',
+                    'surat_tandalulus' => 'required|image|mimes:jpeg,png,jpg',
+                    'skp_2020' => 'required|image|mimes:jpeg,png,jpg',
+                    'skp_2021' => 'required|image|mimes:jpeg,png,jpg',
+                    'skp_jabatan' => 'required|image|mimes:jpeg,png,jpg',
+                    'sp_pengangkatanlama' => 'required|image|mimes:jpeg,png,jpg',
+            ]);
             DataKp::updateorCreate(
                 ['data_pegawai_id' => $request->data_pegawai_id],
                 [
@@ -117,6 +130,8 @@ class DataKpController extends Controller
                     
                 ]
             );
+
+            $skp_struktural = request()->file('skp_struktural') ? request()->file('skp_struktural')->storeAs("files/skp_struktural", $request->skp_struktural) : null;
     
             return redirect('/admin/datakp')->with('success', 'Data KP Berhasil di Update');
         }catch (Exception $e) {
@@ -135,5 +150,16 @@ class DataKpController extends Controller
     public function destroy(DataKp $dataKp)
     {
         //
+    }
+
+    public function print(Request $request, $id){
+        $datakp = DataKp::find($id);
+        return view('laporan.datakp', compact('datakp'));
+    }
+
+    public function showModalKp(Request $request, $id)
+    {
+        $datakp = DataKp::where('data_pegawai_id', $id)->with('getPegawai')->first();
+        return view('modal.modal-view-kp', compact('datakp'));
     }
 }

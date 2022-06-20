@@ -81,6 +81,20 @@ class DataDukController extends Controller
     public function update(Request $request)
     {
         try {
+        $request->validate([
+                'tmt' => 'required',
+                'jabatanterakhir' =>'required',
+                'mk_tahun' => 'required',
+                'mk_bulan' => 'required',
+                'pendidikan_kepemimpinan' => 'required',
+                'tahunlulus' => 'required',
+                'pendidikan_terakhir' => 'required',
+                'tahun_lulus' => 'required',
+                'jeniskelamin' => 'required',
+                'agama_tahun' => 'required',
+                'tahunpensiun' => 'required',
+                'keterangan_duk' => 'required',
+        ]);
         DataDuk::updateorCreate(
             ['data_pegawai_id' => $request->data_pegawai_id],
             [
@@ -120,14 +134,16 @@ class DataDukController extends Controller
     }
 
     public function print(Request $request){
-        if ($request->input('bulan') && $request->input('tahun')) {
+        if ($request->input('bulan') != '1' && $request->input('tahun') != '1') {
             $bulan = $request->input('bulan');
             $tahun = $request->input('tahun');
             $data_duk = DataDuk::whereMonth('updated_at', $bulan)->whereYear('updated_at', $tahun)->get();
+           
+            return view('laporan.dataduk', compact('data_duk', 'bulan', 'tahun'));
         }else{
-            $data_duk = DataDuk::all();
+            Alert::error('Not Found', 'Data DUK Tidak Ditemukan');
+            return view('errors.404');
         }
-        return view('laporan.dataduk', compact('data_duk'));
     }
 
 }

@@ -10,7 +10,7 @@
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">Kelola Data Cuti</h4>
-          <a href="#" class="btn btn-primary btn-sm text-white me-0 btn-"><i class="icon-plus"></i> Tambah Data</a>
+          <a href="{{ route('create.cuti') }}" class="btn btn-primary btn-sm text-white me-0 btn-"><i class="icon-plus"></i> Tambah Data</a>
           <div class="table-responsive pt-3">
             <table class="table table-bordered">
               <thead>

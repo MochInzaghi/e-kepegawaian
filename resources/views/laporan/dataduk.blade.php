@@ -83,10 +83,10 @@
                         </span>
                     </div>
                     <div class="row">
-                        <div class="col-md-12">
-                            <h3>LAPORAN DATA DAFTAR URUT KEPEGAWAIAN</h3>
-                            <h3>Bulan  Tahun </h3>
-                        </div>
+                      <div class="col-md-12">
+                        <h3>LAPORAN DATA DAFTAR URUT KEPANGKATAN PEGAWAI</h3>
+                        <h3>Bulan {{  $bulan  }}  Tahun {{ $tahun }} </h3>
+                    </div>
 
                         <table class="table table-bordered solid" style="margin-top: 10px; border:1px solid black;">
                             <tr>

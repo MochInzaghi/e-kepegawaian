@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DataDukController;
 use App\Http\Controllers\DataKgbController;
+use App\Http\Controllers\DataKpController;
 use App\Models\DataPegawai;
 use Dflydev\DotAccessData\Data;
 use GuzzleHttp\Psr7\Request;
@@ -30,10 +31,6 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/', '\App\Http\Controllers\DashboardController@index')->name('dashboard');
 
-    Route::get('/printkgb', function () {
-        return view('laporan/datakgb');
-    });
-
     //data pegawai
     Route::get('admin/datapegawai', '\App\Http\Controllers\DataPegawaiController@index')->name('admin.pegawai');
     Route::get('admin/datapegawai/create', '\App\Http\Controllers\DataPegawaiController@create')->name('create.pegawai');
@@ -58,7 +55,6 @@ Route::middleware('auth')->group(function () {
     Route::get('admin/datapenghargaan/{id}/edit', '\App\Http\Controllers\DatapenghargaanController@edit');
     Route::post('/admin/datapenghargaan/update', '\App\Http\Controllers\DataPenghargaanController@update')->name('update.penghargaan');
     Route::get('admin/datapenghargaan/print', '\App\Http\Controllers\DataPenghargaanController@print')->name('print.penghargaan');
-    Route::get('admin/datapenghargaan/404', '\App\Http\Controllers\DataPenghargaanController@notfound')->name('404.penghargaan');
 
     //tabel duk
     Route::get('/admin/dataduk', '\App\Http\Controllers\DataDukController@index')->name('admin.duk');
@@ -83,6 +79,7 @@ Route::middleware('auth')->group(function () {
 
     // show modal
     Route::get('showmodal-kgb/{id}', [DataKgbController::class, 'showModalKgb']);
+    Route::get('showmodal-kp/{id}', [DataKpController::class, 'showModalKp']);
 });
 
 // Disable Register

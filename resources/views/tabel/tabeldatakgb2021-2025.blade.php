@@ -40,15 +40,15 @@
                                                     @if ($date == date('Y', strtotime($itempegawai->kgb)))
                                                         {{ date('Y d F', strtotime($itempegawai->kgb)) }}
                                                         <button class="btn btn-info btn sm inline"
-                                                            onclick="showModalKgb([{{ $itempegawai->id }},{{ $itempegawai->kgb }}])">View
-                                                            Guys</button>
+                                                            onclick="showModalKgb([{{ $itempegawai->id }},{{ $itempegawai->kgb }}])">View</button>
                                                         {{-- <button class="btn btn-info btn sm inline" data-toggle="modal"
                                                             data-target="#view">View</button> --}}
-                                                        @foreach ($datakgb as $kgb)
-                                                        <a href="datakgb/{{ $kgb->id }}/edit"
-                                                            class="btn btn-success btn sm inline">Edit</a>
-                                                        <a href="datakgb/{{ $kgb->id }}/print" class="btn btn-primary btn sm inline"
-                                                            type="submit">Print</button>
+                                                            
+                                                            @foreach ($datakgb as $kgb)
+                                                                <a href="datakgb/{{ $kgb->id }}/edit"
+                                                                    class="btn btn-success btn sm inline">Edit</a>
+                                                                <a href="datakgb/{{ $kgb->id }}/print" class="btn btn-primary btn sm inline"
+                                                                type="submit">Print</button>
                                                             @endforeach
                                                     @endif
                                                 </td>

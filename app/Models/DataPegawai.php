@@ -5,6 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\DataKgb;
+use App\Models\DataKp;
+use App\Models\DataDuk;
+use App\Models\DataPenghargaan;
+use App\Models\DataPensiun;
 
 class DataPegawai extends Model
 {

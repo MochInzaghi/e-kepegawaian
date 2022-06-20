@@ -82,6 +82,14 @@ class DataPensiunController extends Controller
     public function update(Request $request, DataPensiun $dataPensiun)
     {
         try{
+        $request->validate([
+                'tl_sk_pertama' => 'required',
+                'tmt_58' => 'required',
+                'tmt_60' => 'required',
+                'tanggal' => 'required',
+                'no_sk' => 'required',
+                'keterangan_pensiun' => 'required',
+        ]);
         DataPensiun::updateorCreate(
             ['data_pegawai_id' => $request->data_pegawai_id],
             [
@@ -113,14 +121,16 @@ class DataPensiunController extends Controller
         //
     }
 
-    public function print(){
-        if ($request->input('bulan') && $request->input('tahun')) {
+    public function print(Request $request){
+        if ($request->input('bulan') != '1' && $request->input('tahun') != '1') {
             $bulan = $request->input('bulan');
             $tahun = $request->input('tahun');
             $data_pensiun = DataPensiun::whereMonth('updated_at', $bulan)->whereYear('updated_at', $tahun)->get();
+           
+            return view('laporan.datapensiun', compact('data_pensiun', 'bulan', 'tahun'));
         }else{
-            $data_pensiun = DataPensiun::all();
+            Alert::error('Not Found', 'Data Pensiun Tidak Ditemukan');
+            return view('errors.404');
         }
-        return view('laporan.datapensiun', compact('data_pensiun'));
     }
 }

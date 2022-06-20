@@ -108,6 +108,16 @@ class DataKgbController extends Controller
     public function update(Request $request, DataKgb $dataKgb)
     {
         try {
+            $request->validate([
+                    'tgl_lahir' => 'required',
+                    'tgl' => 'required',
+                    'tgl_gaji' => 'required',
+                    'masakerja_tgl' => 'required',
+                    'gajibaru' => 'required',
+                    'masakerja' => 'required',
+                    'gol_ruang' => 'required',
+                    'mulai_tgl' => 'required',
+            ]);
             DataKgb::updateorCreate(
                 ['data_pegawai_id' => $request->data_pegawai_id],
                 [

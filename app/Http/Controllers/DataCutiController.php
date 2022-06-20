@@ -110,16 +110,16 @@ class DataCutiController extends Controller
     }
 
     public function print(Request $request){
-
-        //dd($request->all());
-        if ($request->input('bulan') && $request->input('tahun')) {
+        if ($request->input('bulan') != '1' && $request->input('tahun') != '1') {
             $bulan = $request->input('bulan');
             $tahun = $request->input('tahun');
             $data_cuti = DataCuti::whereMonth('updated_at', $bulan)->whereYear('updated_at', $tahun)->get();
+           
+            return view('laporan.datacuti', compact('data_cuti', 'bulan', 'tahun'));
         }else{
-            $data_cuti = DataCuti::all();
+            Alert::error('Not Found', 'Data Cuti Tidak Ditemukan');
+            return view('errors.404');
         }
-        return view('laporan.datacuti', compact('data_cuti'));
     }
 }
  
