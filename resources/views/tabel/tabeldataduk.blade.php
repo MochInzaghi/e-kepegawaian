@@ -35,6 +35,9 @@
                     Jabatan Terakhir
                   </th>
                   <th class="thratakiri">
+                    TMT Jabatan
+                  </th>
+                  <th class="thratakiri">
                     Masa Kerja <br>(Tahun)
                   </th>
                   <th class="thratakiri">
@@ -62,9 +65,6 @@
                     Tahun <br>Pensiun
                   </th>
                   <th class="thratakiri">
-                    Keterangan
-                  </th>
-                  <th class="thratakiri">
                     Aksi
                   </th>
                 </tr>
@@ -79,6 +79,7 @@
                     <td>{{ $duk->pangkat }}</td>
                     <td>{{ $duk->pegawaiDuk->tmt ?? ''}}</td> 
                     <td>{{ $duk->pegawaiDuk->jabatanterakhir ?? '' }}</td>
+                    <td>{{ $duk->pegawaiDuk->tmt_jabatan ?? '' }}</td>
                     <td>{{ $duk->pegawaiDuk->mk_tahun ?? '' }}</td>
                     <td>{{ $duk->pegawaiDuk->mk_bulan ?? ''}}</td>
                     <td>{{ $duk->pegawaiDuk->pendidikan_kepemimpinan ?? ''}}</td>
@@ -88,7 +89,6 @@
                     <td>{{ $duk->pegawaiDuk->jeniskelamin ?? ''}}</td> 
                     <td>{{ $duk->pegawaiDuk->agama_tahun ?? ''}}</td>
                     <td>{{ $duk->pegawaiDuk->tahunpensiun ?? ''}}</td>
-                    <td>{{ $duk->pegawaiDuk->keterangan_duk ?? ''}}</td>
                     <td>
                       <a href="dataduk/{{ $duk->id }}/edit" class="btn btn-primary btn sm inline">Edit</a>
                     </td>

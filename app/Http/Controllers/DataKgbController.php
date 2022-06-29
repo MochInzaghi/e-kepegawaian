@@ -42,7 +42,7 @@ class DataKgbController extends Controller
 
         $datapegawai = DataPegawai::get();
         foreach ($datapegawai as $dp) {
-            $dp->kgb = Carbon::createFromFormat('Y-m-d', $dp->kgb)->addYear(2)->format('Y-m-d');
+            $dp->kgb = Carbon::createFromFormat('d-m-Y', $dp->kgb)->addYear(2);
         }
 
         $datakgb = DataKgb::all();
@@ -111,6 +111,7 @@ class DataKgbController extends Controller
             $request->validate([
                     'tgl_lahir' => 'required',
                     'tgl' => 'required',
+                    'olehpejabat' => 'required',
                     'tgl_gaji' => 'required',
                     'masakerja_tgl' => 'required',
                     'gajibaru' => 'required',
@@ -123,6 +124,7 @@ class DataKgbController extends Controller
                 [
                     'tgl_lahir' => $request->tgl_lahir,
                     'tgl' => $request->tgl,
+                    'olehpejabat' => $request->olehpejebat,
                     'tgl_gaji' => $request->tgl_gaji,
                     'masakerja_tgl' => $request->masakerja_tgl,
                     'gajibaru' => $request->gajibaru,

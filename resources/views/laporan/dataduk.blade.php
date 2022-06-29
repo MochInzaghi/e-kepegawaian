@@ -27,10 +27,16 @@
             border-top: 5px solid black;
         }
         .logomalang{
-            width: 300px;
+            width: 160px;
             height: 200px;
             float: left;
+            margin-left: 100px;
         }
+        .posisikop{
+                 padding-top: 25px;
+                 padding-right: 150px;
+                 padding-left: 60px;
+             }
         .logokominfo{
             width: 180px;
             height: 160px;
@@ -63,21 +69,18 @@
             <div class="card">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-12">
-                            <center>
-                                <img src="{{ asset('image') }}/Malang.png"class="logomalang">
-                            </center>
-                            <center>
-                                <img src="{{ asset('template') }}/images/kementrian.png" class="logokominfo">
-                            </center>
-                            <div class="col-md-12 text-center">
-                                <h4>PEMERINTAH KABUPATEN MALANG</h3>
-                                <h3>DINAS KOMUNIKASI DAN INFORMATIKA</h3>
-                                <h2>SEKRETARIAT DISKOMINFO KABUPATEN MALANG</h3>
-                                <h3>Jl. Jend. Ahmad Yani Utara No. 348B</h3>
-                                <h3>Telp. (0341) 404412 Fax. (0341) 404413</h3>
-                            </div>
+                      <div class="col-md-12">
+                        <center>
+                            <img src="{{ asset('image') }}/download.png"class="logomalang">
+                        </center>
+                        <div class="col-md-12 text-center posisikop">
+                            <h3>PEMERINTAH KABUPATEN MALANG</h3>
+                            <h2>DINAS KOMUNIKASI DAN INFORMATIKA</h2>
+                            <h5>Jalan A. Yani Utara No. 384  Telp./ Fax (0341) 408788</h5>
+                            <h5>Website : www.kominfo.malangkab.go.id Email: kominfo@malangkab.go.id</h5>
+                            <h3 style="text-decoration: underline;">M A L A N G &nbsp; 6 5 1 2 6</h3>
                         </div>
+                    </div>
                         <span>
                             <hr class="line-title">
                         </span>
@@ -112,6 +115,9 @@
                                     Jabatan Terakhir
                                   </th>
                                   <th>
+                                    TMT Jabatan
+                                  </th>
+                                  <th>
                                     Masa Kerja <br>(Tahun)
                                   </th>
                                   <th>
@@ -138,9 +144,6 @@
                                   <th>
                                     Tahun <br>Pensiun
                                   </th>
-                                  <th>
-                                    Keterangan
-                                  </th>
                             </tr>
 
                             @php $no=1; @endphp
@@ -153,6 +156,7 @@
                                     <td>{{ $duk->pangkat }}</td>
                                     <td>{{ $duk->pegawaiDuk->tmt ?? ''}}</td> 
                                     <td>{{ $duk->pegawaiDuk->jabatanterakhir ?? '' }}</td>
+                                    <td>{{ $duk->pegawaiDuk->tmt_jabatan ?? '' }}</td>
                                     <td>{{ $duk->pegawaiDuk->mk_tahun ?? '' }}</td>
                                     <td>{{ $duk->pegawaiDuk->mk_bulan ?? ''}}</td>
                                     <td>{{ $duk->pegawaiDuk->pendidikan_kepemimpinan ?? ''}}</td>
@@ -162,7 +166,6 @@
                                     <td>{{ $duk->pegawaiDuk->jeniskelamin ?? ''}}</td> 
                                     <td>{{ $duk->pegawaiDuk->agama_tahun ?? ''}}</td>
                                     <td>{{ $duk->pegawaiDuk->tahunpensiun ?? ''}}</td>
-                                    <td>{{ $duk->pegawaiDuk->keterangan_duk ?? ''}}</td>
                                 </tr>
                             @endforeach
                         </table>

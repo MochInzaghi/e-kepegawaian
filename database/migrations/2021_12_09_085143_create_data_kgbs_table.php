@@ -17,6 +17,7 @@ class CreateDataKgbsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('data_pegawai_id')->unsigned();
             $table->date('tgl_lahir');
+            $table->string('olehpejabat');
             $table->date('tgl');
             $table->date('tgl_gaji');
             $table->string('masakerja_tgl');

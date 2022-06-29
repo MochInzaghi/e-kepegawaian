@@ -22,6 +22,14 @@
                                                             disabled>
                                                     </div>
                                                     <div class="form-group">
+                                                        <label for="recipient-name" class="col-form-label">Oleh Pejabat
+                                                            :</label>
+                                                        <input type="text" name="olehpejabat" class="form-control"
+                                                            id="recipient-name"
+                                                            value="{{ old('olehpejabat') ?? $datakgb->olehpejabat }}"
+                                                            disabled>
+                                                    </div>
+                                                    <div class="form-group">
                                                         <label for="recipient-name" class="col-form-label">Tanggal :</label>
                                                         <input type="date" name="tgl" class="form-control"
                                                             id="recipient-name"

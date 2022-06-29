@@ -18,6 +18,7 @@ class CreateDataDuksTable extends Migration
             $table->foreignId('data_pegawai_id');
             $table->string('tmt');
             $table->string('jabatanterakhir');
+            $table->string('tmt_jabatan');
             $table->integer('mk_tahun');
             $table->integer('mk_bulan');
             $table->string('pendidikan_kepemimpinan');
@@ -27,7 +28,6 @@ class CreateDataDuksTable extends Migration
             $table->string('jeniskelamin');
             $table->string('agama_tahun');
             $table->integer('tahunpensiun');
-            $table->string('keterangan_duk');
             $table->timestamps();
         });
     }

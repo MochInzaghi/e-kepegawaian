@@ -77,11 +77,9 @@
                   <td>{{$cuti->keterangan}}</td>
                   <td>
                   <a href="datacuti/{{ $cuti->id }}/edit" class="btn btn-primary d-inline ml-3">Edit</a>
-                  <form class="d-inline ml-3 delete-confirm" action = "datacuti/{{ $cuti->id }}/delete" method="POST">
-                    @csrf
-                    @method("delete")
-                      <button class="btn btn-danger btn sm inline" type="submit">Hapus</button>
-                  </form>  
+                  <button onclick="deleteCuti({{ $cuti->id }})"
+                    class="d-inline ml-3 btn btn-danger btn sm inline"
+                    type="submit">Hapus</button>
                   </td>
                 </tr>
                 @endforeach
@@ -93,4 +91,40 @@
     </div>
   </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<script>
+function deleteCuti(id) {
+    url = `/admin/datacuti/${id}/delete`
+    swal({
+        title: 'Apakah anda yakin ingin menghapus data ini?',
+        text: 'Catatan ini dan detailnya akan dihapus secara permanen!',
+        icon: 'warning',
+        buttons: ["Batal", "Hapus"],
+    }).then(function(value) {
+        if (value) {
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: {
+                    '_token': '{{ csrf_token() }}',
+                    '_method': 'DELETE'
+                },
+                success: function(result) {
+                    swal({
+                        title: 'Berhasil!',
+                        text: 'Data berhasil dihapus!',
+                        icon: 'success',
+                        button: 'OK',
+                    }).then(function() {
+                        location.reload()
+                    });
+                }
+            })
+        }
+    });
+}
+</script>
 @endsection

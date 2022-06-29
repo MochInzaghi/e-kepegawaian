@@ -358,6 +358,10 @@
                       <input type="text" class="form-control" id="jabatanterakhir" name="jabatanterakhir" value="{{ old('jabatanterakhir') ?? $data_pegawai->pegawaiDuk->jabatanterakhir ?? ''}}">
                     </div>
                     <div class="form-group">
+                      <label for="tmtjabatan">TMT Jabatan</label>
+                      <input type="text" class="form-control" id="tmtjabatan" name="tmt_jabatan" value="{{ old('tmt_jabatan') ?? $data_pegawai->pegawaiDuk->tmt_jabatan ?? ''}}">
+                    </div>
+                    <div class="form-group">
                       <label for="masakerjatahun">Masa Kerja (Tahun)</label>
                       <input type="text" class="form-control" id="masakerjatahun" name="mk_tahun" value="{{ old('mk_tahun') ?? $data_pegawai->pegawaiDuk->mk_tahun ?? ''}}">
                     </div>
@@ -397,10 +401,6 @@
                         <label for="tahunpensiun">Tahun Pensiun</label>
                         <input type="text" class="form-control" id="tahunpensiun" name="tahunpensiun" value="{{ old('tahunpensiun') ?? $data_pegawai->pegawaiDuk->tahunpensiun ?? ''}}">
                       </div>
-                    <div class="form-group">
-                      <label for="keterangan">Keterangan</label>
-                      <input type="text" class="form-control" id="keterangan" name="keterangan_duk" value="{{ old('keterangan_duk') ??$data_pegawai->pegawaiDuk->keterangan_duk ?? ''}}">
-                    </div>
                     <button type="submit" class="btn btn-primary me-2">Submit</button>
                   </form>
                 </div>

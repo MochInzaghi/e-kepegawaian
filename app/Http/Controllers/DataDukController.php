@@ -84,6 +84,7 @@ class DataDukController extends Controller
         $request->validate([
                 'tmt' => 'required',
                 'jabatanterakhir' =>'required',
+                'tmt_jabatan' => 'required',
                 'mk_tahun' => 'required',
                 'mk_bulan' => 'required',
                 'pendidikan_kepemimpinan' => 'required',
@@ -93,13 +94,13 @@ class DataDukController extends Controller
                 'jeniskelamin' => 'required',
                 'agama_tahun' => 'required',
                 'tahunpensiun' => 'required',
-                'keterangan_duk' => 'required',
         ]);
         DataDuk::updateorCreate(
             ['data_pegawai_id' => $request->data_pegawai_id],
             [
                 'tmt' => $request->tmt,
                 'jabatanterakhir' => $request->jabatanterakhir,
+                'tmt_jabatan' => $request->tmt_jabatan,
                 'mk_tahun' => $request->mk_tahun,
                 'mk_bulan' => $request->mk_bulan,
                 'pendidikan_kepemimpinan' => $request->pendidikan_kepemimpinan,
@@ -109,7 +110,6 @@ class DataDukController extends Controller
                 'jeniskelamin' => $request->jeniskelamin,
                 'agama_tahun' => $request->agama_tahun,
                 'tahunpensiun' => $request->tahunpensiun,
-                'keterangan_duk' => $request->keterangan_duk,
             ]
         );
 

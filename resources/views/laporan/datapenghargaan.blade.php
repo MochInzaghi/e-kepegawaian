@@ -27,9 +27,10 @@
                 border-top: 5px solid black;
             }
             .logomalang{
-                width: 300px;
+                width: 160px;
                 height: 200px;
                 float: left;
+                margin-left: 100px;
             }
             .logokominfo{
                 width: 180px;
@@ -56,6 +57,10 @@
                 font-weight: bold;
                 font-family: "Times New Roman";
             }
+            .posisikop{
+                 padding-top: 25px;
+                 padding-right: 150px;
+             }
         </style>
 
         <div class="row">
@@ -65,17 +70,14 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <center>
-                                    <img src="{{ asset('image') }}/Malang.png"class="logomalang">
+                                    <img src="{{ asset('image') }}/download.png"class="logomalang">
                                 </center>
-                                <center>
-                                    <img src="{{ asset('template') }}/images/kementrian.png" class="logokominfo">
-                                </center>
-                                <div class="col-md-12 text-center">
-                                    <h4>PEMERINTAH KABUPATEN MALANG</h3>
-                                    <h3>DINAS KOMUNIKASI DAN INFORMATIKA</h3>
-                                    <h2>SEKRETARIAT DISKOMINFO KABUPATEN MALANG</h3>
-                                    <h3>Jl. Jend. Ahmad Yani Utara No. 348B</h3>
-                                    <h3>Telp. (0341) 404412 Fax. (0341) 404413</h3>
+                                <div class="col-md-12 text-center posisikop">
+                                    <h3>PEMERINTAH KABUPATEN MALANG</h3>
+                                    <h2>DINAS KOMUNIKASI DAN INFORMATIKA</h2>
+                                    <h5>Jalan A. Yani Utara No. 384  Telp./ Fax (0341) 408788</h5>
+                                    <h5>Website : www.kominfo.malangkab.go.id Email: kominfo@malangkab.go.id</h5>
+                                    <h3 style="text-decoration: underline;">M A L A N G &nbsp; 6 5 1 2 6</h3>
                                 </div>
                             </div>
                             <span>

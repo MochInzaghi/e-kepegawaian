@@ -346,6 +346,10 @@
                         <input type="date" name="tgl_lahir" class="form-control" id="recipient-name" value="{{ old('tgl_lahir') ?? $datakgb->tgl_lahir }}">
                     </div>
                     <div class="form-group">
+                      <label for="recipient-name" class="col-form-label">Oleh Pejabat</label>
+                      <input type="text" name="olehpejabat" class="form-control" id="recipient-name" value="{{ old('olehpejabat') ?? $datakgb->olehpejabat }}">
+                  </div>
+                    <div class="form-group">
                         <label for="recipient-name" class="col-form-label">Tanggal </label>
                         <input type="date" name="tgl" class="form-control" id="recipient-name" value="{{ old('tgl') ?? $datakgb->tgl }}">
                     </div>
