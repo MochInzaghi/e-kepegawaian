@@ -8,7 +8,10 @@ use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 use DateInterval;
 use DatePeriod;
+use Exception;
 use Illuminate\Http\Request;
+
+use function PHPUnit\Framework\isEmpty;
 
 class DataKgbController extends Controller
 {
@@ -40,12 +43,14 @@ class DataKgbController extends Controller
             $dates[] = $date->format('Y');
         }
 
-        $datapegawai = DataPegawai::get();
-        foreach ($datapegawai as $dp) {
-            $dp->kgb = Carbon::createFromFormat('d-m-Y', $dp->kgb)->addYear(2);
-        }
+        $datapegawai = DataPegawai::with('pegawaiKgb')->get();
+        // foreach ($datapegawai as $dp) {
+        //     $dp->kgb = Carbon::createFromFormat('d-m-Y', $dp->kgb)->addYear(2);
+        // }
+        // dd($datapegawai->pegawaiKgb[0]->olehpejabat);
 
         $datakgb = DataKgb::all();
+        // return 'oke';
 
         return view('tabel.tabeldatakgb2021-2025', compact('dates', 'datapegawai', 'datakgb'));
     }
@@ -90,12 +95,15 @@ class DataKgbController extends Controller
      */
     public function edit($id)
     {
-        $datakgb = DataKgb::find($id);
-        if (!$datakgb) {
-            abort(404);
-        }
-
-        return view('form.formeditkgb', compact('datakgb'));
+        // $datakgb = DataKgb::find($id);
+        // if (!$datakgb) {
+        //     return view('form.formeditkgb', compact('datakgb'));
+        // }
+        // return view('form.formeditkgb', compact('datakgb'));
+        $datapegawai = DataPegawai::with('pegawaiKgb')->find($id);
+        $datakgb = $datapegawai->pegawaiKgb;
+        // return $datapegawai;
+        return view('form.formeditkgb', compact('datapegawai'));
     }
 
     /**
@@ -109,22 +117,22 @@ class DataKgbController extends Controller
     {
         try {
             $request->validate([
-                    'tgl_lahir' => 'required',
-                    'tgl' => 'required',
-                    'olehpejabat' => 'required',
-                    'tgl_gaji' => 'required',
-                    'masakerja_tgl' => 'required',
-                    'gajibaru' => 'required',
-                    'masakerja' => 'required',
-                    'gol_ruang' => 'required',
-                    'mulai_tgl' => 'required',
+                'tgl_lahir' => 'required',
+                'tgl' => 'required',
+                'olehpejabat' => 'required',
+                'tgl_gaji' => 'required',
+                'masakerja_tgl' => 'required',
+                'gajibaru' => 'required',
+                'masakerja' => 'required',
+                'gol_ruang' => 'required',
+                'mulai_tgl' => 'required',
             ]);
             DataKgb::updateorCreate(
                 ['data_pegawai_id' => $request->data_pegawai_id],
                 [
                     'tgl_lahir' => $request->tgl_lahir,
                     'tgl' => $request->tgl,
-                    'olehpejabat' => $request->olehpejebat,
+                    'olehpejabat' => $request->olehpejabat,
                     'tgl_gaji' => $request->tgl_gaji,
                     'masakerja_tgl' => $request->masakerja_tgl,
                     'gajibaru' => $request->gajibaru,
@@ -159,14 +167,28 @@ class DataKgbController extends Controller
         //
     }
 
-    public function print(Request $request, $id){
-        $datakgb = DataKgb::find($id);
-        return view('laporan.datakgb', compact('datakgb'));
+    public function print(Request $request, $id)
+    {
+        $datapegawai = DataPegawai::with('pegawaiKgb')->find($id);
+        $datakgb = $datapegawai->pegawaiKgb;
+        if ($datakgb->isEmpty()) {
+            return response()->json([
+                'message' => 'Data KGB tidak ditemukan'
+            ]);
+        }
+        return view('laporan.datakgb', compact('datapegawai'));
     }
 
     public function showModalKgb(Request $request, $id)
     {
-        $datakgb = DataKgb::where('data_pegawai_id', $id)->with('getPegawai')->first();
-        return view('modal.modal-view-kgb', compact('datakgb'));
+        // $datakgb = DataKgb::where('data_pegawai_id', $id)->with('getPegawai')->first();
+        $datapegawai = DataPegawai::with('pegawaiKgb')->find($id);
+        $datakgb = $datapegawai->pegawaiKgb;
+        if ($datakgb->isEmpty()) {
+            return response()->json([
+                'message' => 'Data KGB tidak ditemukan'
+            ]);
+        }
+        return view('modal.modal-view-kgb', compact('datapegawai'));
     }
 }
