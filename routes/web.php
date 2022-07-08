@@ -32,7 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/', '\App\Http\Controllers\DashboardController@index')->name('dashboard');
 
     //data pegawai
-    Route::get('admin/datapegawai', '\App\Http\Controllers\DataPegawaiController@index')->name('admin.pegawai');
+    Route::get('admin/datapegawai-index', '\App\Http\Controllers\DataPegawaiController@index')->name('admin.pegawai');
     Route::get('admin/datapegawai/create', '\App\Http\Controllers\DataPegawaiController@create')->name('create.pegawai');
     Route::post('admin/datapegawai/store', '\App\Http\Controllers\DataPegawaiController@store')->name('store.pegawai');
     Route::get('admin/datapegawai/{data_pegawai:id}/edit', '\App\Http\Controllers\DataPegawaiController@edit')->name('edit.pegawai');

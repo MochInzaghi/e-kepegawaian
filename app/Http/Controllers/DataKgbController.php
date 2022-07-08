@@ -43,7 +43,11 @@ class DataKgbController extends Controller
             $dates[] = $date->format('Y');
         }
 
-        $datapegawai = DataPegawai::with('pegawaiKgb')->get();
+        if ($request->has('cari')) {
+            $datapegawai = DataPegawai::where('namapegawai', 'LIKE', '%' . $request->cari . '%')->get();
+        } else {
+            $datapegawai = DataPegawai::with('pegawaiKgb')->get();
+        }
         // foreach ($datapegawai as $dp) {
         //     $dp->kgb = Carbon::createFromFormat('d-m-Y', $dp->kgb)->addYear(2);
         // }
