@@ -24,7 +24,7 @@
                                                         :</label>
                                                     <input type="date" name="tgl_lahir" class="form-control"
                                                         id="recipient-name"
-                                                        value="{{ old('tgl_lahir') ?? $datapegawai->tgl_lahir }}"
+                                                        value="{{ old('tgl_lahir') ?? $datapegawai->pegawaiKgb[0]->tgl_lahir }}"
                                                         disabled>
                                                 </div>
                                                 <div class="form-group">
@@ -32,14 +32,14 @@
                                                         :</label>
                                                     <input type="text" name="olehpejabat" class="form-control"
                                                         id="recipient-name"
-                                                        value="{{ old('olehpejabat') ?? $datapegawai->olehpejabat }}"
+                                                        value="{{ old('olehpejabat') ?? $datapegawai->pegawaiKgb[0]->oleh_pejabat }}"
                                                         disabled>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="recipient-name" class="col-form-label">Tanggal :</label>
                                                     <input type="date" name="tgl" class="form-control"
                                                         id="recipient-name"
-                                                        value="{{ old('tgl') ?? $datapegawai->tgl }}" disabled>
+                                                        value="{{ old('tgl') ?? $datapegawai->pegawaiKgb[0]->tgl }}" disabled>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="recipient-name" class="col-form-label">Tanggal Mulai

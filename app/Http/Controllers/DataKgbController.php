@@ -45,18 +45,28 @@ class DataKgbController extends Controller
 
         if ($request->has('cari')) {
             $datapegawai = DataPegawai::where('namapegawai', 'LIKE', '%' . $request->cari . '%')->get();
+            $datakgb = DataKgb::all();
+            foreach ($datapegawai as $dp) {
+                $dp->kgb = Carbon::createFromFormat('Y-m-d', $dp->kgb)->addYear(2)->format('Y-m-d');
+            }
+            return view('tabel.tabeldatakgb2021-2025', compact('dates', 'datapegawai', 'datakgb'));
         } else {
             $datapegawai = DataPegawai::with('pegawaiKgb')->get();
+            $datakgb = DataKgb::all();
+            foreach ($datapegawai as $dp) {
+                $dp->kgb = Carbon::createFromFormat('Y-m-d', $dp->kgb)->addYear(2)->format('Y-m-d');
+            }
+            return view('tabel.tabeldatakgb2021-2025', compact('dates', 'datapegawai', 'datakgb'));
         }
         // foreach ($datapegawai as $dp) {
         //     $dp->kgb = Carbon::createFromFormat('d-m-Y', $dp->kgb)->addYear(2);
         // }
         // dd($datapegawai->pegawaiKgb[0]->olehpejabat);
 
-        $datakgb = DataKgb::all();
+       
         // return 'oke';
 
-        return view('tabel.tabeldatakgb2021-2025', compact('dates', 'datapegawai', 'datakgb'));
+        
     }
 
     /**
@@ -123,7 +133,7 @@ class DataKgbController extends Controller
             $request->validate([
                 'tgl_lahir' => 'required',
                 'tgl' => 'required',
-                'olehpejabat' => 'required',
+                'oleh_pejabat' => 'required',
                 'tgl_gaji' => 'required',
                 'masakerja_tgl' => 'required',
                 'gajibaru' => 'required',
@@ -136,7 +146,7 @@ class DataKgbController extends Controller
                 [
                     'tgl_lahir' => $request->tgl_lahir,
                     'tgl' => $request->tgl,
-                    'olehpejabat' => $request->olehpejabat,
+                    'oleh_pejabat' => $request->oleh_pejabat,
                     'tgl_gaji' => $request->tgl_gaji,
                     'masakerja_tgl' => $request->masakerja_tgl,
                     'gajibaru' => $request->gajibaru,

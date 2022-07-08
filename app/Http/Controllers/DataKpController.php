@@ -17,7 +17,7 @@ class DataKpController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
        // $datapegawai1 = DataPegawai::first();
         // $test = Carbon::createFromFormat('Y-m-d', $datapegawai1->kgb);
@@ -33,10 +33,19 @@ class DataKpController extends Controller
             $dates[] = $date->format('Y');
         }
 
-        $datapegawai = DataPegawai::get();
-        foreach ($datapegawai as $dp) {
-            $dp->kp = Carbon::createFromFormat('Y-m-d', $dp->kp)->addYear(4)->format('Y-m-d');
+        if ($request->has('cari')) {
+            $datapegawai = DataPegawai::where('namapegawai', 'LIKE', '%' . $request->cari . '%')->get();
+            foreach ($datapegawai as $dp) {
+                $dp->kp = Carbon::createFromFormat('Y-m-d', $dp->kp)->addYear(4)->format('Y-m-d');
+            }
+        } else {
+            $datapegawai = DataPegawai::with('pegawaiKp')->get();
+            foreach ($datapegawai as $dp) {
+                $dp->kp = Carbon::createFromFormat('Y-m-d', $dp->kp)->addYear(4)->format('Y-m-d');
+            }
         }
+
+       
 
         $datakp = DataKp::all();
 
@@ -153,13 +162,25 @@ class DataKpController extends Controller
     }
 
     public function print(Request $request, $id){
-        $datakp = DataKp::find($id);
-        return view('laporan.datakp', compact('datakp'));
+        $datapegawai = DataPegawai::with('pegawaiKp')->find($id);
+        $datakp = $datapegawai->pegawaiKp;
+        if ($datakp->isEmpty()) {
+            return response()->json([
+                'message' => 'Data KP tidak ditemukan'
+            ]);
+        }
+        return view('laporan.datakp', compact('datapegawai'));
     }
 
     public function showModalKp(Request $request, $id)
     {
-        $datakp = DataKp::where('data_pegawai_id', $id)->with('getPegawai')->first();
-        return view('modal.modal-view-kp', compact('datakp'));
+        $datapegawai = DataPegawai::with('pegawaiKp')->find($id);
+        $datakp = $datapegawai->pegawaiKp;
+        if ($datakp->isEmpty()) {
+            return response()->json([
+                'message' => 'Data KP tidak ditemukan'
+            ]);
+        }
+        return view('modal.modal-view-kp', compact('datapegawai'));
     }
 }
