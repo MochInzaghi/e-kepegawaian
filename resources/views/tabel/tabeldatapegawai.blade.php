@@ -15,40 +15,40 @@
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>
+                                        <th class = "thratatengah">
                                             No
                                         </th>
-                                        <th>
+                                        <th class = "thratatengah">
                                             Nama Pegawai
                                         </th>
-                                        <th>
+                                        <th class = "thratatengah">
                                             NIP
                                         </th>
-                                        <th>
+                                        <th class = "thratatengah">
                                             Tempat Tanggal Lahir
                                         </th>
-                                        <th>
+                                        <th class = "thratatengah">
                                             Pangkat
                                         </th>
-                                        <th>
+                                        <th class = "thratatengah">
                                             Jabatan
                                         </th>
-                                        <th>
+                                        <th class = "thratatengah">
                                             Jenjang
                                         </th>
-                                        <th>
+                                        <th class = "thratatengah">
                                             No Telepon
                                         </th>
-                                        <th>
+                                        <th class = "thratatengah">
                                             Terakhir KGB
                                         </th>
-                                        <th>
+                                        <th class = "thratatengah">
                                             Terakhir KP
                                         </th>
-                                        <th>
+                                        <th class = "thratatengah">
                                             Gaji Pokok
                                         </th>
-                                        <th>
+                                        <th class = "thratatengah">
                                             Keterangan
                                         </th>
                                         <th>
@@ -59,18 +59,18 @@
                                 <tbody>
                                     @foreach ($data_pegawai as $pegawai)
                                         <tr>
-                                            <th scope="row">{{ $pegawai->id }}</th>
+                                            <th class = "thratatengah" scope="row">{{ $pegawai->id }}</th>
                                             <td>{{ $pegawai->namapegawai }}</td>
-                                            <td>{{ $pegawai->nip }}</td>
-                                            <td>{{ $pegawai->ttl }}</td>
-                                            <td>{{ $pegawai->pangkat }}</td>
-                                            <td>{{ $pegawai->jabatan }}</td>
-                                            <td>{{ $pegawai->jenjang }}</td>
-                                            <td>{{ $pegawai->notelp }}</td>
-                                            <td>{{ date('d F Y', strtotime($pegawai->kgb)) }}</td>
-                                            <td>{{ date('d F Y', strtotime($pegawai->kp)) }}</td>
-                                            <td>Rp. {{ number_format($pegawai->gajipokok) }},000</td>
-                                            <td>{{ $pegawai->keterangan }}</td>
+                                            <td class = "thratatengah">{{ $pegawai->nip }}</td>
+                                            <td class = "thratatengah">{{ $pegawai->ttl }}</td>
+                                            <td class = "thratatengah">{{ $pegawai->pangkat }}</td>
+                                            <td class = "thratatengah">{{ $pegawai->jabatan }}</td>
+                                            <td class = "thratatengah">{{ $pegawai->jenjang }}</td>
+                                            <td class = "thratatengah">{{ $pegawai->notelp }}</td>
+                                            <td class = "thratatengah">{{ date('d F Y', strtotime($pegawai->kgb)) }}</td>
+                                            <td class = "thratatengah">{{ date('d F Y', strtotime($pegawai->kp)) }}</td>
+                                            <td class = "thratatengah">Rp. {{ number_format($pegawai->gajipokok) }},000</td>
+                                            <td class = "thratatengah">{{ $pegawai->keterangan }}</td>
                                             <td>
                                                 <a href="datapegawai/{{ $pegawai->id }}/edit"
                                                     class="btn btn-primary btn sm inline">Edit</a>

@@ -9,6 +9,7 @@ use Carbon\CarbonPeriod;
 use DateInterval;
 use DatePeriod;
 use Illuminate\Http\Request;
+use Illuminate\Facades\Storage;
 
 class DataKpController extends Controller
 {
@@ -92,12 +93,10 @@ class DataKpController extends Controller
      */
     public function edit($id)
     {
-        $datakp = DataKp::find($id);
-        if (!$datakp) {
-            abort(404);
-        }
-
-        return view('form.formeditkp',  compact('datakp'));
+        $data_pegawai = DataPegawai::with('pegawaiKp')->find($id);
+        $datakp = $data_pegawai->pegawaiKp;
+        // return $datapegawai;
+        return view('form.formeditkp', compact('data_pegawai'));
     }
 
     /**
@@ -110,38 +109,65 @@ class DataKpController extends Controller
     public function update(Request $request, DataKp $dataKp)
     {
         try{
-
-            $request->validate([
-                    'skp_struktural' => 'required|image|mimes:jpeg,png,jpg',
-                    'sp_tugas' => 'required|image|mimes:jpeg,png,jpg',
-                    'sp_pelantikan' => 'required|image|mimes:jpeg,png,jpg',
-                    'ba_pengangkatansumpah' => 'required|image|mimes:jpeg,png,jpg',
-                    'ijazah_terakhir' => 'required|image|mimes:jpeg,png,jpg',
-                    'surat_tandalulus' => 'required|image|mimes:jpeg,png,jpg',
-                    'skp_2020' => 'required|image|mimes:jpeg,png,jpg',
-                    'skp_2021' => 'required|image|mimes:jpeg,png,jpg',
-                    'skp_jabatan' => 'required|image|mimes:jpeg,png,jpg',
-                    'sp_pengangkatanlama' => 'required|image|mimes:jpeg,png,jpg',
+           $request->validate([
+                    'skp_struktural' => 'file|mimes:pdf|max:2048',
+                    'sp_tugas' =>  'file|mimes:pdf|max:2048',
+                    'sp_pelantikan' =>  'file|mimes:pdf|max:2048',
+                    'ba_pengangkatansumpah' =>  'file|mimes:pdf|max:2048',
+                    'ijazah_terakhir' =>  'file|mimes:pdf|max:2048',
+                    'surat_tandalulus' =>  'file|mimes:pdf|max:2048',
+                    'skp_2020' =>  'file|mimes:pdf|max:2048',
+                    'skp_2021' =>  'file|mimes:pdf|max:2048',
+                    'skp_jabatan' =>  'file|mimes:pdf|max:2048',
+                    'sp_pengangkatanlama' =>  'file|mimes:pdf|max:2048',
             ]);
+
             DataKp::updateorCreate(
                 ['data_pegawai_id' => $request->data_pegawai_id],
                 [
                     'skp_struktural' => $request->skp_struktural,
-                    'sp_tugas' => $request->sp_tugas,
-                    'sp_pelantikan' => $request->sp_pelantikan,
-                    'ba_pengangkatansumpah' => $request->ba_pengangkatansumpah,
-                    'ijazah_terakhir' => $request->ijazah_terakhir,
-                    'surat_tandalulus' => $request->surat_tandalulus,
-                    'skp_2020' => $request->skp_2020,
-                    'skp_2021' => $request->skp_2021,
-                    'skp_jabatan' => $request->skp_jabatan,
-                    'sp_pengangkatanlama' => $request->sp_pengangkatanlama,
-                    
+                    'sp_tugas' =>  $request->sp_tugas,
+                    'sp_pelantikan' =>  $request->sp_pelantikan,
+                    'ba_pengangkatansumpah' =>  $request->ba_pengangkatansumpah,
+                    'ijazah_terakhir' =>  $request->ijazah_terakhir,
+                    'surat_tandalulus' =>  $request->surat_tandalulus,
+                    'skp_2020' =>  $request->skp_2020,
+                    'skp_2021' =>  $request->skp_2021,
+                    'skp_jabatan' =>  $request->skp_jabatan,
+                    'sp_pengangkatanlama' =>  $request->sp_pengangkatanlama,
                 ]
             );
 
-            $skp_struktural = request()->file('skp_struktural') ? request()->file('skp_struktural')->storeAs("files/skp_struktural", $request->skp_struktural) : null;
-    
+            // if($request->hasFile('file')){
+            //     $files = $request->file('file');
+            //     foreach($files as $file){
+            //         $name = $file->getClientOriginalName();
+            //         $extension = $file->getClientOriginalExtension();
+            //         $filename = $name . '.' . $extension;
+            //         Storage::putFileAs('public', $request->file('file'), $filename);
+
+            //         $data = [
+            //             'path' => 'storage/files' . $filename,
+            //         ];
+
+            //         upload::updateorCreate($data);
+            //     }
+            //     return redirect('/admin/datakp')->with('success', 'Data KP Berhasil di Update');
+            // }
+            // $files[] = ['skp_struktural','sp_tugas','sp_pelantikan','ba_pengangkatansumpah','ijazah_terakhir','surat_tandalulus','skp_2020','skp_2021','skp_jabatan','sp_pengangkatanlama'];
+            // $store = request()->file('skp_struktural') ? request()->file('skp_struktural')->storeAs("files", $request->skp_struktural) : null;
+           
+            if ($request->hasFile('skp_struktural')) {
+                $file = $request->file('skp_struktural');
+                $name = $file->getClientOriginalName();
+                $extension = $file->getClientOriginalExtension();
+                $destination_path = public_path() . '/files';
+                $filename = $name . '.' . $extension;
+                $request->file('skp_struktural')->move($destination_path, $filename);
+                $input['skp_struktural'] = $filename;
+            }
+                Storage::create($input);
+                
             return redirect('/admin/datakp')->with('success', 'Data KP Berhasil di Update');
         }catch (Exception $e) {
             // dd($e);
@@ -182,5 +208,18 @@ class DataKpController extends Controller
             ]);
         }
         return view('modal.modal-view-kp', compact('datapegawai'));
+    }
+    
+    public function status(){
+        $data = DataKp::all();
+        foreach ($data as $d){
+            if(empty($d)){
+                $status = 'Belum Lengkap';
+            }
+            else{
+                $status = 'Sudah Lengkap';
+            }
+            return view('tabel.tabeldatakp2021-2025', compact('status'));
+        }
     }
 }

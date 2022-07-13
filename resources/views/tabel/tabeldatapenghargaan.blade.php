@@ -13,22 +13,22 @@
             <table class="table table-bordered">
               <thead>
                 <tr>
-                  <th class="thratakiri">
+                  <th class = "thratatengah">
                     No
                   </th>
-                  <th class="thratakiri">
+                  <th class = "thratatengah">
                     Nama Pegawai
                   </th>
-                  <th class="thratakiri">
+                  <th class = "thratatengah">
                     Gelar Tanda Kehormatan<br>10 Tahun
                   </th>
-                  <th class="thratakiri">
+                  <th class = "thratatengah">
                     Gelar Tanda Kehormatan<br>20 Tahun
                   </th>
-                  <th class="thratakiri">
+                  <th class = "thratatengah">
                     Gelar Tanda Kehormatan<br>30 Tahun
                   </th>
-                  <th class="thratakiri">
+                  <th class = "thratatengah">
                     Aksi
                   </th>
                 </tr>
@@ -36,11 +36,11 @@
               <tbody>
                 @foreach ($data_penghargaan as $penghargaan)
                 <tr>
-                    <th scope="row">{{ $penghargaan->id }}</th>
+                    <th class = "thratatengah" scope="row">{{ $penghargaan->id }}</th>
                     <td>{{ $penghargaan->namapegawai }}</td>
-                    <td>{{ $penghargaan->pegawaiPenghargaan->thn_10 ?? '' }}</td>
-                    <td>{{ $penghargaan->pegawaiPenghargaan->thn_20 ?? '' }}</td>
-                    <td>{{ $penghargaan->pegawaiPenghargaan->thn_30 ?? '' }}</td>
+                    <td class = "thratatengah">{{ date('d F Y', strtotime($penghargaan->pegawaiPenghargaan->thn_10) ?? '' }}</td>
+                    <td class = "thratatengah">{{ date('d F Y', strtotime($penghargaan->pegawaiPenghargaan->thn_20) ?? '' }}</td>
+                    <td class = "thratatengah">{{ date('d F Y', strtotime($penghargaan->pegawaiPenghargaan->thn_30) ?? '' }}</td>
                     <td>
                       <a href="datapenghargaan/{{ $penghargaan->id }}/edit" class="btn btn-primary btn sm inline">Edit</a>
                     </td>

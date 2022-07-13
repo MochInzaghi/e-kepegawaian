@@ -15,46 +15,46 @@
             <table class="table table-bordered">
               <thead>
                 <tr>
-                  <th>
+                  <th class = "thratatengah">
                     No
                   </th>
-                  <th>
+                  <th class = "thratatengah">
                     Nama Pegawai
                   </th>
-                  <th>
+                  <th class = "thratatengah">
                     NIP
                   </th>
-                  <th>
+                  <th class = "thratatengah">
                     Jabatan
                   </th>
-                  <th>
+                  <th class = "thratatengah">
                     Jenis Cuti
                   </th>
-                  <th>
+                  <th class = "thratatengah">
                     Dari Tanggal
                   </th>
-                  <th>
+                  <th class = "thratatengah">
                     Sampai Tanggal
                   </th>
-                  <th class="thratakiri">
+                  <th class = "thratatengah">
                     Jumlah <br>Hari Kerja
                   </th>
-                  <th class="thratakiri">
+                  <th class = "thratatengah">
                     Sisa Cuti <br>Tahunan YBS
                   </th>
-                  <th>
+                  <th class = "thratatengah">
                     Pejabat
                   </th>
-                  <th>
+                  <th class = "thratatengah">
                     No. Surat
                   </th>
-                  <th>
+                  <th class = "thratatengah">
                     Tanggal
                   </th>
-                  <th>
+                  <th class = "thratatengah">
                     Keterangan
                   </th>
-                  <th>
+                  <th class = "thratatengah">
                     Aksi
                   </th>
                 </tr>
@@ -62,18 +62,18 @@
               <tbody>
               @foreach($data_cuti as $cuti)
                 <tr>
-                  <th scope="row">{{ $cuti->id }}</th>
+                  <th class = "thratatengah" scope="row">{{ $cuti->id }}</th>
                   <td>{{$cuti->namapegawai}}</td>
-                  <td>{{$cuti->nip}}</td>
-                  <td>{{$cuti->jabatan}}</td>
-                  <td>{{$cuti->jeniscuti}}</td>
-                  <td>{{ date('d F Y', strtotime( $cuti->daritgl )) }}</td> 
-                  <td>{{ date('d F Y', strtotime($cuti->sampaitgl)) }}</td>
-                  <td>{{$cuti->jmlhrkrj}}</td>
-                  <td>{{$cuti->sisacuti}}</td>
-                  <td>{{$cuti->pejabat}}</td>
-                  <td>{{$cuti->nosurat}}</td>
-                  <td>{{ date('d F Y', strtotime($cuti->tanggal)) }}</td>
+                  <td class = "thratatengah">{{$cuti->nip}}</td>
+                  <td class = "thratatengah">{{$cuti->jabatan}}</td>
+                  <td class = "thratatengah">{{$cuti->jeniscuti}}</td>
+                  <td class = "thratatengah">{{ date('d F Y', strtotime( $cuti->daritgl )) }}</td> 
+                  <td class = "thratatengah">{{ date('d F Y', strtotime($cuti->sampaitgl)) }}</td>
+                  <td class = "thratatengah">{{$cuti->jmlhrkrj}}</td>
+                  <td class = "thratatengah">{{$cuti->sisacuti}}</td>
+                  <td class = "thratatengah">{{$cuti->pejabat}}</td>
+                  <td class = "thratatengah">{{$cuti->nosurat}}</td>
+                  <td class = "thratatengah">{{ date('d F Y', strtotime($cuti->tanggal)) }}</td>
                   <td>{{$cuti->keterangan}}</td>
                   <td>
                   <a href="datacuti/{{ $cuti->id }}/edit" class="btn btn-primary d-inline ml-3">Edit</a>

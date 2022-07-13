@@ -38,8 +38,8 @@
                                             @foreach ($dates as $date)
                                                 <td>
                                                     @if ($date == date('Y', strtotime($itempegawai->kgb)))
-                                                        {{ date('Y d F', strtotime($itempegawai->kgb)) }}
-                                                        <button class="btn btn-info btn sm inline"
+                                                        {{ date('d F Y', strtotime($itempegawai->kgb)) }}
+                                                        <br><button class="btn btn-info btn sm inline"
                                                             onclick="showModalKgb({{ $itempegawai->id }})">View</button>
                                                         {{-- <button class="btn btn-info btn sm inline" data-toggle="modal"
                                                             data-target="#view">View</button> --}}

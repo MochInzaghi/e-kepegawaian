@@ -15,17 +15,17 @@
             <table class="table table-bordered">
               <thead>
                 <tr>
-                  <th>
+                  <th class="thratatengah">
                     No
                   </th>
-                  <th>
+                  <th class="thratatengah">
                     Nama Pegawai
                   </th>
-                  <th>
+                  <th class="thratatengah">
                     NIP
                   </th>
                   @foreach ($dates as $tahun)
-                  <th>
+                  <th class="thratatengah">
                       {{ $tahun }}
                   </th>
                    @endforeach
@@ -34,14 +34,14 @@
               <tbody>
                 @foreach ($datapegawai as $index => $itempegawai)
                     <tr>
-                        <td>{{ $index + 1 }}</td>
+                        <td class="thratatengah">{{ $index + 1 }}</td>
                         <td>{{ $itempegawai->namapegawai }}</td>
-                        <td>{{ $itempegawai->nip }}</td>
+                        <td class="thratatengah">{{ $itempegawai->nip }}</td>
                         @foreach ($dates as $date)
-                            <td>
+                            <td class="thratatengah">
                                 @if ($date == date('Y', strtotime($itempegawai->kp)))
-                                    {{ date('Y d F', strtotime($itempegawai->kp)) }}
-                                    <button class="btn btn-info btn sm inline"
+                                    {{ date('d F Y', strtotime($itempegawai->kp)) }}
+                                    <br><button class="btn btn-info btn sm inline"
                                         onclick="showModalKp([{{ $itempegawai->id }},{{ $itempegawai->kp }}])">View</button>
                                     {{-- <button class="btn btn-info btn sm inline" data-toggle="modal"
                                         data-target="#view">View</button> --}}
@@ -63,6 +63,11 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="modalLabel">Detail Data</h5>
+                                              @if ($status = 'Belum Lengkap')
+                                                  <button style="margin-left: 210px;"  class="btn btn-danger btn-sm">Belum Lengkap</button>
+                                              @elseif ($status = 'Sudah Lengkap')
+                                                  <button style="margin-left: 210px;" class="btn btn-success btn-sm">Sudah Lengkap</button>
+                                              @endif
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>

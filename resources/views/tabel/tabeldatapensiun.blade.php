@@ -13,37 +13,37 @@
             <table class="table table-bordered">
               <thead>
                 <tr>
-                  <th class="thratakiri">
+                  <th class="thratatengah">
                     No
                   </th>
-                  <th class="thratakiri">
+                  <th class="thratatengah">
                     Nama Pegawai
                   </th>
-                  <th class="thratakiri">
+                  <th class="thratatengah">
                     NIP
                   </th>
-                  <th class="thratakiri">
+                  <th class="thratatengah">
                     Pangkat / Gol. Ruang
                   </th>
-                  <th class="thratakiri">
+                  <th class="thratatengah">
                     Tanggal Lahir Pada <br> SK Pengangkatan <br> Pertama
                   </th>
-                  <th class="thratakiri">
+                  <th class="thratatengah">
                     58 Tahun Yang <br> Akan Datang <br> Pada (TMT)
                   </th>
-                  <th class="thratakiri">
+                  <th class="thratatengah">
                     60 Tahun Yang <br> Akan Datang <br> Pada (TMT)
                   </th>
-                  <th class="thratakiri">
+                  <th class="thratatengah">
                     Tanggal
                   </th>
-                  <th class="thratakiri">
+                  <th class="thratatengah">
                     No. SK
                   </th>
-                  <th class="thratakiri">
+                  <th class="thratatengah">
                     Keterangan
                   </th>
-                  <th class="thratakiri">
+                  <th class="thratatengah">
                     Aksi
                   </th>
                 </tr>
@@ -51,15 +51,15 @@
               <tbody>
                 @foreach ($data_pensiun as $pensiun)
                 <tr>
-                  <th scope="row">{{ $pensiun->id }}</th>
+                  <th class = "thratatengah" scope="row">{{ $pensiun->id }}</th>
                   <td>{{ $pensiun->namapegawai }}</td>
-                  <td>{{ $pensiun->nip }}</td>
-                  <td>{{ $pensiun->pangkat }}</td>
-                  <td>{{ $pensiun->pegawaiPensiun->tl_sk_pertama ?? '' }}</td> 
-                  <td>{{ $pensiun->pegawaiPensiun->tmt_58 ?? '' }}</td>
-                  <td>{{ $pensiun->pegawaiPensiun->tmt_60 ?? '' }}</td>
-                  <td>{{  date('d F Y', strtotime($pensiun->pegawaiPensiun->tanggal ?? '')) }}</td>
-                  <td>{{ $pensiun->pegawaiPensiun->no_sk ?? '' }}</td>
+                  <td class = "thratatengah">{{ $pensiun->nip }}</td>
+                  <td class = "thratatengah">{{ $pensiun->pangkat }}</td>
+                  <td class = "thratatengah">{{ $pensiun->pegawaiPensiun->tl_sk_pertama ?? '' }}</td> 
+                  <td class = "thratatengah">{{ $pensiun->pegawaiPensiun->tmt_58 ?? '' }}</td>
+                  <td class = "thratatengah">{{ $pensiun->pegawaiPensiun->tmt_60 ?? '' }}</td>
+                  <td class = "thratatengah">{{  date('d F Y', strtotime($pensiun->pegawaiPensiun->tanggal ?? '')) }}</td>
+                  <td class = "thratatengah">{{ $pensiun->pegawaiPensiun->no_sk ?? '' }}</td>
                   <td>{{ $pensiun->pegawaiPensiun->keterangan_pensiun ?? '' }}</td>
                   <td>
                     <a href="datapensiun/{{ $pensiun->id }}/edit" class="btn btn-primary btn sm inline">Edit</a>

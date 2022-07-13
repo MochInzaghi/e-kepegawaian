@@ -13,58 +13,58 @@
             <table class="table table-bordered">
               <thead>
                 <tr>
-                  <th class="thratakiri">
+                  <th class = "thratatengah">
                     No
                   </th>
-                  <th class="thratakiri">
+                  <th class = "thratatengah">
                     Nama Pegawai
                   </th>
-                  <th class="thratakiri">
+                  <th class = "thratatengah">
                     NIP
                   </th>
-                  <th class="thratakiri">
+                  <th class = "thratatengah">
                     Tempat Tanggal Lahir
                   </th>
-                  <th class="thratakiri">
+                  <th class = "thratatengah">
                     Pangkat / <br>Gol. Ruang
                   </th>
-                  <th class="thratakiri">
+                  <th class = "thratatengah">
                     TMT / <br>Gol. Ruang
                   </th>
-                  <th class="thratakiri">
+                  <th class = "thratatengah">
                     Jabatan Terakhir
                   </th>
-                  <th class="thratakiri">
+                  <th class = "thratatengah">
                     TMT Jabatan
                   </th>
-                  <th class="thratakiri">
+                  <th class = "thratatengah">
                     Masa Kerja <br>(Tahun)
                   </th>
-                  <th class="thratakiri">
+                  <th class = "thratatengah">
                     Masa Kerja <br>(Bulan)
                   </th>
-                  <th class="thratakiri">
+                  <th class = "thratatengah">
                     Pendidikan <br>Kepemimpinan
                   </th>
-                  <th class="thratakiri">
+                  <th class = "thratatengah">
                     Tahun <br>Lulus
                   </th>
-                  <th class="thratakiri">
+                  <th class = "thratatengah"">
                     Pendidikan Terakhir, <br> Nama Sekolah
                   </th>
-                  <th class="thratakiri">
+                  <th class = "thratatengah">
                     Tahun <br>Lulus
                   </th>
-                  <th class="thratakiri">
+                  <th class = "thratatengah">
                     Jenis <br>Kelamin
                   </th>
-                  <th class="thratakiri">
+                  <th class = "thratatengah">
                     Agama <br>Tahun
                   </th>
-                  <th class="thratakiri">
+                  <th class = "thratatengah">
                     Tahun <br>Pensiun
                   </th>
-                  <th class="thratakiri">
+                  <th class = "thratatengah">
                     Aksi
                   </th>
                 </tr>
@@ -72,23 +72,23 @@
               <tbody>
                 @foreach ($data_duk as $duk)
                 <tr>
-                    <th scope="row">{{ $duk->id }}</th>
+                    <th class = "thratatengah" scope="row">{{ $duk->id }}</th>
                     <td>{{ $duk->namapegawai }}</td>
-                    <td>{{ $duk->nip }}</td>
-                    <td>{{ $duk->ttl }}</td>
-                    <td>{{ $duk->pangkat }}</td>
-                    <td>{{ $duk->pegawaiDuk->tmt ?? ''}}</td> 
-                    <td>{{ $duk->pegawaiDuk->jabatanterakhir ?? '' }}</td>
-                    <td>{{ $duk->pegawaiDuk->tmt_jabatan ?? '' }}</td>
-                    <td>{{ $duk->pegawaiDuk->mk_tahun ?? '' }}</td>
-                    <td>{{ $duk->pegawaiDuk->mk_bulan ?? ''}}</td>
-                    <td>{{ $duk->pegawaiDuk->pendidikan_kepemimpinan ?? ''}}</td>
-                    <td>{{ $duk->pegawaiDuk->tahunlulus ?? ''}}</td>
-                    <td>{{ $duk->pegawaiDuk->pendidikan_terakhir ?? ''}}</td>
-                    <td>{{ $duk->pegawaiDuk->tahun_lulus ?? ''}}</td>
-                    <td>{{ $duk->pegawaiDuk->jeniskelamin ?? ''}}</td> 
-                    <td>{{ $duk->pegawaiDuk->agama_tahun ?? ''}}</td>
-                    <td>{{ $duk->pegawaiDuk->tahunpensiun ?? ''}}</td>
+                    <td class = "thratatengah">{{ $duk->nip }}</td>
+                    <td class = "thratatengah">{{ $duk->ttl }}</td>
+                    <td class = "thratatengah">{{ $duk->pangkat }}</td>
+                    <td class = "thratatengah">{{ $duk->pegawaiDuk->tmt ?? ''}}</td> 
+                    <td class = "thratatengah">{{ $duk->pegawaiDuk->jabatanterakhir ?? '' }}</td>
+                    <td class = "thratatengah">{{ $duk->pegawaiDuk->tmt_jabatan ?? '' }}</td>
+                    <td class = "thratatengah">{{ $duk->pegawaiDuk->mk_tahun ?? '' }}</td>
+                    <td class = "thratatengah">{{ $duk->pegawaiDuk->mk_bulan ?? ''}}</td>
+                    <td class = "thratatengah">{{ $duk->pegawaiDuk->pendidikan_kepemimpinan ?? ''}}</td>
+                    <td class = "thratatengah">{{ $duk->pegawaiDuk->tahunlulus ?? ''}}</td>
+                    <td class = "thratatengah">{{ $duk->pegawaiDuk->pendidikan_terakhir ?? ''}}</td>
+                    <td class = "thratatengah">{{ $duk->pegawaiDuk->tahun_lulus ?? ''}}</td>
+                    <td class = "thratatengah">{{ $duk->pegawaiDuk->jeniskelamin ?? ''}}</td> 
+                    <td class = "thratatengah">{{ $duk->pegawaiDuk->agama_tahun ?? ''}}</td>
+                    <td class = "thratatengah">{{ $duk->pegawaiDuk->tahunpensiun ?? ''}}</td>
                     <td>
                       <a href="dataduk/{{ $duk->id }}/edit" class="btn btn-primary btn sm inline">Edit</a>
                     </td>

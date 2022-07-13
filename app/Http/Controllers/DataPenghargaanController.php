@@ -86,8 +86,8 @@ class DataPenghargaanController extends Controller
         try {
             $request->validate([
                     'thn_10' => 'required',
-                    'thn_20' => 'required',
-                    'thn_30' => 'required',
+                    'thn_20' => 'date',
+                    'thn_30' => 'date',
             ]);
             DataPenghargaan::updateorCreate(
                 ['data_pegawai_id' => $request->data_pegawai_id],

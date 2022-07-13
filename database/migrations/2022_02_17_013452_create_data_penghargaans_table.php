@@ -17,8 +17,8 @@ class CreateDataPenghargaansTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('data_pegawai_id')->unsigned();
             $table->date('thn_10');
-            $table->date('thn_20');
-            $table->date('thn_30');
+            $table->date('thn_20')->nullable();
+            $table->date('thn_30')->nullable();
             $table->timestamps();
         });
     }
