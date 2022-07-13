@@ -34,6 +34,7 @@ return array(
     'App\\Models\\DataPegawai' => $baseDir . '/app/Models/DataPegawai.php',
     'App\\Models\\DataPenghargaan' => $baseDir . '/app/Models/DataPenghargaan.php',
     'App\\Models\\DataPensiun' => $baseDir . '/app/Models/DataPensiun.php',
+    'App\\Models\\FilePegawai' => $baseDir . '/app/Models/FilePegawai.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\DataKp;
 use App\Models\DataPegawai;
+use App\Models\FilePegawai;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 use DateInterval;
@@ -20,7 +21,7 @@ class DataKpController extends Controller
      */
     public function index(Request $request)
     {
-       // $datapegawai1 = DataPegawai::first();
+        // $datapegawai1 = DataPegawai::first();
         // $test = Carbon::createFromFormat('Y-m-d', $datapegawai1->kgb);
         // dd($test->addYear(2));
 
@@ -46,7 +47,7 @@ class DataKpController extends Controller
             }
         }
 
-       
+
 
         $datakp = DataKp::all();
 
@@ -99,6 +100,20 @@ class DataKpController extends Controller
         return view('form.formeditkp', compact('data_pegawai'));
     }
 
+    public function storeFile($fileStore, $user_id)
+    {
+        $file = $fileStore;
+        $name = $file->getClientOriginalName();
+        $extension = $file->getClientOriginalExtension();
+        $filename = $name . '.' . $extension;
+        $file->storeAs("public/" . $user_id, $filename);
+        FilePegawai::create([
+            'user_id' => $user_id,
+            'nama_file' => $filename,
+            'file_path' => $filename,
+        ]);
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -108,35 +123,35 @@ class DataKpController extends Controller
      */
     public function update(Request $request, DataKp $dataKp)
     {
-        try{
-           $request->validate([
-                    'skp_struktural' => 'file|mimes:pdf|max:2048',
-                    'sp_tugas' =>  'file|mimes:pdf|max:2048',
-                    'sp_pelantikan' =>  'file|mimes:pdf|max:2048',
-                    'ba_pengangkatansumpah' =>  'file|mimes:pdf|max:2048',
-                    'ijazah_terakhir' =>  'file|mimes:pdf|max:2048',
-                    'surat_tandalulus' =>  'file|mimes:pdf|max:2048',
-                    'skp_2020' =>  'file|mimes:pdf|max:2048',
-                    'skp_2021' =>  'file|mimes:pdf|max:2048',
-                    'skp_jabatan' =>  'file|mimes:pdf|max:2048',
-                    'sp_pengangkatanlama' =>  'file|mimes:pdf|max:2048',
+        try {
+            $request->validate([
+                'skp_struktural' => 'file|mimes:pdf|max:2048',
+                'sp_tugas' =>  'file|mimes:pdf|max:2048',
+                'sp_pelantikan' =>  'file|mimes:pdf|max:2048',
+                'ba_pengangkatansumpah' =>  'file|mimes:pdf|max:2048',
+                'ijazah_terakhir' =>  'file|mimes:pdf|max:2048',
+                'surat_tandalulus' =>  'file|mimes:pdf|max:2048',
+                'skp_2020' =>  'file|mimes:pdf|max:2048',
+                'skp_2021' =>  'file|mimes:pdf|max:2048',
+                'skp_jabatan' =>  'file|mimes:pdf|max:2048',
+                'sp_pengangkatanlama' =>  'file|mimes:pdf|max:2048',
             ]);
 
-            DataKp::updateorCreate(
-                ['data_pegawai_id' => $request->data_pegawai_id],
-                [
-                    'skp_struktural' => $request->skp_struktural,
-                    'sp_tugas' =>  $request->sp_tugas,
-                    'sp_pelantikan' =>  $request->sp_pelantikan,
-                    'ba_pengangkatansumpah' =>  $request->ba_pengangkatansumpah,
-                    'ijazah_terakhir' =>  $request->ijazah_terakhir,
-                    'surat_tandalulus' =>  $request->surat_tandalulus,
-                    'skp_2020' =>  $request->skp_2020,
-                    'skp_2021' =>  $request->skp_2021,
-                    'skp_jabatan' =>  $request->skp_jabatan,
-                    'sp_pengangkatanlama' =>  $request->sp_pengangkatanlama,
-                ]
-            );
+            // DataKp::updateorCreate(
+            //     ['data_pegawai_id' => $request->data_pegawai_id],
+            //     [
+            //         'skp_struktural' => $request->skp_struktural,
+            //         'sp_tugas' =>  $request->sp_tugas,
+            //         'sp_pelantikan' =>  $request->sp_pelantikan,
+            //         'ba_pengangkatansumpah' =>  $request->ba_pengangkatansumpah,
+            //         'ijazah_terakhir' =>  $request->ijazah_terakhir,
+            //         'surat_tandalulus' =>  $request->surat_tandalulus,
+            //         'skp_2020' =>  $request->skp_2020,
+            //         'skp_2021' =>  $request->skp_2021,
+            //         'skp_jabatan' =>  $request->skp_jabatan,
+            //         'sp_pengangkatanlama' =>  $request->sp_pengangkatanlama,
+            //     ]
+            // );
 
             // if($request->hasFile('file')){
             //     $files = $request->file('file');
@@ -155,25 +170,62 @@ class DataKpController extends Controller
             //     return redirect('/admin/datakp')->with('success', 'Data KP Berhasil di Update');
             // }
             // $files[] = ['skp_struktural','sp_tugas','sp_pelantikan','ba_pengangkatansumpah','ijazah_terakhir','surat_tandalulus','skp_2020','skp_2021','skp_jabatan','sp_pengangkatanlama'];
+
             // $store = request()->file('skp_struktural') ? request()->file('skp_struktural')->storeAs("files", $request->skp_struktural) : null;
-           
+            // $file = $request->file('skp_struktural');
+            // $nameFile = $file->getClientOriginalName();
+            // $data_pegawai_id = $request->data_pegawai_id;
+            // $file->storeAs("public/" . $data_pegawai_id, $nameFile);
+            // return $nameFile;
+
             if ($request->hasFile('skp_struktural')) {
-                $file = $request->file('skp_struktural');
-                $name = $file->getClientOriginalName();
-                $extension = $file->getClientOriginalExtension();
-                $destination_path = public_path() . '/files';
-                $filename = $name . '.' . $extension;
-                $request->file('skp_struktural')->move($destination_path, $filename);
-                $input['skp_struktural'] = $filename;
+                $this->storeFile($request->file('skp_struktural'), $request->data_pegawai_id);
             }
-                Storage::create($input);
-                
+            if ($request->hasFile('sp_tugas')) {
+                $this->storeFile($request->file('sp_tugas'), $request->data_pegawai_id);
+            }
+            if ($request->hasFile('sp_pelantikan')) {
+                $this->storeFile($request->file('sp_pelantikan'), $request->data_pegawai_id);
+            }
+            if ($request->hasFile('ba_pengangkatansumpah')) {
+                $this->storeFile($request->file('ba_pengangkatansumpah'), $request->data_pegawai_id);
+            }
+            if ($request->hasFile('ijazah_terakhir')) {
+                $this->storeFile($request->file('ijazah_terakhir'), $request->data_pegawai_id);
+            }
+            if ($request->hasFile('surat_tandalulus')) {
+                $this->storeFile($request->file('surat_tandalulus'), $request->data_pegawai_id);
+            }
+            if ($request->hasFile('skp_2020')) {
+                $this->storeFile($request->file('skp_2020'), $request->data_pegawai_id);
+            }
+            if ($request->hasFile('skp_2021')) {
+                $this->storeFile($request->file('skp_2021'), $request->data_pegawai_id);
+            }
+            if ($request->hasFile('skp_jabatan')) {
+                $this->storeFile($request->file('skp_jabatan'), $request->data_pegawai_id);
+            }
+            if ($request->hasFile('sp_pengangkatanlama')) {
+                $this->storeFile($request->file('sp_pengangkatanlama'), $request->data_pegawai_id);
+            }
+
+            // if ($request->hasFile('skp_struktural')) {
+            //     $file = $request->file('skp_struktural');
+            //     $name = $file->getClientOriginalName();
+            //     $extension = $file->getClientOriginalExtension();
+            //     $destination_path = public_path() . '/files';
+            //     $filename = $name . '.' . $extension;
+            //     $request->file('skp_struktural')->move($destination_path, $filename);
+            //     $input['skp_struktural'] = $filename;
+            // }
+            // Storage::create($input);
+
             return redirect('/admin/datakp')->with('success', 'Data KP Berhasil di Update');
-        }catch (Exception $e) {
+        } catch (Exception $e) {
             // dd($e);
             Alert::error('Gagal', 'Gagal Mengupdate Data KP');
             return back();
-            }
+        }
     }
 
     /**
@@ -187,7 +239,8 @@ class DataKpController extends Controller
         //
     }
 
-    public function print(Request $request, $id){
+    public function print(Request $request, $id)
+    {
         $datapegawai = DataPegawai::with('pegawaiKp')->find($id);
         $datakp = $datapegawai->pegawaiKp;
         if ($datakp->isEmpty()) {
@@ -209,14 +262,14 @@ class DataKpController extends Controller
         }
         return view('modal.modal-view-kp', compact('datapegawai'));
     }
-    
-    public function status(){
+
+    public function status()
+    {
         $data = DataKp::all();
-        foreach ($data as $d){
-            if(empty($d)){
+        foreach ($data as $d) {
+            if (empty($d)) {
                 $status = 'Belum Lengkap';
-            }
-            else{
+            } else {
                 $status = 'Sudah Lengkap';
             }
             return view('tabel.tabeldatakp2021-2025', compact('status'));
