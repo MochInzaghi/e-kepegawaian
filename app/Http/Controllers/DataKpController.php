@@ -11,6 +11,8 @@ use DateInterval;
 use DatePeriod;
 use Illuminate\Http\Request;
 use Illuminate\Facades\Storage;
+use Illuminate\Validation\ValidationException;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class DataKpController extends Controller
 {
@@ -122,8 +124,9 @@ class DataKpController extends Controller
      */
     public function update(Request $request, DataKp $dataKp)
     {
+        // dd($request);
         try {
-            $request->validate([
+            $this->validate($request, [
                 'skp_struktural' => 'file|mimes:pdf|max:2048',
                 'sp_tugas' =>  'file|mimes:pdf|max:2048',
                 'sp_pelantikan' =>  'file|mimes:pdf|max:2048',
@@ -143,7 +146,7 @@ class DataKpController extends Controller
             }
 
             return redirect('/admin/datakp')->with('success', 'Data KP Berhasil di Update');
-        } catch (Exception $e) {
+        } catch (ValidationException $e) {
             // dd($e);
             Alert::error('Gagal', 'Gagal Mengupdate Data KP');
             return back();
