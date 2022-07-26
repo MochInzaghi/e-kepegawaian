@@ -33,7 +33,7 @@ Route::middleware('auth')->group(function () {
 
     //data pegawai
     Route::get('admin/datapegawai-index', '\App\Http\Controllers\DataPegawaiController@index')->name('admin.pegawai');
-    Route::get('admin/datapegawai/create', '\App\Http\Controllers\DataPegawaiController@create')->name('create.pegawai');
+    Route::get('admin/datapegawai-create', '\App\Http\Controllers\DataPegawaiController@create')->name('create.pegawai');
     Route::post('admin/datapegawai/store', '\App\Http\Controllers\DataPegawaiController@store')->name('store.pegawai');
     Route::get('admin/datapegawai/{data_pegawai:id}/edit', '\App\Http\Controllers\DataPegawaiController@edit')->name('edit.pegawai');
     Route::patch('admin/datapegawai/{data_pegawai:id}/update', '\App\Http\Controllers\DataPegawaiController@update')->name('update.pegawai');
@@ -49,6 +49,7 @@ Route::middleware('auth')->group(function () {
     Route::get('admin/datakp', '\App\Http\Controllers\DataKpController@index')->name('admin.kp');
     Route::get('admin/datakp/{id}/edit', '\App\Http\Controllers\DataKpController@edit')->name('edit.kp');
     Route::post('admin/datakp/update', '\App\Http\Controllers\DataKpController@update')->name('update.kp');
+    Route::get('admin/datakp/{id}/print', '\App\Http\Controllers\DataKpController@print')->name('print.kp');
 
     //tabel penghargaan
     Route::get('/admin/datapenghargaan', '\App\Http\Controllers\DataPenghargaanController@index')->name('admin.penghargaan');
@@ -69,8 +70,8 @@ Route::middleware('auth')->group(function () {
     Route::get('admin/datapensiun/print', '\App\Http\Controllers\DataPensiunController@print')->name('print.pensiun');
 
     //tabel cuti
-    Route::get('admin/datacuti', '\App\Http\Controllers\DataCutiController@index')->name('admin.cuti');
-    Route::get('admin/datacuti/create', '\App\Http\Controllers\DataCutiController@create')->name('create.cuti');
+    Route::get('admin/datacuti-index', '\App\Http\Controllers\DataCutiController@index')->name('admin.cuti');
+    Route::get('admin/datacuti-create', '\App\Http\Controllers\DataCutiController@create')->name('create.cuti');
     Route::post('admin/datacuti/store', '\App\Http\Controllers\DataCutiController@store')->name('store.cuti');
     Route::get('admin/datacuti/{data_cuti:id}/edit', '\App\Http\Controllers\DataCutiController@edit')->name('edit.cuti');
     Route::patch('admin/datacuti/{data_cuti:id}/update', '\App\Http\Controllers\DataCutiController@update')->name('update.cuti');

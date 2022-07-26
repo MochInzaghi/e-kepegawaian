@@ -169,9 +169,8 @@ class DataKpController extends Controller
         $datapegawai = DataPegawai::with('pegawaiKp')->find($id);
         $datakp = $datapegawai->pegawaiKp;
         if ($datakp->isEmpty()) {
-            return response()->json([
-                'message' => 'Data KP tidak ditemukan'
-            ]);
+            Alert::error('Not Found', 'Data Kenaikan Pangkat Masih Kosong');
+            return view('errors.404');
         }
         return view('laporan.datakp', compact('datapegawai'));
     }

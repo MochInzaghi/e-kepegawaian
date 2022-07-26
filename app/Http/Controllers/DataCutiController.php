@@ -56,7 +56,7 @@ class DataCutiController extends Controller
 
         DataCuti::create($validator->validate());
 
-        return redirect('admin/datacuti')->with('success', 'Data Cuti Berhasil di Tambahkan');
+        return redirect('admin/datacuti-index')->with('success', 'Data Cuti Berhasil di Tambahkan');
     } catch (Exception $e) {
         // dd($e);
         Alert::error('Gagal', 'Gagal Menambahkan Data Cuti');
@@ -94,7 +94,7 @@ class DataCutiController extends Controller
 
         $dataCuti->update($validator->validate());
 
-        return redirect('admin/datacuti')->with('success', 'Data Cuti Berhasil di Update');
+        return redirect('admin/datacuti-index')->with('success', 'Data Cuti Berhasil di Update');
 
     } catch (Exception $e) {
         // dd($e);
@@ -106,7 +106,7 @@ class DataCutiController extends Controller
     public function destroy(DataCuti $dataCuti)
     {
         $dataCuti->delete();
-        return redirect('admin/datacuti')->with('success', 'Data Cuti Berhasil di Hapus');
+        return redirect('admin/datacuti-index')->with('success', 'Data Cuti Berhasil di Hapus');
     }
 
     public function print(Request $request){

@@ -392,9 +392,9 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="recipient-name" class="col-form-label">Oleh Pejabat</label>
-                                            <input type="text" name="olehpejabat" class="form-control"
+                                            <input type="text" name="oleh_pejabat" class="form-control"
                                                 id="recipient-name"
-                                                value="{{ $datapegawai->pegawaiKgb[0]->olehpejabat ?? '' }}">
+                                                value="{{ $datapegawai->pegawaiKgb[0]->oleh_pejabat ?? '' }}">
                                         </div>
                                         <div class="form-group">
                                             <label for="recipient-name" class="col-form-label">Tanggal </label>

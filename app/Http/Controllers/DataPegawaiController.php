@@ -100,6 +100,6 @@ class DataPegawaiController extends Controller
     public function destroy(DataPegawai $dataPegawai)
     {
         $dataPegawai->delete();
-        return redirect('admin/datapegawai')->with('success', 'Data Pegawai Berhasil di Hapus');
+        return redirect('admin/datapegawai-index')->with('success', 'Data Pegawai Berhasil di Hapus');
     }
 }
