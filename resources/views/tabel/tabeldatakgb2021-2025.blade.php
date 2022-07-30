@@ -37,26 +37,28 @@
                                             <td>{{ $itempegawai->nip }}</td>
                                             @foreach ($dates as $date)
                                                 <td>
-                                                    @if ($date == date('Y', strtotime($itempegawai->kgb)))
-                                                        {{ date('d F Y', strtotime($itempegawai->kgb)) }}
-                                                        <br><button class="btn btn-info btn sm inline"
-                                                            onclick="showModalKgb({{ $itempegawai->id }})">View</button>
-                                                        {{-- <button class="btn btn-info btn sm inline" data-toggle="modal"
-                                                            data-target="#view">View</button> --}}
+                                                    @foreach ($kgbPegawai[$itempegawai->id] as $item)
+                                                        @if ($item == $date)
+                                                        {{ date('d F ', strtotime($itempegawai->kgb)).$date }}
+                                                            <br><button class="btn btn-info btn sm inline"
+                                                                onclick="showModalKgb({{ $itempegawai->id }})">View</button>
+                                                            {{-- <button class="btn btn-info btn sm inline" data-toggle="modal"
+                                                                data-target="#view">View</button> --}}
 
-                                                        {{-- @foreach ($datakgb as $kgb)
-                                                            <a href="datakgb/{{ $kgb->id }}/edit"
+                                                            {{-- @foreach ($datakgb as $kgb)
+                                                                <a href="datakgb/{{ $kgb->id }}/edit"
+                                                                    class="btn btn-success btn sm inline">Edit</a>
+                                                                <a href="datakgb/{{ $kgb->id }}/print"
+                                                                    class="btn btn-primary btn sm inline"
+                                                                    type="submit">Print</button>
+                                                            @endforeach --}}
+                                                            <a href="/admin/datakgb/{{ $itempegawai->id }}/edit"
                                                                 class="btn btn-success btn sm inline">Edit</a>
-                                                            <a href="datakgb/{{ $kgb->id }}/print"
+                                                            <a href="/admin/datakgb/{{ $itempegawai->id }}/print"
                                                                 class="btn btn-primary btn sm inline"
                                                                 type="submit">Print</button>
-                                                        @endforeach --}}
-                                                        <a href="/admin/datakgb/{{ $itempegawai->id }}/edit"
-                                                            class="btn btn-success btn sm inline">Edit</a>
-                                                        <a href="/admin/datakgb/{{ $itempegawai->id }}/print"
-                                                            class="btn btn-primary btn sm inline"
-                                                            type="submit">Print</button>
-                                                    @endif
+                                                        @endif
+                                                    @endforeach
                                                 </td>
                                             @endforeach
                                         </tr>

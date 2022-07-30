@@ -33,7 +33,7 @@ class DataKgbController extends Controller
         // }
 
         $start_date = date_create("2021-01-01");
-        $end_date   = date_create("2025-12-31");
+        $end_date   = date_create("2050-12-31");
         $interval = new DateInterval('P1Y');
         $daterange = new DatePeriod($start_date, $interval, $end_date);
 
@@ -53,10 +53,18 @@ class DataKgbController extends Controller
         } else {
             $datapegawai = DataPegawai::with('pegawaiKgb')->get();
             $datakgb = DataKgb::all();
+            $kgbPegawai = [];
             foreach ($datapegawai as $dp) {
-                $dp->kgb = Carbon::createFromFormat('Y-m-d', $dp->kgb)->addYear(2)->format('Y-m-d');
+                $varTemp = ((int) date_format(date_create($dp->kgb), 'Y') + 2);
+                $kgbPegawai[$dp->id] = array();
+                foreach ($dates as $date) {
+                    if($varTemp == (int) $date){
+                        $kgbPegawai[$dp->id][] = $varTemp;
+                        $varTemp += 2;
+                    }
+                }
             }
-            return view('tabel.tabeldatakgb2021-2025', compact('dates', 'datapegawai', 'datakgb'));
+            return view('tabel.tabeldatakgb2021-2025', compact('dates', 'datapegawai', 'datakgb', 'kgbPegawai'));
         }
         // foreach ($datapegawai as $dp) {
         //     $dp->kgb = Carbon::createFromFormat('d-m-Y', $dp->kgb)->addYear(2);
