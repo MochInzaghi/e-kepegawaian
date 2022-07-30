@@ -39,19 +39,35 @@ class DataKpController extends Controller
 
         if ($request->has('cari')) {
             $datapegawai = DataPegawai::where('namapegawai', 'LIKE', '%' . $request->cari . '%')->get();
+            $datakp = DataKp::all();
+            $kpPegawai = [];
             foreach ($datapegawai as $dp) {
-                $dp->kp = Carbon::createFromFormat('Y-m-d', $dp->kp)->addYear(4)->format('Y-m-d');
+                $varTemp = ((int) date_format(date_create($dp->kp), 'Y') + 4);
+                $kpPegawai[$dp->id] = array();
+                foreach ($dates as $date) {
+                    if($varTemp == (int) $date){
+                        $kpPegawai[$dp->id][] = $varTemp;
+                        $varTemp += 4;
+                    }
+                }
             }
+            return view('tabel.tabeldatakp2021-2025', compact('dates', 'datapegawai', 'datakp', 'kpPegawai'));
         } else {
             $datapegawai = DataPegawai::with('pegawaiKp')->get();
+            $datakp = DataKp::all();
+            $kpPegawai = [];
             foreach ($datapegawai as $dp) {
-                $dp->kp = Carbon::createFromFormat('Y-m-d', $dp->kp)->addYear(4)->format('Y-m-d');
+                $varTemp = ((int) date_format(date_create($dp->kp), 'Y') + 4);
+                $kpPegawai[$dp->id] = array();
+                foreach ($dates as $date) {
+                    if($varTemp == (int) $date){
+                        $kpPegawai[$dp->id][] = $varTemp;
+                        $varTemp += 4;
+                    }
+                }
             }
+            return view('tabel.tabeldatakp2021-2025', compact('dates', 'datapegawai', 'datakp', 'kpPegawai'));
         }
-
-
-
-        $datakp = DataKp::all();
 
         return view('tabel.tabeldatakp2021-2025', compact('dates', 'datapegawai', 'datakp'));
     }

@@ -388,7 +388,7 @@
                                         <div class="form-group">
                                             <label for="recipient-name" class="col-form-label">Tanggal Lahir</label>
                                             <input type="date" name="tgl_lahir" class="form-control"
-                                                id="recipient-name" value="{{ $datapegawai->tgl_lahir }}">
+                                                id="recipient-name" value="{{ $datapegawai->pegawaiKgb[0]->tgl_lahir }}">
                                         </div>
                                         <div class="form-group">
                                             <label for="recipient-name" class="col-form-label">Oleh Pejabat</label>

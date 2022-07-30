@@ -13,13 +13,13 @@
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>
+                                        <th class="thratatengah">
                                             No
                                         </th>
-                                        <th>
+                                        <th class="thratatengah">
                                             Nama Pegawai
                                         </th>
-                                        <th>
+                                        <th class="thratatengah">
                                             NIP
                                         </th>
                                         @foreach ($dates as $tahun)
@@ -32,11 +32,11 @@
                                 <tbody>
                                     @foreach ($datapegawai as $index => $itempegawai)
                                         <tr>
-                                            <td>{{ $index + 1 }}</td>
+                                            <td class="thratatengah">{{ $index + 1 }}</td>
                                             <td>{{ $itempegawai->namapegawai }}</td>
-                                            <td>{{ $itempegawai->nip }}</td>
+                                            <td class="thratatengah">{{ $itempegawai->nip }}</td>
                                             @foreach ($dates as $date)
-                                                <td>
+                                                <td class="thratatengah">
                                                     @foreach ($kgbPegawai[$itempegawai->id] as $item)
                                                         @if ($item == $date)
                                                         {{ date('d F ', strtotime($itempegawai->kgb)).$date }}
@@ -56,7 +56,7 @@
                                                                 class="btn btn-success btn sm inline">Edit</a>
                                                             <a href="/admin/datakgb/{{ $itempegawai->id }}/print"
                                                                 class="btn btn-primary btn sm inline"
-                                                                type="submit">Print</button>
+                                                                type="submit">Print</button>                                                        
                                                         @endif
                                                     @endforeach
                                                 </td>

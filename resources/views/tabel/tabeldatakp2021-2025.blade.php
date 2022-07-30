@@ -38,21 +38,30 @@
                         <td>{{ $itempegawai->namapegawai }}</td>
                         <td class="thratatengah">{{ $itempegawai->nip }}</td>
                         @foreach ($dates as $date)
-                            <td class="thratatengah">
-                                @if ($date == date('Y', strtotime($itempegawai->kp)))
-                                    {{ date('d F Y', strtotime($itempegawai->kp)) }}
-                                    <br><button class="btn btn-info btn sm inline"
-                                        onclick="showModalKp([{{ $itempegawai->id }},{{ $itempegawai->kp }}])">View</button>
-                                    {{-- <button class="btn btn-info btn sm inline" data-toggle="modal"
-                                        data-target="#view">View</button> --}}
-                                    {{-- @foreach ($datakp as $kp) --}}
-                                    <a href="datakp/{{ $itempegawai->id }}/edit"
-                                        class="btn btn-success btn sm inline">Edit</a>
-                                    <a href="datakp/{{ $itempegawai->id }}/print" class="btn btn-primary btn sm inline"
-                                        type="submit">Print</button>
-                                        {{-- @endforeach --}}
-                                @endif
-                            </td>
+                        <td>
+                          @foreach ($kpPegawai[$itempegawai->id] as $item)
+                              @if ($item == $date)
+                              {{ date('d F ', strtotime($itempegawai->kp)).$date }}
+                                  <br><button class="btn btn-info btn sm inline"
+                                      onclick="showModalKp({{ $itempegawai->id }})">View</button>
+                                  {{-- <button class="btn btn-info btn sm inline" data-toggle="modal"
+                                      data-target="#view">View</button> --}}
+
+                                  {{-- @foreach ($datakgb as $kgb)
+                                      <a href="datakgb/{{ $kgb->id }}/edit"
+                                          class="btn btn-success btn sm inline">Edit</a>
+                                      <a href="datakgb/{{ $kgb->id }}/print"
+                                          class="btn btn-primary btn sm inline"
+                                          type="submit">Print</button>
+                                  @endforeach --}}
+                                  <a href="/admin/datakgb/{{ $itempegawai->id }}/edit"
+                                      class="btn btn-success btn sm inline">Edit</a>
+                                  <a href="/admin/datakgb/{{ $itempegawai->id }}/print"
+                                      class="btn btn-primary btn sm inline"
+                                      type="submit">Print</button>                                                        
+                              @endif
+                          @endforeach
+                      </td>
                         @endforeach
                     </tr>
                 @endforeach
