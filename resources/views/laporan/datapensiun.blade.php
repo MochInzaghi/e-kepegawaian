@@ -91,51 +91,54 @@
                         </div>
                     <table class="table table-bordered solid" style="margin-top: 10px; border:1px solid black;">
                             <tr>
-                                <th class="thratakiri">
+                                <th class="thratatengah">
                                     No
                                   </th>
-                                  <th class="thratakiri">
+                                  <th class="thratatengah">
                                     Nama Pegawai
                                   </th>
-                                  <th class="thratakiri">
+                                  <th class="thratatengah">
                                     NIP
                                   </th>
-                                  <th class="thratakiri">
+                                  <th class="thratatengah">
                                     Pangkat / Gol. Ruang
                                   </th>
-                                  <th class="thratakiri">
+                                  <th class="thratatengah">
                                     Tanggal Lahir Pada <br> SK Pengangkatan <br> Pertama
                                   </th>
-                                  <th class="thratakiri">
+                                  <th class="thratatengah">
                                     58 Tahun Yang <br> Akan Datang <br> Pada (TMT)
                                   </th>
-                                  <th class="thratakiri">
+                                  <th class="thratatengah">
                                     60 Tahun Yang <br> Akan Datang <br> Pada (TMT)
                                   </th>
-                                  <th class="thratakiri">
+                                  <th class="thratatengah">
                                     Tanggal
                                   </th>
-                                  <th class="thratakiri">
+                                  <th class="thratatengah">
                                     No. SK
                                   </th>
-                                  <th class="thratakiri">
+                                  <th class="thratatengah">
                                     Keterangan
                                   </th>
                             </tr>
 
-                            @php $no=1; @endphp
-                            @foreach ($data_pensiun as $pensiun)
-                                <tr>
-                                    <td>{{ $no++ }}</td>
-                                    <td>{{ $pensiun->namapegawai }}</td>
-                                    <td>{{ $pensiun->nip }}</td>
-                                    <td>{{ $pensiun->pangkat }}</td>
-                                    <td>{{ $pensiun->pegawaiPensiun->tl_sk_pertama ?? '' }}</td> 
-                                    <td>{{ $pensiun->pegawaiPensiun->tmt_58 ?? '' }}</td>
-                                    <td>{{ $pensiun->pegawaiPensiun->tmt_60 ?? '' }}</td>
-                                    <td>{{  date('d F Y', strtotime($pensiun->pegawaiPensiun->tanggal ?? '')) }}</td>
-                                    <td>{{ $pensiun->pegawaiPensiun->no_sk ?? '' }}</td>
-                                    <td>{{ $pensiun->pegawaiPensiun->keterangan_pensiun ?? '' }}</td>
+                                    @php $no=1; @endphp
+                                    @foreach ($datapegawai as $data)
+                                        @php
+                                            $pensiun = $data_pensiun[$no-1];
+                                        @endphp
+                                    <tr>
+                                        <td class="thratatengah">{{ $no++ }}</td>
+                                        <td>{{ $data->namapegawai }}</td>
+                                        <td class="thratatengah">{{ $data->nip }}</td>
+                                        <td class="thratatengah">{{ $data->pangkat }}</td>
+                                        <td class="thratatengah">{{ date('j', strtotime($pensiun->tl_sk_pertama)) . " " . $datebulan[(int)date('n', strtotime($pensiun->tl_sk_pertama))-1] . " " .date('j', strtotime($pensiun->tl_sk_pertama)) ?? '' }}</td> 
+                                        <td class="thratatengah">{{ $pensiun->tmt_58 ?? '' }}</td>
+                                        <td class="thratatengah">{{ $pensiun->tmt_60 ?? '' }}</td>
+                                        <td class="thratatengah">{{ date('j', strtotime($pensiun->tanggal)) . " " . $datebulan[(int)date('n', strtotime($pensiun->tanggal))-1] . " " .date('j', strtotime($pensiun->tanggal)) ?? '' }}</td>
+                                        <td class="thratatengah">{{ $pensiun->no_sk ?? '' }}</td>
+                                        <td class="thratatengah">{{ $pensiun->keterangan_pensiun ?? '' }}</td>
                                 </tr>
                             @endforeach
                         </table>

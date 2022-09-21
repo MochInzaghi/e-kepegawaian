@@ -91,32 +91,60 @@
                             </div>
                         <table class="table table-bordered solid" style="margin-top: 10px; border:1px solid black;">
                             <tr>
-                                <th class="thratakiri">
+                                <th class="thratatengah">
                                 No
                                 </th>
-                                <th class="thratakiri">
+                                <th class="thratatengah">
                                 Nama Pegawai
                                 </th>
-                                <th class="thratakiri">
+                                <th class="thratatengah">
+                                NIP
+                                </th>
+                                <th class="thratatengah">
                                 Gelar Tanda Kehormatan<br>10 Tahun
                                 </th>
-                                <th class="thratakiri">
+                                <th class="thratatengah">
                                 Gelar Tanda Kehormatan<br>20 Tahun
                                 </th>
-                                <th class="thratakiri">
+                                <th class="thratatengah">
                                 Gelar Tanda Kehormatan<br>30 Tahun
                                 </th>
                             </tr>
 
                             @php $no=1; @endphp
-                            @foreach ($data_penghargaan as $penghargaan)
+                             @foreach ($datapegawai as $data)
+                             @php
+                                $penghargaan = $data_penghargaan[$no-1];
+                                $bulan10 = $datebulan[(int)date('n', strtotime($penghargaan->thn_10 ?? ''))-1];
+                                $date10 = date('j', strtotime($penghargaan->thn_10 ?? '')). " " . $bulan10 . " " . date('Y', strtotime($penghargaan->thn_10 ?? ''));
+                                $bulan20 = $datebulan[(int)date('n', strtotime($penghargaan->thn_20 ?? ''))-1];
+                                $date20 = date('j', strtotime($penghargaan->thn_20 ?? '')). " " . $bulan20 . " " . date('Y', strtotime($penghargaan->thn_20 ?? ''));
+                                $bulan30 = $datebulan[(int)date('n', strtotime($penghargaan->thn_30 ?? ''))-1];
+                                $date30 = date('j', strtotime($penghargaan->thn_30 ?? '')). " " . $bulan30 . " " . date('Y', strtotime($penghargaan->thn_30 ?? ''));
+                            @endphp
                                 <tr>
-                                    <td>{{ $penghargaan->namapegawai }}</td>
-                                    <td>{{ $penghargaan->pegawaiPenghargaan->thn_10 ?? '' }}</td>
-                                    <td>{{ $penghargaan->pegawaiPenghargaan->thn_20 ?? '' }}</td>
-                                    <td>{{ $penghargaan->pegawaiPenghargaan->thn_30 ?? '' }}</td>
+                                    <td class="thratatengah">{{ $no++ }}</td>
+                                        <td>{{  $data->namapegawai ?? '' }}</td>
+                                        <td class="thratatengah">{{ $data->nip ?? '' }}</td>
+                                        @if(empty($penghargaan->thn_10) and empty($penghargaan->thn_20) and empty($penghargaan->thn_30) )
+                                        <td class = "thratatengah">{{ $penghargaan->thn_10 ?? '' }}</td>
+                                        <td class = "thratatengah">{{ $penghargaan->thn_20 ?? '' }}</td>
+                                        <td class = "thratatengah">{{ $penghargaan->thn_30 ?? '' }}</td>
+                                        @elseif(empty($penghargaan->thn_20) and empty($penghargaan->thn_30))
+                                        <td class = "thratatengah">{{ $date10 ?? '' }}</td>
+                                        <td class = "thratatengah">{{ $penghargaan->thn_20 ?? '' }}</td>
+                                        <td class = "thratatengah">{{ $penghargaan->thn_30 ?? '' }}</td>
+                                        @elseif(empty($penghargaan->thn_30))
+                                        <td class = "thratatengah">{{ $date10 }}</td>
+                                        <td class = "thratatengah">{{ $date20 }}</td>
+                                        <td class = "thratatengah">{{ $penghargaan->thn_30 ?? '' }}</td>
+                                        @else
+                                        <td class = "thratatengah">{{ $date10 }}</td>
+                                        <td class = "thratatengah">{{ $date20 }}</td>
+                                        <td class = "thratatengah">{{ $date30 }}</td>
+                                        @endif 
                                 </tr>
-                            @endforeach
+                                @endforeach 
                         </table>
                     </div>
                 </div>

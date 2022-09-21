@@ -25,33 +25,38 @@
         <ul class="navbar-nav ms-auto">
             <li class="nav-item dropdown d-none d-lg-block">
                 <a class="nav-link dropdown-bordered dropdown-toggle dropdown-toggle-split" id="messageDropdown"
-                    href="#" data-bs-toggle="dropdown" aria-expanded="false"> 2021-2025 </a>
+                href="{{url('admin/datakgb/2021/2025')}}" data-bs-toggle="dropdown" aria-expanded="false"> Pilih Rentang Tahun </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list pb-0"
                     aria-labelledby="messageDropdown">
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item preview-item">
+                    <a class="dropdown-item preview-item" href="{{url('/admin/datakgb?startdate=2021-01-01&enddate=2025-12-31')}}">
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">2021-2025</p>
                         </div>
                     </a>
-                    <a class="dropdown-item preview-item">
+                    <a class="dropdown-item preview-item" href="{{url('/admin/datakgb?startdate=2026-01-01&enddate=2030-12-31')}}">
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">2026-2030</p>
                         </div>
                     </a>
-                    <a class="dropdown-item preview-item">
+                    <a class="dropdown-item preview-item" href="{{url('/admin/datakgb?startdate=2031-01-01&enddate=2035-12-31')}}">
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">2031-2035</p>
                         </div>
                     </a>
-                    <a class="dropdown-item preview-item">
+                    <a class="dropdown-item preview-item" href="{{url('/admin/datakgb?startdate=2036-01-01&enddate=2040-12-31')}}">
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">2036-2040</p>
                         </div>
                     </a>
-                    <a class="dropdown-item preview-item">
+                    <a class="dropdown-item preview-item" href="{{url('/admin/datakgb?startdate=2041-01-01&enddate=2045-12-31')}}">
                         <div class="preview-item-content flex-grow py-2">
                             <p class="preview-subject ellipsis font-weight-medium text-dark">2041-2045</p>
+                        </div>
+                    </a>
+                    <a class="dropdown-item preview-item" href="{{url('/admin/datakgb?startdate=2046-01-01&enddate=2050-12-31')}}">
+                        <div class="preview-item-content flex-grow py-2">
+                            <p class="preview-subject ellipsis font-weight-medium text-dark">2046-2050</p>
                         </div>
                     </a>
                 </div>

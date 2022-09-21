@@ -5,7 +5,7 @@
 
 <body>
     <div class="container-scroller">
-        @include('components.navbarprintcuti')
+        @include('components.navbartahunkp')
         <div class="container-fluid page-body-wrapper">
             <div class="theme-setting-wrapper">
                 <div id="settings-trigger"><i class="ti-settings"></i></div>
@@ -33,6 +33,7 @@
             @include('components.sidenavbar')
 
             <div class="main-panel">
+
                 @yield('content')
                 @include('components.footer')
             </div>
@@ -40,31 +41,23 @@
     </div>
 
     <script src="{{ asset('template') }}/vendors/js/vendor.bundle.base.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    {{-- <script>
-    $('.delete-confirm').on('click', function (event) {
-        event.preventDefault();
-        const url = $(this).attr('action');
-        swal({
-            title: 'Apakah anda yakin ingin menghapus data ini?',
-            text: 'Catatan ini dan detailnya akan dihapus secara permanen!',
-            icon: 'warning',
-            buttons: ["Batal", "Hapus"],
-        }).then(function(value) {
-            if (value) {
-                window.location.href = url;
-            }
-        });
-    });
-    </script> --}}
-    
     <script src="{{ asset('template') }}/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
     <script src="{{ asset('template') }}/js/off-canvas.js"></script>
     <script src="{{ asset('template') }}/js/hoverable-collapse.js"></script>
     <script src="{{ asset('template') }}/js/template.js"></script>
     <script src="{{ asset('template') }}/js/settings.js"></script>
     <script src="{{ asset('template') }}/js/todolist.js"></script>
-    
+    {{-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script> --}}
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
     @include('sweetalert::alert');
 </body>
 

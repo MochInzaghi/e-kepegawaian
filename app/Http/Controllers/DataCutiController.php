@@ -19,11 +19,13 @@ class DataCutiController extends Controller
     public function index(Request $request)
     {
         if ($request->has('cari')) {
+            $bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']; 
             $data_cuti = \App\Models\DataCuti::where('namapegawai', 'LIKE', '%' . $request->cari . '%')->get();
         } else {
+            $bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']; 
             $data_cuti = \App\Models\DataCuti::all();
         }
-        return view('tabel.tabeldatacuti', compact('data_cuti'));
+        return view('tabel.tabeldatacuti', compact('data_cuti', 'bulan'));
     }
 
     public function create()
@@ -110,12 +112,29 @@ class DataCutiController extends Controller
     }
 
     public function print(Request $request){
+        $namabulan = [
+            'empty' => 0, 
+            '01' => 'Januari', 
+            '02' =>'Februari', 
+            '03' =>'Maret', 
+            '04' =>'April', 
+            '05' =>'Mei', 
+            '06' =>'Juni', 
+            '07' =>'Juli', 
+            '08' =>'Agustus', 
+            '09' =>'September', 
+            '10' =>'Oktober', 
+            '11' =>'November', 
+            '12' =>'Desember'
+        ];
+        $datebulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
         if ($request->input('bulan') != '1' && $request->input('tahun') != '1') {
-            $bulan = $request->input('bulan');
+            $inputbulan = $request->input('bulan');
+            $bulan = $namabulan[$inputbulan];
             $tahun = $request->input('tahun');
-            $data_cuti = DataCuti::whereMonth('updated_at', $bulan)->whereYear('updated_at', $tahun)->get();
+            $data_cuti = DataCuti::whereMonth('updated_at', $inputbulan)->whereYear('updated_at', $tahun)->get();
            
-            return view('laporan.datacuti', compact('data_cuti', 'bulan', 'tahun'));
+            return view('laporan.datacuti', compact('data_cuti', 'bulan', 'tahun' , 'datebulan'));
         }else{
             Alert::error('Not Found', 'Data Cuti Tidak Ditemukan');
             return view('errors.404');

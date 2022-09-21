@@ -41,7 +41,7 @@
 
     <script src="{{ asset('template') }}/vendors/js/vendor.bundle.base.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script>
+    {{-- <script>
     $('.delete-confirm').on('click', function (event) {
         event.preventDefault();
         const url = $(this).attr('action');
@@ -56,7 +56,7 @@
             }
         });
     });
-    </script>
+    </script> --}}
     <script src="{{ asset('template') }}/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
     <script src="{{ asset('template') }}/js/off-canvas.js"></script>
     <script src="{{ asset('template') }}/js/hoverable-collapse.js"></script>

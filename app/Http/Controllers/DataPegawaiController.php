@@ -20,11 +20,13 @@ class DataPegawaiController extends Controller
     public function index(Request $request)
     {
         if ($request->has('cari')) {
+            $bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']; 
             $data_pegawai = \App\Models\DataPegawai::where('namapegawai', 'LIKE', '%' . $request->cari . '%')->get();
         } else {
+            $bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']; 
             $data_pegawai = \App\Models\DataPegawai::all();
         }
-        return view('tabel.tabeldatapegawai', ['data_pegawai' => $data_pegawai]);
+        return view('tabel.tabeldatapegawai', ['data_pegawai' => $data_pegawai], ['bulan' => $bulan]);
     }
 
     public function create()
@@ -37,12 +39,12 @@ class DataPegawaiController extends Controller
         try {
             $validator = Validator::make($request->all(), [
                 'namapegawai' => 'required',
-                'nip' => 'required|numeric|digits:18',
+                'nip' => 'required',
                 'ttl' => 'required',
                 'pangkat' => 'required',
                 'jabatan' => 'required',
                 'jenjang' => 'required',
-                'notelp' => 'required|numeric|digits:13',
+                'notelp' => 'required',
                 'kgb' => 'required',
                 'kp' => 'required',
                 'gajipokok' => 'required',
@@ -56,7 +58,7 @@ class DataPegawaiController extends Controller
 
             DataPegawai::create($validator->validate());
 
-            return redirect('admin/datapegawai')->with('success', 'Data Pegawai Berhasil di Tambahkan');
+            return redirect('admin/datapegawai-index')->with('success', 'Data Pegawai Berhasil di Tambahkan');
         } catch (Exception $e) {
             // dd($e);
             Alert::error('Gagal', 'Gagal Menambahkan Data Pegawai');
@@ -81,15 +83,16 @@ class DataPegawaiController extends Controller
                 'pangkat' => 'required',
                 'jabatan' => 'required',
                 'jenjang' => 'required',
-                'notelp' => 'required|numeric|digits:13',
+                'notelp' => 'required|numeric|digits:12',
                 'kgb' => 'required',
                 'kp' => 'required',
                 'gajipokok' => 'required',
                 'keterangan' => 'required',
             ]);
-            $dataPegawai->update($validator->validate());
+            // dd($validator);
+            $dataPegawai->update(($validator->validate()));
 
-            return redirect('admin/datapegawai')->with('success', 'Data Pegawai Berhasil di Update');
+            return redirect('admin/datapegawai-index')->with('success', 'Data Pegawai Berhasil di Update');
         } catch (Exception $e) {
             // dd($e);
             Alert::error('Gagal', 'Gagal Mengupdate Data Pegawai');

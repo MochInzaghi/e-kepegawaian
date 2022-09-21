@@ -20,6 +20,9 @@
                     Nama Pegawai
                   </th>
                   <th class = "thratatengah">
+                    NIP
+                  </th>
+                  <th class = "thratatengah">
                     Gelar Tanda Kehormatan<br>10 Tahun
                   </th>
                   <th class = "thratatengah">
@@ -35,12 +38,35 @@
               </thead>
               <tbody>
                 @foreach ($data_penghargaan as $penghargaan)
+                @php
+                  $bulan10 = $bulan[(int)date('n', strtotime($penghargaan->pegawaiPenghargaan->thn_10 ?? ''))-1];
+                  $date10 = date('j', strtotime($penghargaan->pegawaiPenghargaan->thn_10 ?? '')). " " . $bulan10 . " " . date('Y', strtotime($penghargaan->pegawaiPenghargaan->thn_10 ?? ''));
+                  $bulan20 = $bulan[(int)date('n', strtotime($penghargaan->pegawaiPenghargaan->thn_20 ?? ''))-1];
+                  $date20 = date('j', strtotime($penghargaan->pegawaiPenghargaan->thn_20 ?? '')). " " . $bulan20 . " " . date('Y', strtotime($penghargaan->pegawaiPenghargaan->thn_20 ?? ''));
+                  $bulan30 = $bulan[(int)date('n', strtotime($penghargaan->pegawaiPenghargaan->thn_30 ?? ''))-1];
+                  $date30 = date('j', strtotime($penghargaan->pegawaiPenghargaan->thn_30 ?? '')). " " . $bulan30 . " " . date('Y', strtotime($penghargaan->pegawaiPenghargaan->thn_30 ?? ''));
+                @endphp
                 <tr>
                     <th class = "thratatengah" scope="row">{{ $penghargaan->id }}</th>
                     <td>{{ $penghargaan->namapegawai }}</td>
-                    <td class = "thratatengah">{{ date('d F Y', strtotime($penghargaan->pegawaiPenghargaan->thn_10) ?? '' }}</td>
-                    <td class = "thratatengah">{{ date('d F Y', strtotime($penghargaan->pegawaiPenghargaan->thn_20) ?? '' }}</td>
-                    <td class = "thratatengah">{{ date('d F Y', strtotime($penghargaan->pegawaiPenghargaan->thn_30) ?? '' }}</td>
+                    <td>{{ $penghargaan->nip }}</td>
+                    @if(empty($penghargaan->pegawaiPenghargaan->thn_10) and empty($penghargaan->pegawaiPenghargaan->thn_20) and empty($penghargaan->pegawaiPenghargaan->thn_30) )
+                      <td class = "thratatengah">{{ $penghargaan->pegawaiPenghargaan->thn_10 ?? '' }}</td>
+                      <td class = "thratatengah">{{ $penghargaan->pegawaiPenghargaan->thn_20 ?? '' }}</td>
+                      <td class = "thratatengah">{{ $penghargaan->pegawaiPenghargaan->thn_30 ?? '' }}</td>
+                    @elseif(empty($penghargaan->pegawaiPenghargaan->thn_20) and empty($penghargaan->pegawaiPenghargaan->thn_30))
+                      <td class = "thratatengah">{{ $date10 ?? '' }}</td>
+                      <td class = "thratatengah">{{ $penghargaan->pegawaiPenghargaan->thn_20 ?? '' }}</td>
+                      <td class = "thratatengah">{{ $penghargaan->pegawaiPenghargaan->thn_30 ?? '' }}</td>
+                    @elseif(empty($penghargaan->pegawaiPenghargaan->thn_30))
+                      <td class = "thratatengah">{{ $date10 }}</td>
+                      <td class = "thratatengah">{{ $date20 }}</td>
+                      <td class = "thratatengah">{{ $penghargaan->pegawaiPenghargaan->thn_30 ?? '' }}</td>
+                    @else
+                    <td class = "thratatengah">{{ $date10 }}</td>
+                    <td class = "thratatengah">{{ $date20 }}</td>
+                    <td class = "thratatengah">{{ $date30 }}</td>
+                    @endif
                     <td>
                       <a href="datapenghargaan/{{ $penghargaan->id }}/edit" class="btn btn-primary btn sm inline">Edit</a>
                     </td>

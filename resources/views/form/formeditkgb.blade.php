@@ -279,78 +279,63 @@
                             <span class="menu-title">Dashboard</span>
                         </a>
                     </li>
-                    <li class="nav-item nav-category">Forms and Datas</li>
+                <li class="nav-item nav-category">Forms and Menu</li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#form-elements" aria-expanded="false"
-                            aria-controls="form-elements">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
                             <i class="menu-icon mdi mdi-card-text-outline"></i>
                             <span class="menu-title">Form</span>
                             <i class="menu-arrow"></i>
                         </a>
                         <div class="collapse" id="form-elements">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"><a class="nav-link" href="{{ route('create.pegawai') }}">Form
-                                        Data Pegawai</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{route('create.pegawai')}}">Form Data Pegawai</a></li>
                             </ul>
                         </div>
                         <div class="collapse" id="form-elements">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"><a class="nav-link" href="{{ route('create.cuti') }}">Form
-                                        Data
-                                        Cuti</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{route('create.cuti')}}">Form Data Cuti</a></li>
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#tables" aria-expanded="false"
-                            aria-controls="tables">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
                             <i class="menu-icon mdi mdi-menu"></i>
                             <span class="menu-title">Menu</span>
                             <i class="menu-arrow"></i>
                         </a>
                         <div class="collapse" id="tables">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link"
-                                        href="{{ route('admin.pegawai') }}">Kelola
-                                        Data Pegawai</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{route('admin.pegawai')}}">Kelola Data Pegawai</a></li>
                             </ul>
                         </div>
                         <div class="collapse" id="tables">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="{{ route('admin.kgb') }}">Kelola
-                                        Data KGB</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{url('/admin/datakgb?startdate=2021-01-01&enddate=2025-12-31')}}">Kelola Data KGB</a></li>
                             </ul>
                         </div>
                         <div class="collapse" id="tables">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="{{ route('admin.kp') }}">Kelola
-                                        Data
-                                        KP</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{url('/admin/datakp?startdate=2021-01-01&enddate=2025-12-31')}}">Kelola Data KP</a></li>
                             </ul>
                         </div>
                         <div class="collapse" id="tables">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link"
-                                        href="{{ route('admin.penghargaan') }}">Kelola Data Penghargaan</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{route('admin.penghargaan')}}">Kelola Data Penghargaan</a></li>
                             </ul>
                         </div>
                         <div class="collapse" id="tables">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="{{ route('admin.duk') }}">Kelola
-                                        Data DUK</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{route('admin.duk')}}">Kelola Data DUK</a></li>
                             </ul>
                         </div>
                         <div class="collapse" id="tables">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link"
-                                        href="{{ route('admin.pensiun') }}">Kelola
-                                        Data Pensiun</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{route('admin.pensiun')}}">Kelola Data Pensiun</a></li>
                             </ul>
                         </div>
                         <div class="collapse" id="tables">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="{{ route('admin.cuti') }}">Kelola
-                                        Data Cuti</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{route('admin.cuti')}}">Kelola Data Cuti</a></li>
                             </ul>
                         </div>
                     </li>
@@ -368,9 +353,10 @@
                                         Silhkan Edit Data Kenaikan Gaji Berkala
                                     </p>
                                     @include('sweetalert::alert')
-                                    <form class="forms-sample" action="/admin/datakgb/update" method="POST"
+                                    <form class="forms-sample" action="/admin/datakgb/{{$datakgb->id}}/update" method="POST"
                                         enctype="multipart/form-data">
                                         {{ csrf_field() }}
+                                        @method('patch')
                                         <input type="hidden" name="data_pegawai_id"
                                             value="{{ $datapegawai->id }}">
                                         <div class="form-group">
@@ -388,62 +374,69 @@
                                         <div class="form-group">
                                             <label for="recipient-name" class="col-form-label">Tanggal Lahir</label>
                                             <input type="date" name="tgl_lahir" class="form-control"
-                                                id="recipient-name" value="{{ $datapegawai->pegawaiKgb[0]->tgl_lahir }}">
+                                                id="recipient-name" value="{{ $datakgb->tgl_lahir }}">
                                         </div>
                                         <div class="form-group">
                                             <label for="recipient-name" class="col-form-label">Oleh Pejabat</label>
                                             <input type="text" name="oleh_pejabat" class="form-control"
                                                 id="recipient-name"
-                                                value="{{ $datapegawai->pegawaiKgb[0]->oleh_pejabat ?? '' }}">
+                                                value="{{ $datakgb->oleh_pejabat ?? '' }}">
                                         </div>
                                         <div class="form-group">
                                             <label for="recipient-name" class="col-form-label">Tanggal </label>
                                             <input type="date" name="tgl" class="form-control"
                                                 id="recipient-name"
-                                                value="{{ $datapegawai->pegawaiKgb[0]->tgl ?? '' }}">
+                                                value="{{ $datakgb->tgl ?? '' }}">
                                         </div>
                                         <div class="form-group">
                                             <label for="recipient-name" class="col-form-label">Tanggal Mulai
                                                 Berlakunya Gaji </label>
                                             <input type="date" name="tgl_gaji" class="form-control"
                                                 id="recipient-name"
-                                                value="{{ $datapegawai->pegawaiKgb[0]->tgl_gaji ?? '' }}">
+                                                value="{{ $datakgb->tgl_gaji ?? '' }}">
                                         </div>
                                         <div class="form-group">
                                             <label for="recipient-name" class="col-form-label">Masa Kerja Golongan
                                                 Pada Tanggal Tersebut </label>
                                             <input type="text" name="masakerja_tgl" class="form-control"
                                                 id="recipient-name"
-                                                value="{{ $datapegawai->pegawaiKgb[0]->masakerja_tgl ?? '' }}">
+                                                value="{{ $datakgb->masakerja_tgl ?? '' }}">
                                         </div>
                                         <div class="form-group">
                                             <label for="recipient-name" class="col-form-label">Gaji Pokok Baru
                                             </label>
                                             <input type="text" name="gajibaru" class="form-control"
                                                 id="recipient-name"
-                                                value="{{ $datapegawai->pegawaiKgb[0]->gajibaru ?? '' }}">
+                                                value="{{ $datakgb->gajibaru ?? '' }}">
                                         </div>
                                         <div class="form-group">
                                             <label for="recipient-name" class="col-form-label">Berdasarkan Masa Kerja
                                             </label>
                                             <input type="text" name="masakerja" class="form-control"
                                                 id="recipient-name"
-                                                value="{{ $datapegawai->pegawaiKgb[0]->masakerja ?? '' }}">
+                                                value="{{ $datakgb->masakerja ?? '' }}">
                                         </div>
                                         <div class="form-group">
                                             <label for="recipient-name" class="col-form-label">Dalam Golongan Ruang
                                             </label>
                                             <input type="text" name="gol_ruang" class="form-control"
                                                 id="recipient-name"
-                                                value="{{ $datapegawai->pegawaiKgb[0]->gol_ruang ?? '' }}">
+                                                value="{{ $datakgb->gol_ruang ?? '' }}">
                                         </div>
                                         <div class="form-group">
                                             <label for="recipient-name" class="col-form-label">Mulai Tanggal </label>
                                             <input type="date" name="mulai_tgl" class="form-control"
                                                 id="recipient-name"
-                                                value="{{ $datapegawai->pegawaiKgb[0]->mulai_tgl ?? '' }}">
+                                                value="{{ $datakgb->mulai_tgl ?? '' }}">
                                         </div>
-                                        <button type="submit" class="btn btn-primary me-2">Submit</button>
+                                        <div class="form-group">
+                                            <label for="recipient-name" class="col-form-label">Tahun Kenaikan
+                                            </label>
+                                            <input type="text" name="tahun" class="form-control"
+                                                id="recipient-name"
+                                                value="{{ $datakgb->tahun ?? '' }}">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary me-2">Update</button>
                                     </form>
                                 </div>
                             </div>

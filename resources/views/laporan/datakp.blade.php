@@ -118,13 +118,13 @@
                                             <td style="font-size: 20px; font-family: Arial" scope="row">1.</td>
                                             <td style="text-align: left; font-size: 20px; font-family: Arial">Nama</td>
                                             <td style="margin-left: 90px; font-size: 20px; font-family: Arial">:</td>
-                                            <td style="text-align: left; font-size: 20px; font-family: Arial">{{  $datakgb->getPegawai->namapegawai  }}</td>
+                                            <td style="text-align: left; font-size: 20px; font-family: Arial">{{  $datapegawai->namapegawai  }}</td>
                                         </tr>
                                         <tr class="d-flex" style="margin-top: 5px;">
                                             <td style="font-size: 20px; font-family: Arial" scope="row">2.</td>
                                             <td style="text-align: left; font-size: 20px; font-family: Arial">NIP</td>
                                             <td style="margin-left: 110px; font-size: 20px; font-family: Arial">:</td>
-                                            <td style="text-align: left; font-size: 20px; font-family: Arial">{{  $datakgb->getPegawai->nip  }}</td>
+                                            <td style="text-align: left; font-size: 20px; font-family: Arial">{{  $datapegawai->nip  }}</td>
                                         </tr>
                                         {{-- <tr class="d-flex">
                                             <td class="font" scope="row">3.</td>
@@ -136,13 +136,13 @@
                                             <td style="font-size: 20px; font-family: Arial" scope="row">3.</td>
                                             <td style="text-align: left; font-size: 20px; font-family: Arial">Pangkat / Gol</td>
                                             <td style="margin-left: 23px; font-size: 20px; font-family: Arial">:</td>
-                                            <td style="text-align: left; font-size: 20px; font-family: Arial">{{  $datakgb->getPegawai->pangkat  }}</td>
+                                            <td style="text-align: left; font-size: 20px; font-family: Arial">{{  $datapegawai->pangkat  }}</td>
                                         </tr>
                                         <tr class="d-flex" style="margin-top: 5px;">
                                             <td style="font-size: 20px; font-family: Arial" scope="row">5.</td>
                                             <td style="text-align: left; font-size: 20px; font-family: Arial">Jabatan</td>
                                             <td style="margin-left: 72px; font-size: 20px; font-family: Arial">:</td>
-                                            <td style="text-align: left; font-size: 20px; font-family: Arial">{{  $datakgb->getPegawai->jabatan  }}</td>
+                                            <td style="text-align: left; font-size: 20px; font-family: Arial">{{  $datapegawai->jabatan  }}</td>
                                         </tr>
                                         {{-- <tr class="d-flex">
                                             <td class="font" scope="row">6.</td>
@@ -166,61 +166,61 @@
                                             <td style="font-size: 20px; font-family: Arial" scope="row">1.</td>
                                             <td style="text-align: left; font-size: 20px; font-family: Arial">FC SK Pengangkatan dalam Jabatan Struktural</td>
                                             <td style="margin-left: 380px; font-size: 20px; font-family: Arial">:</td>
-                                            {{-- <td style="text-align: left; font-size: 20px; font-family: Arial">{{  $datakp->skp_struktural  }}</td> --}}
+                                            <td style="text-align: left; font-size: 20px; font-family: Arial">{{  $datakp->skp_struktural  }}</td>
                                         </tr>
                                         <tr class="d-flex" style="margin-top: 5px;">
                                             <td style="font-size: 20px; font-family: Arial" scope="row">2.</td>
                                             <td style="text-align: left; font-size: 20px; font-family: Arial">FC Surat Pernyataan Melaksanakan Tugas</td>
                                             <td style="margin-left: 420px; font-size: 20px; font-family: Arial">:</td>
-                                            {{-- <td style="text-align: left; font-size: 20px; font-family: Arial">{{ $datakp->sp_tugas  }}</td> --}}
+                                            <td style="text-align: left; font-size: 20px; font-family: Arial">{{ $datakp->sp_tugas  }}</td>
                                         </tr>
                                         <tr class="d-flex" style="margin-top: 5px;">
                                             <td style="font-size: 20px; font-family: Arial" scope="row">3.</td>
                                             <td style="text-align: left; font-size: 20px; font-family: Arial">FC Surat Pernyataan Pelantikan </td>
                                             <td style="margin-left: 515px; font-size: 20px; font-family: Arial">:</td>
-                                            {{-- <td style="text-align: left; font-size: 20px; font-family: Arial">{{  $datakp->sp_pelantikan  }}</td> --}}
+                                            <td style="text-align: left; font-size: 20px; font-family: Arial">{{  $datakp->sp_pelantikan  }}</td>
                                         </tr>
                                         <tr class="d-flex" style="margin-top: 5px;">
                                             <td style="font-size: 20px; font-family: Arial" scope="row">4.</td>
                                             <td style="text-align: left; font-size: 20px; font-family: Arial">FC Berita Acara Pengangkatan Sumpah</td>
                                             <td style="margin-left: 445px; font-size: 20px; font-family: Arial">:</td>
-                                            {{-- <td style="text-align: left; font-size: 20px; font-family: Arial">{{  $datakp->ba_pengangkatansumpah  }}</td> --}}
+                                            <td style="text-align: left; font-size: 20px; font-family: Arial">{{  $datakp->ba_pengangkatansumpah  }}</td>
                                         </tr>
                                         <tr class="d-flex" style="margin-top: 5px;">
                                             <td style="font-size: 20px; font-family: Arial" scope="row">5.</td>
                                             <td style="text-align: left; font-size: 20px; font-family: Arial">FC Ijazah Terakhir Legalisir</td>
                                             <td style="margin-left: 560px; font-size: 20px; font-family: Arial">:</td>
-                                            {{-- <td style="text-align: left; font-size: 20px; font-family: Arial">{{   $datakp->ijazah_terakhir  }}</td> --}}
+                                            <td style="text-align: left; font-size: 20px; font-family: Arial">{{   $datakp->ijazah_terakhir  }}</td>
                                         </tr>
                                         <tr class="d-flex" style="margin-top: 5px;">
                                             <td style="font-size: 20px; font-family: Arial" scope="row">6.</td>
                                             <td style="text-align: left; font-size: 20px; font-family: Arial">FC Surat Tanda Lulus Diklatpim Tingkat III atau STLUD Tingkat II atau memiliki ijazah S-2</td>
                                             <td style="margin-left: 10px; font-size: 20px; font-family: Arial">:</td>
-                                            {{-- <td style="text-align: left; font-size: 20px; font-family: Arial">{{  $datakp->surat_tandalulus  }}</td> --}}
+                                            <td style="text-align: left; font-size: 20px; font-family: Arial">{{  $datakp->surat_tandalulus  }}</td>
                                         </tr>
                                         <tr class="d-flex" style="margin-top: 5px;">
                                             <td style="font-size: 20px; font-family: Arial" scope="row">7.</td>
                                             <td style="text-align: left; font-size: 20px; font-family: Arial">FC SKP Tahun 2020</td>
                                             <td style="margin-left: 620px; font-size: 20px; font-family: Arial">:</td>
-                                            {{-- <td style="text-align: left; font-size: 20px; font-family: Arial">{{  $datakp->skp_2020  }}</td> --}}
+                                            <td style="text-align: left; font-size: 20px; font-family: Arial">{{  $datakp->skp_2020  }}</td>
                                         </tr>
                                         <tr class="d-flex" style="margin-top: 5px;">
                                             <td style="font-size: 20px; font-family: Arial" scope="row">8.</td>
                                             <td style="text-align: left; font-size: 20px; font-family: Arial">FC SKP Tahun 2021 </td>
                                             <td style="margin-left: 620px; font-size: 20px; font-family: Arial">:</td>
-                                            {{-- <td style="text-align: left; font-size: 20px; font-family: Arial">{{  $datakp->skp_2021  }}</td> --}}
+                                            <td style="text-align: left; font-size: 20px; font-family: Arial">{{  $datakp->skp_2021  }}</td>
                                         </tr>
                                         <tr class="d-flex" style="margin-top: 5px;">
                                             <td style="font-size: 20px; font-family: Arial" scope="row">9.</td>
                                             <td style="text-align: left; font-size: 20px; font-family: Arial">FC SKP Jabatan </td>
                                             <td style="margin-left: 652px; font-size: 20px; font-family: Arial">:</td>
-                                            {{-- <td style="text-align: left; font-size: 20px; font-family: Arial">{{  $datakp->skp_jabatan  }}</td> --}}
+                                            <td style="text-align: left; font-size: 20px; font-family: Arial">{{  $datakp->skp_jabatan  }}</td>
                                         </tr>
                                         <tr class="d-flex" style="margin-top: 5px;">
                                             <td style="font-size: 20px; font-family: Arial" scope="row">10.</td>
                                             <td style="text-align: left; font-size: 20px; font-family: Arial">FC Surat Pernyataan Pengangkatan yang lama </td>
                                             <td style="margin-left: 370px; font-size: 20px; font-family: Arial">:</td>
-                                            {{-- <td style="text-align: left; font-size: 20px; font-family: Arial">{{  $datakp->sp_pengangkatanlama   }}</td> --}}
+                                            <td style="text-align: left; font-size: 20px; font-family: Arial">{{  $datakp->sp_pengangkatanlama   }}</td>
                                         </tr>
                                         {{-- <tr class="d-flex">
                                             <td class="font" scope="row">a.</td>

@@ -10,9 +10,14 @@ use Carbon\CarbonPeriod;
 use DateInterval;
 use DatePeriod;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Facades\Storage;
 use Illuminate\Validation\ValidationException;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Validation\Validator as ValidationValidator;
+use Nette\Utils\Validators;
+use Validator;
+use function PHPUnit\Framework\isEmpty;
 
 class DataKpController extends Controller
 {
@@ -27,10 +32,13 @@ class DataKpController extends Controller
         // $test = Carbon::createFromFormat('Y-m-d', $datapegawai1->kgb);
         // dd($test->addYear(2));
 
-        $start_date = date_create("2021-01-01");
-        $end_date   = date_create("2025-12-31");
+        $start = $request->input('startdate'); 
+        $end = $request->input('enddate');
+        $start_date = date_create($start);            
+        $end_date   = date_create($end);
         $interval = new DateInterval('P1Y');
         $daterange = new DatePeriod($start_date, $interval, $end_date);
+
 
         $dates = [];
         foreach ($daterange as $date) {
@@ -38,38 +46,57 @@ class DataKpController extends Controller
         }
 
         if ($request->has('cari')) {
+            $bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
             $datapegawai = DataPegawai::where('namapegawai', 'LIKE', '%' . $request->cari . '%')->get();
-            $datakp = DataKp::all();
-            $kpPegawai = [];
+            $kpPegawai['year'] = [];
+            $kpPegawai['idKP'] = [];
             foreach ($datapegawai as $dp) {
-                $varTemp = ((int) date_format(date_create($dp->kp), 'Y') + 4);
-                $kpPegawai[$dp->id] = array();
+                $varTemp = ((int) date_format(date_create($dp->kp), 'Y'));
+                do{
+                    $varTemp+=4;
+                }while($varTemp < $dates[0]);
+                // dump('id: '.$dp->id." kgb: ".$dp->kgb);
                 foreach ($dates as $date) {
                     if($varTemp == (int) $date){
-                        $kpPegawai[$dp->id][] = $varTemp;
+                        $checkDataKP = DataKp::where([
+                            ['data_pegawai_id', '=', $dp->id],
+                            ['tahun', '=', $varTemp]
+                        ])->first();
+                        $kpPegawai['year'][$dp->id][] = $varTemp;
+                        $kpPegawai['idKP'][$dp->id][$varTemp] = $checkDataKP;
                         $varTemp += 4;
                     }
                 }
             }
-            return view('tabel.tabeldatakp2021-2025', compact('dates', 'datapegawai', 'datakp', 'kpPegawai'));
+            return view('tabel.tabeldatakp2021-2025', compact('dates', 'datapegawai', 'kpPegawai', 'bulan'));
         } else {
+            $bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
             $datapegawai = DataPegawai::with('pegawaiKp')->get();
-            $datakp = DataKp::all();
-            $kpPegawai = [];
+            // $datakgb = DataKgb::all();
+            $kpPegawai['year'] = [];
+            $kpPegawai['idKP'] = [];
             foreach ($datapegawai as $dp) {
-                $varTemp = ((int) date_format(date_create($dp->kp), 'Y') + 4);
-                $kpPegawai[$dp->id] = array();
+                $varTemp = ((int) date_format(date_create($dp->kp), 'Y'));
+                do{
+                    $varTemp+=4;
+                }while($varTemp < $dates[0]);
+                // dump('id: '.$dp->id." kgb: ".$dp->kgb);
                 foreach ($dates as $date) {
                     if($varTemp == (int) $date){
-                        $kpPegawai[$dp->id][] = $varTemp;
+                        $checkDataKP = DataKp::where([
+                            ['data_pegawai_id', '=', $dp->id],
+                            ['tahun', '=', $varTemp]
+                        ])->first();
+                        $kpPegawai['year'][$dp->id][] = $varTemp;
+                        $kpPegawai['idKP'][$dp->id][$varTemp] = $checkDataKP;
                         $varTemp += 4;
                     }
                 }
             }
-            return view('tabel.tabeldatakp2021-2025', compact('dates', 'datapegawai', 'datakp', 'kpPegawai'));
-        }
 
-        return view('tabel.tabeldatakp2021-2025', compact('dates', 'datapegawai', 'datakp'));
+            // dump($kgbPegawai);
+            return view('tabel.tabeldatakp2021-2025', compact('dates', 'datapegawai', 'kpPegawai', 'bulan'));
+        }
     }
 
     /**
@@ -77,9 +104,12 @@ class DataKpController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        $datapegawai = DataPegawai::with('pegawaiKp')->find($id);
+        $datakp = $datapegawai->pegawaiKp;
+        // return $datapegawai;
+        return view('form.forminsertkp', compact('datapegawai', 'datakp'));
     }
 
     /**
@@ -90,7 +120,38 @@ class DataKpController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $this->validate($request, [
+                'data_pegawai_id' => 'required',
+                'skp_struktural' => 'file|mimes:pdf|max:2048',
+                'sp_tugas' =>  'file|mimes:pdf|max:2048',
+                'sp_pelantikan' =>  'file|mimes:pdf|max:2048',
+                'ba_pengangkatansumpah' =>  'file|mimes:pdf|max:2048',
+                'ijazah_terakhir' =>  'file|mimes:pdf|max:2048',
+                'surat_tandalulus' =>  'file|mimes:pdf|max:2048',
+                'skp_2020' =>  'file|mimes:pdf|max:2048',
+                'skp_2021' =>  'file|mimes:pdf|max:2048',
+                'skp_jabatan' =>  'file|mimes:pdf|max:2048',
+                'sp_pengangkatanlama' =>  'file|mimes:pdf|max:2048',
+                'tahun' => 'required',
+            ]);
+
+            // if ($validator->fails()) {
+            //     Alert::error('Gagal', 'Gagal Menambahkan Data Pegawai');
+            //     return back();
+            // }
+            foreach ($request->file() as $key => $value) {
+                // if ($request->hasFile($key)) {
+                $this->storeFile($request->file($key), $request->data_pegawai_id, $key, $request->tahun);
+                // }
+            }
+            // dd($validator);
+            return Redirect::to('/admin/datakp?startdate=2021-01-01&enddate=2025-12-31')->with('success', 'Data KP Berhasil di Tambahkan');
+        } catch (Exception $e) {
+            // dd($e);
+            Alert::error('Gagal', 'Gagal Menambahkan Data KP');
+            return back();
+        }
     }
 
     /**
@@ -112,21 +173,36 @@ class DataKpController extends Controller
      */
     public function edit($id)
     {
-        $data_pegawai = DataPegawai::with('pegawaiKp')->find($id);
-        $datakp = $data_pegawai->pegawaiKp;
+        $datakp = DataKp::find($id);
+        $datapegawai = $datakp->getPegawai;
         // return $datapegawai;
-        return view('form.formeditkp', compact('data_pegawai'));
+        return view('form.formeditkp', compact('datapegawai','datakp'));
     }
 
-    public function storeFile($fileStore, $user_id, $requestCol)
+    public function storeFile($fileStore, $user_id, $requestCol, $tahun)
     {
         $file = $fileStore;
         $extension = $file->getClientOriginalExtension();
-        $filename = $requestCol . '.' . $extension;
-        $file->storeAs("public/" . $user_id, $filename);
+        $filename = $requestCol . '_' . $tahun . '.' . $extension;
+        $file->storeAs("public/files" . " - " . $user_id . "/" . $tahun, $filename);
         DataKp::create([
             'data_pegawai_id' => $user_id,
             $requestCol => $filename,
+            'tahun' => $tahun,
+        ]);
+        return $filename;
+    }
+
+    public function updateFile($dataKp, $fileStore, $user_id, $requestCol, $tahun)
+    {
+        $file = $fileStore;
+        $extension = $file->getClientOriginalExtension();
+        $filename = $requestCol . '_' . $tahun . '.' . $extension;
+        $file->storeAs("public/files" . " - " . $user_id . "/" . $tahun, $filename);
+        $dataKp->update([
+            'data_pegawai_id' => $user_id,
+            $requestCol => $filename,
+            'tahun' => $tahun,
         ]);
         return $filename;
     }
@@ -140,9 +216,14 @@ class DataKpController extends Controller
      */
     public function update(Request $request, DataKp $dataKp)
     {
-        // dd($request);
+        // if($dataKp->update($request->all())){
+        //     return 'success';
+        // }else{
+        //     return 'failed';
+        // }
         try {
             $this->validate($request, [
+                'data_pegawai_id' => 'required',
                 'skp_struktural' => 'file|mimes:pdf|max:2048',
                 'sp_tugas' =>  'file|mimes:pdf|max:2048',
                 'sp_pelantikan' =>  'file|mimes:pdf|max:2048',
@@ -153,16 +234,19 @@ class DataKpController extends Controller
                 'skp_2021' =>  'file|mimes:pdf|max:2048',
                 'skp_jabatan' =>  'file|mimes:pdf|max:2048',
                 'sp_pengangkatanlama' =>  'file|mimes:pdf|max:2048',
+                'tahun' => 'required',
             ]);
 
             foreach ($request->file() as $key => $value) {
                 // if ($request->hasFile($key)) {
-                $this->storeFile($request->file($key), $request->data_pegawai_id, $key);
+                $this->updateFile($request->dataKp, $request->file($key), $request->data_pegawai_id, $key, $request->tahun);
                 // }
             }
 
-            return redirect('/admin/datakp')->with('success', 'Data KP Berhasil di Update');
-        } catch (ValidationException $e) {
+            // $dataKp->update($validator->validate());
+
+            return Redirect::to('/admin/datakp?startdate=2021-01-01&enddate=2025-12-31')->with('success', 'Data KP Berhasil di Update');
+        } catch (Exception $e) {
             // dd($e);
             Alert::error('Gagal', 'Gagal Mengupdate Data KP');
             return back();
@@ -182,37 +266,32 @@ class DataKpController extends Controller
 
     public function print(Request $request, $id)
     {
-        $datapegawai = DataPegawai::with('pegawaiKp')->find($id);
-        $datakp = $datapegawai->pegawaiKp;
-        if ($datakp->isEmpty()) {
+        $bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+        $datakp = DataKp::find($id);
+        if (empty($datakp)) {
             Alert::error('Not Found', 'Data Kenaikan Pangkat Masih Kosong');
             return view('errors.404');
         }
-        return view('laporan.datakp', compact('datapegawai'));
+        $datapegawai = $datakp->getPegawai;
+        return view('laporan.datakp', compact('datapegawai','datakp', 'bulan'));
     }
 
     public function showModalKp(Request $request, $id)
     {
-        $datapegawai = DataPegawai::with('pegawaiKp')->find($id);
-        $datakp = $datapegawai->pegawaiKp;
-        if ($datakp->isEmpty()) {
-            return response()->json([
-                'message' => 'Data KP tidak ditemukan'
-            ]);
-        }
-        return view('modal.modal-view-kp', compact('datapegawai'));
+        $datakp = DataKp::find($id);
+        // dd($datakgb);
+        $datapegawai = $datakp->getPegawai;
+        return view('modal.modal-view-kp', compact('datapegawai', 'datakp'));
     }
 
-    public function status()
+    public function status($id)
     {
-        $data = DataKp::all();
-        foreach ($data as $d) {
-            if (empty($d)) {
-                $status = 'Belum Lengkap';
-            } else {
-                $status = 'Sudah Lengkap';
-            }
-            return view('tabel.tabeldatakp2021-2025', compact('status'));
-        }
+        $data = DataKp::find($id);
+        return view('tabel.tabeldatakp2021-2025', compact('data'));
+    }
+
+    public function error(){
+        Alert::error('Not Found', 'Data Kenaikan Pangkat Masih Kosong');
+        return view('errors.404');
     }
 }

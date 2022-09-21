@@ -1,4 +1,4 @@
-@extends('layouts.tabellayoutkenaikan')
+@extends('layouts.tabellayoutkgb')
 @section('title', 'Kelola Data KGB')
 @section('kenaikan', 'Gaji Berkala')
 
@@ -23,7 +23,7 @@
                                             NIP
                                         </th>
                                         @foreach ($dates as $tahun)
-                                            <th>
+                                            <th class="thratatengah">
                                                 {{ $tahun }}
                                             </th>
                                         @endforeach
@@ -37,11 +37,10 @@
                                             <td class="thratatengah">{{ $itempegawai->nip }}</td>
                                             @foreach ($dates as $date)
                                                 <td class="thratatengah">
-                                                    @foreach ($kgbPegawai[$itempegawai->id] as $item)
+                                                    @foreach ($kgbPegawai["year"][$itempegawai->id] as $item)
                                                         @if ($item == $date)
-                                                        {{ date('d F ', strtotime($itempegawai->kgb)).$date }}
-                                                            <br><button class="btn btn-info btn sm inline"
-                                                                onclick="showModalKgb({{ $itempegawai->id }})">View</button>
+                                                        {{ date('j', strtotime($itempegawai->kgb)) . " " . $bulan[(int)date('n', strtotime($itempegawai->kgb))-1] . " " .$date }}
+                                                           
                                                             {{-- <button class="btn btn-info btn sm inline" data-toggle="modal"
                                                                 data-target="#view">View</button> --}}
 
@@ -52,11 +51,22 @@
                                                                     class="btn btn-primary btn sm inline"
                                                                     type="submit">Print</button>
                                                             @endforeach --}}
-                                                            <a href="/admin/datakgb/{{ $itempegawai->id }}/edit"
-                                                                class="btn btn-success btn sm inline">Edit</a>
-                                                            <a href="/admin/datakgb/{{ $itempegawai->id }}/print"
-                                                                class="btn btn-primary btn sm inline"
-                                                                type="submit">Print</button>                                                        
+                                                            @if ($kgbPegawai['idKGB'][$itempegawai->id][$item] == null)
+                                                            
+                                                            <br><button class="btn btn-info btn sm inline" data-toggle="modal" data-target="#myModal">View</button>
+                                                            <a href="/admin/datakgb/{{ $itempegawai->id }}/insert"
+                                                                    class="btn btn-success btn sm inline">Insert</a>
+                                                            <a href="/admin/datakgb/error"
+                                                                    class="btn btn-primary btn sm inline"
+                                                                    type="submit">Print</button>   
+                                                            @else
+                                                                <br><button class="btn btn-info btn sm inline"
+                                                                onclick="showModalKgb({{ $kgbPegawai['idKGB'][$itempegawai->id][$item]->getOriginal('id') }})">View</button>
+                                                                <a href="/admin/datakgb/{{ $kgbPegawai['idKGB'][$itempegawai->id][$item]->getOriginal('id') }}/edit"
+                                                                    class="btn btn-success btn sm inline">Edit</a>
+                                                                <a href="/admin/datakgb/{{ $kgbPegawai['idKGB'][$itempegawai->id][$item]->getOriginal('id') }}/print"
+                                                                    class="btn btn-primary btn sm inline">Print</a>
+                                                            @endif                                                     
                                                         @endif
                                                     @endforeach
                                                 </td>
@@ -65,105 +75,25 @@
                                     @endforeach
                                 </tbody>
 
-                                {{-- modal bawaan --}}
-                                {{-- <div class="modal fade" id="view" tabindex="-1" role="dialog"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Detail Data</h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <input type="hidden" name="data_pegawai_id"
-                                                    value="{{ $itempegawai->id }}">
-                                                <div class="form-group">
-                                                    <label for="nama">Nama Pegawai</label>
-                                                    <input type="text" class="form-control" id="nama"
-                                                        name="namapegawai"
-                                                        value="{{ old('namapegawai') ?? $itempegawai->namapegawai }}"
-                                                        disabled>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="nip">NIP</label>
-                                                    <input type="text" class="form-control" id="nip" name="nip"
-                                                        value="{{ old('nip') ?? $itempegawai->nip }}" disabled>
-                                                </div>
-                                                @foreach ($data_view as $data_view)
-                                                    <div class="form-group">
-                                                        <label for="recipient-name" class="col-form-label">Tanggal Lahir
-                                                            :</label>
-                                                        <input type="date" name="tgl_lahir" class="form-control"
-                                                            id="recipient-name"
-                                                            value="{{ old('tgl_lahir') ?? $data_view->tgl_lahir }}"
-                                                            disabled>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="recipient-name" class="col-form-label">Tanggal :</label>
-                                                        <input type="date" name="tgl" class="form-control"
-                                                            id="recipient-name"
-                                                            value="{{ old('tgl') ?? $data_view->tgl }}" disabled>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="recipient-name" class="col-form-label">Tanggal Mulai
-                                                            Berlakunya Gaji :</label>
-                                                        <input type="date" name="tgl_gaji" class="form-control"
-                                                            id="recipient-name"
-                                                            value="{{ old('tgl_gaji') ?? $data_view->tgl_gaji }}"
-                                                            disabled>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="recipient-name" class="col-form-label">Masa Kerja
-                                                            Golongan Pada Tanggal Tersebut :</label>
-                                                        <input type="text" name="masakerja_tgl" class="form-control"
-                                                            id="recipient-name"
-                                                            value="{{ old('masakerja_tgl') ?? $data_view->masakerja_tgl }}"
-                                                            disabled>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="recipient-name" class="col-form-label">Gaji Pokok Baru
-                                                            :</label>
-                                                        <input type="text" name="gajibaru" class="form-control"
-                                                            id="recipient-name"
-                                                            value="{{ old('gajibaru') ?? $data_view->gajibaru }}"
-                                                            disabled>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="recipient-name" class="col-form-label">Berdasarkan Masa
-                                                            Kerja :</label>
-                                                        <input type="text" name="masakerja" class="form-control"
-                                                            id="recipient-name"
-                                                            value="{{ old('masakerja') ?? $data_view->masakerja }}"
-                                                            disabled>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="recipient-name" class="col-form-label">Dalam Golongan
-                                                            Ruang :</label>
-                                                        <input type="text" name="gol_ruang" class="form-control"
-                                                            id="recipient-name"
-                                                            value="{{ old('gol_ruang') ?? $data_view->gol_ruang }}"
-                                                            disabled>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="recipient-name" class="col-form-label">Mulai Tanggal
-                                                            :</label>
-                                                        <input type="date" name="mulai_tgl" class="form-control"
-                                                            id="recipient-name"
-                                                            value="{{ old('mulai_tgl') ?? $data_view->mulai_tgl }}"
-                                                            disabled>
-                                                    </div>
-                                            </div>
-                                            @endforeach
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary"
-                                                    data-dismiss="modal">Close</button>
-                                            </div>
+                                <!-- Modal -->
+                            <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="modalLabel">Detail Data</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
                                         </div>
+                                        <div class="modal-body" id="showBodyModal">
+                                            {{-- dynamic modal --}}
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                          </div>
                                     </div>
-                                </div> --}}
+                                </div>
+                            </div>
 
                                 {{-- modal --}}
                                 <div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -175,7 +105,7 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
-                                            <div class="modal-body" id="showBodyModal">
+                                            <div class="modal-body" id="showViewModal">
                                                 {{-- dynamic modal --}}
                                             </div>
                                             <div class="modal-footer">
@@ -197,16 +127,48 @@
         </div>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
     <script>
         function showModalKgb(id) {
             const url = '/showmodal-kgb/' + id;
             $.get(url, function(data) {
-                $('#showBodyModal').html(data);
+                console.log(data);
+                $('#showViewModal').html(data);
                 $('#showModal').modal('show');
             })
         }
     </script>
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    
+    {{-- <script>
+        //document.getElementById('startdate').on('change', filterDate());
+        $('#startdate').on('change', function () {
+            //console.log($('select#startdate').val());
+            $.ajax({
+                type : "POST",
+                url : '/admin/datakgb/filter',
+                data : {
+                    'startdate' : $('select#startdate').val(),
+                    'enddate' : $('select#enddate').val(),
+                },
+                success : function(data){
+                    //$('#filter').html(data);
+                    console.log(data);
+                }
+            });
+        })
+        // function filterDate(){
+        //     $.ajax({
+        //         type : "POST",
+        //         url : '/admin/datakgb/filter',
+        //         data : {
+        //             'startdate' : document.getElementById('startdate'),
+        //             'enddate' : document.getElementById('enddate'),
+        //         },
+        //         success : function(data){
+        //             $('#filter').html(data);
+        //         }
+        //     });
+        // }
+</script> --}}
 @endsection

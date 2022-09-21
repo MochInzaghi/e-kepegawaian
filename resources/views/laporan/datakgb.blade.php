@@ -207,14 +207,14 @@
                                         <td class="font" style="text-align: left">Oleh Pejabat</td>
                                         <td class="font" style="margin-left: 158px;">:</td>
                                         <td class="font" style="text-align: left; margin-left: 20px;">
-                                            {{ $datapegawai->pegawaiKgb[0]->olehpejabat }}</td>
+                                            {{ $datakgb->olehpejabat }}</td>
                                     </tr>
                                     <tr class="d-flex" style="margin-top: 5px;">
                                         <td class="font" scope="row">b.</td>
                                         <td class="font" style="text-align: left">Tanggal<br>Nomor</td>
                                         <td class="font" style="margin-left: 204px;">:<br>:</td>
                                         <td class="font" style="text-align: left; margin-left: 20px;">
-                                            {{ date('d-m-Y', strtotime($datapegawai->pegawaiKgb[0]->tgl)) }}<br>822.1/385/35.07.127/2019
+                                            {{ date('d-m-Y', strtotime($datakgb->tgl)) }}<br>822.1/385/35.07.127/2019
                                         </td>
                                         </td>
                                     </tr>
@@ -225,7 +225,7 @@
                                             tersebut</td>
                                         <td class="font" style="margin-left: 49px;"><br>:</td>
                                         <td class="font" style="text-align: left; margin-left: 20px;">
-                                            <br>{{ date('d F Y', strtotime($datapegawai->pegawaiKgb[0]->tgl_gaji)) }}
+                                            <br>{{ date('j', strtotime($datakgb->tgl_gaji)) . " " . $bulan[(int)date('n', strtotime($datakgb->tgl_gaji))-1] . " " .date('j', strtotime($datakgb->tgl_gaji)) }}
                                         </td>
                                     </tr>
                                     <tr class="d-flex" style="margin-top: 5px;">
@@ -234,7 +234,7 @@
                                             tanggal tersebut</td>
                                         <td class="font" style="margin-left: 79px;"><br>:</td>
                                         <td class="font" style="text-align: left; margin-left: 20px;">
-                                            <br>{{ $datapegawai->pegawaiKgb[0]->masakerja_tgl }}
+                                            <br>{{ $datakgb->masakerja_tgl }}
                                         </td>
                                     </tr>
                                     <tr class="d-flex" style="margin-top: 5px;">
@@ -246,7 +246,7 @@
                                         <td class="font" style="text-align: left"><b>Gaji Pokok Baru</b></td>
                                         <td class="font" style="margin-left: 121px;">:</td>
                                         <td class="font" style="text-align: left; margin-left: 20px;">
-                                            <b>@currency($datapegawai->pegawaiKgb[0]->gajibaru),-</b>
+                                            <b>@currency($datakgb->gajibaru),-</b>
                                         </td>
                                         <td class="font" style="margin-left: 120px; margin-top: -5px"><b>PP Nomor 15
                                                 Tahun 2015</b></td>
@@ -256,7 +256,7 @@
                                         <td class="font" style="text-align: left">Berdasarkan Masa Kerja</td>
                                         <td class="font" style="margin-left: 55px;">:</td>
                                         <td class="font" style="text-align: left; margin-left: 20px;">
-                                            {{ $datapegawai->pegawaiKgb[0]->masakerja }}
+                                            {{ $datakgb->masakerja }}
                                         </td>
                                     </tr>
                                     <tr class="d-flex" style="margin-top: 5px;">
@@ -264,14 +264,14 @@
                                         <td class="font" style="text-align: left">Dalam Golongan Ruang</td>
                                         <td class="font" style="margin-left: 60px;">:</td>
                                         <td class="font" style="text-align: left; margin-left: 20px;">
-                                            {{ $datapegawai->pegawaiKgb[0]->gol_ruang }}</td>
+                                            {{ $datakgb->gol_ruang }}</td>
                                     </tr>
                                     <tr class="d-flex" style="margin-top: 5px;">
                                         <td class="font" style="margin-left: -9px;" scope="row">11.</td>
                                         <td class="font" style="text-align: left">Mulai Tanggal</td>
                                         <td class="font" style="margin-left: 151px;">:</td>
                                         <td class="font" style="text-align: left; margin-left: 20px;">
-                                            {{ date('d-m-Y', strtotime($datapegawai->pegawaiKgb[0]->mulai_tgl)) }}
+                                            {{ date('d-m-Y', strtotime($datakgb->mulai_tgl)) }}
                                         </td>
                                     </tr>
                                 </tbody>

@@ -25,6 +25,7 @@ class CreateDataKgbsTable extends Migration
             $table->string('masakerja');
             $table->string('gol_ruang');
             $table->date('mulai_tgl');
+            $table->string('tahun');
             $table->timestamps();
         });
     }

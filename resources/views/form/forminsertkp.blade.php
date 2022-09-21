@@ -353,7 +353,7 @@
                                         Silahkan Edit Data Kenaikan Pangkat
                                     </p>
                                     @include('sweetalert::alert')
-                                    <form class="forms-sample" action="/admin/datakp/{{$datakp->id}}/update" method="POST"
+                                    <form class="forms-sample" action="/admin/datakp/store" method="POST"
                                         enctype="multipart/form-data">
                                         {{ csrf_field() }}
                                         <input type="hidden" name="data_pegawai_id"
@@ -374,90 +374,68 @@
                                             <label for="recipient-name" class="col-form-label">FC SK Pengangkatan
                                                 dalam Jabatan Struktural </label>
                                             <input type="file" name="skp_struktural" class="form-control"
-                                                id="recipient-name"
-                                                value="{{ $datakp->skp_struktural ?? '' }}">
-                                            <p>{{ $datakp->skp_struktural ?? '' }}</p>
+                                                id="recipient-name">
                                         </div>
                                         <div class="form-group">
                                             <label for="recipient-name" class="col-form-label">FC Surat Pernyataan
                                                 Melaksanakan Tugas </label>
                                             <input type="file" name="sp_tugas" class="form-control"
-                                                id="recipient-name"
-                                                value="{{ $datakp->sp_tugas ?? '' }}">
-                                            <p>{{ $datakp->sp_tugas ?? '' }}</p>    
+                                                id="recipient-name">
                                         </div>
                                         <div class="form-group">
                                             <label for="recipient-name" class="col-form-label">FC Surat Pernyataan
                                                 Pelantikan </label>
                                             <input type="file" name="sp_pelantikan" class="form-control"
-                                                id="recipient-name"
-                                                value="{{ $datakp->sp_pelantikan ?? '' }}">
-                                            <p>{{ $datakp->sp_pelantikan ?? '' }}</p>
+                                                id="recipient-name">
                                         </div>
                                         <div class="form-group">
                                             <label for="recipient-name" class="col-form-label">FC Berita Acara
                                                 Pengangkatan Sumpah </label>
                                             <input type="file" name="ba_pengangkatansumpah" class="form-control"
-                                                id="recipient-name"
-                                                value="{{ $datakp->ba_pengangkatansumpah ?? '' }}">
-                                            <p>{{ $datakp->ba_pengangkatansumpah ?? '' }}</p>
+                                                id="recipient-name">
                                         </div>
                                         <div class="form-group">
                                             <label for="recipient-name" class="col-form-label">FC Ijazah Terakhir
                                                 Legalisir </label>
                                             <input type="file" name="ijazah_terakhir"" class="form-control"
-                                                id="recipient-name"
-                                                value="{{ $datakp->ijazah_terakhir ?? '' }}">
-                                            <p>{{ $datakp->ijazah_terakhir ?? '' }}</p>
+                                                id="recipient-name">
                                         </div>
                                         <div class="form-group">
                                             <label for="recipient-name" class="col-form-label">FC Surat Tanda Lulus
                                                 Diklatpim Tingkat III atau STLUD Tingkat II atau memiliki ijazah S-2
                                             </label>
                                             <input type="file" name="surat_tandalulus" class="form-control"
-                                                id="recipient-name"
-                                                value="{{ $datakp->surat_tandalulus ?? '' }}">
-                                            <p>{{ $datakp->surat_tandalulus ?? '' }}</p>
+                                                id="recipient-name">
                                         </div>
                                         <div class="form-group">
                                             <label for="recipient-name" class="col-form-label">FC SKP Tahun 2020
                                             </label>
                                             <input type="file" name="skp_2020" class="form-control"
-                                                id="recipient-name"
-                                                value="{{ $datakp->skp_2020 ?? '' }}">
-                                            <p>{{ $datakp->skp_2020 ?? '' }}</p>
+                                                id="recipient-name">
                                         </div>
                                         <div class="form-group">
                                             <label for="recipient-name" class="col-form-label">FC SKP Tahun 2021
                                             </label>
                                             <input type="file" name="skp_2021" class="form-control"
-                                                id="recipient-name"
-                                                value="{{ $datakp->skp_2021 ?? '' }}">
-                                            <p>{{ $datakp->skp_2021 ?? '' }}</p>
+                                                id="recipient-name">
                                         </div>
                                         <div class="form-group">
                                             <label for="recipient-name" class="col-form-label">FC SKP Jabatan </label>
                                             <input type="file" name="skp_jabatan" class="form-control"
-                                                id="recipient-name"
-                                                value="{{ $datakp->skp_jabatan ?? '' }}">
-                                            <p>{{ $datakp->skp_jabatan ?? '' }}</p>
+                                                id="recipient-name">
                                         </div>
                                         <div class="form-group">
                                             <label for="recipient-name" class="col-form-label">FC Surat Pernyataan
                                                 Pengangkatan yang lama </label>
                                             <input type="file" name="sp_pengangkatanlama" class="form-control"
-                                                id="recipient-name"
-                                                value="{{ $datakp->sp_pengangkatanlama ?? '' }}">
-                                            <p>{{ $datakp->sp_pengangkatanlama ?? '' }}</p>
+                                                id="recipient-name">
                                         </div>
                                         <div class="form-group">
-                                            <label for="recipient-name" class="col-form-label">Tahun Kenaikan
-                                            </label>
+                                            <label for="recipient-name" class="col-form-label">Tahun Kenaikan </label>
                                             <input type="text" name="tahun" class="form-control"
-                                                id="recipient-name"
-                                                value="{{ $datakp->tahun ?? '' }}">
+                                                id="recipient-name">
                                         </div>
-                                        <button type="submit" class="btn btn-primary me-2">Update</button>
+                                        <button type="submit" class="btn btn-primary me-2">Submit</button>
                                     </form>
                                 </div>
                             </div>

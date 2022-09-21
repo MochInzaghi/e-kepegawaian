@@ -92,37 +92,74 @@
                             </div>
                         <table class="table table-bordered solid" style="margin-top: 10px; border:1px solid black;">
                             <tr>
-                                <th>No</th>
-                                <th>Nama Pegawai</th>
-                                <th>NIP</th>
-                                <th>Jabatan</th>
-                                <th>Jenis Cuti</th>
-                                <th>Dari Tanggal</th>
-                                <th>Sampai Tanggal</th>
-                                <th>Jumlah Hari Kerja</th>
-                                <th>Sisa Cuti Tahunan YBS</th>
-                                <th>Pejabat</th>
-                                <th>No. Surat</th>
-                                <th>Tanggal</th>
-                                <th>Keterangan</th>
-                            </tr>
+                                <th class = "thratatengah">
+                                  No
+                                </th>
+                                <th class = "thratatengah">
+                                  Nama Pegawai
+                                </th>
+                                <th class = "thratatengah">
+                                  NIP
+                                </th>
+                                <th class = "thratatengah">
+                                  Jabatan
+                                </th>
+                                <th class = "thratatengah">
+                                  Jenis Cuti
+                                </th>
+                                <th class = "thratatengah">
+                                  Dari Tanggal
+                                </th>
+                                <th class = "thratatengah">
+                                  Sampai Tanggal
+                                </th>
+                                <th class = "thratatengah">
+                                  Jumlah <br>Hari Kerja
+                                </th>
+                                <th class = "thratatengah">
+                                  Sisa Cuti <br>Tahunan YBS
+                                </th>
+                                <th class = "thratatengah">
+                                  Pejabat
+                                </th>
+                                <th class = "thratatengah">
+                                  No. Surat
+                                </th>
+                                <th class = "thratatengah">
+                                  Tanggal
+                                </th>
+                                <th class = "thratatengah">
+                                  Keterangan
+                                </th>
+                                <th class = "thratatengah">
+                                  Aksi
+                                </th>
+                              </tr>
 
                             @php $no=1; @endphp
                             @foreach ($data_cuti as $cuti)
+                            @php
+                                $bulandrtgl = $datebulan[(int)date('n', strtotime($cuti->daritgl))-1];
+                                $daritgl = date('j', strtotime($cuti->daritgl)). " " . $bulandrtgl . " " . date('Y', strtotime($cuti->daritgl));
+                                $bulansmptgl = $datebulan[(int)date('n', strtotime($cuti->sampaitgl))-1];
+                                $sampaitgl = date('j', strtotime($cuti->sampaitgl)). " " . $bulansmptgl . " " . date('Y', strtotime($cuti->sampaitgl));
+                                $bulantgl = $datebulan[(int)date('n', strtotime($cuti->tanggal))-1];
+                                $tanggal = date('j', strtotime($cuti->tanggal)). " " . $bulantgl . " " . date('Y', strtotime($cuti->tanggal));
+                            @endphp
                                 <tr>
-                                    <td>{{ $no++ }}</td>
-                                    <td>{{$cuti->namapegawai}}</td>
-                                    <td>{{$cuti->nip}}</td>
-                                    <td>{{$cuti->jabatan}}</td>
-                                    <td>{{$cuti->jeniscuti}}</td>
-                                    <td>{{ date('d F Y', strtotime( $cuti->daritgl )) }}</td> 
-                                    <td>{{ date('d F Y', strtotime($cuti->sampaitgl)) }}</td>
-                                    <td>{{$cuti->jmlhrkrj}}</td>
-                                    <td>{{$cuti->sisacuti}}</td>
-                                    <td>{{$cuti->pejabat}}</td>
-                                    <td>{{$cuti->nosurat}}</td>
-                                    <td>{{ date('d F Y', strtotime( $cuti->tanggal )) }}</td> 
-                                    <td>{{$cuti->keterangan}}</td>
+                                <th class = "thratatengah" scope="row">{{ $cuti->id }}</th>
+                                <td>{{$cuti->namapegawai}}</td>
+                                <td class = "thratatengah">{{$cuti->nip}}</td>
+                                <td class = "thratatengah">{{$cuti->jabatan}}</td>
+                                <td class = "thratatengah">{{$cuti->jeniscuti}}</td>
+                                <td class = "thratatengah">{{ $daritgl }}</td> 
+                                <td class = "thratatengah">{{ $sampaitgl }}</td>
+                                <td class = "thratatengah">{{$cuti->jmlhrkrj}}</td>
+                                <td class = "thratatengah">{{$cuti->sisacuti}}</td>
+                                <td class = "thratatengah">{{$cuti->pejabat}}</td>
+                                <td class = "thratatengah">{{$cuti->nosurat}}</td>
+                                <td class = "thratatengah">{{ $tanggal }}</td>
+                                <td class = "thratatengah">{{$cuti->keterangan}}</td>
                                 </tr>
                             @endforeach
                         </table>

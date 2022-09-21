@@ -6,7 +6,7 @@
                 <span class="menu-title">Dashboard</span>
             </a>
         </li>
-    <li class="nav-item nav-category">Forms and Datas</li>
+    <li class="nav-item nav-category">Forms and Menu</li>
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
                 <i class="menu-icon mdi mdi-card-text-outline"></i>
@@ -37,12 +37,12 @@
             </div>
             <div class="collapse" id="tables">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="{{route('admin.kgb')}}">Kelola Data KGB</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{url('/admin/datakgb?startdate=2021-01-01&enddate=2025-12-31')}}">Kelola Data KGB</a></li>
                 </ul>
             </div>
             <div class="collapse" id="tables">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="{{route('admin.kp')}}">Kelola Data KP</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{url('/admin/datakp?startdate=2021-01-01&enddate=2025-12-31')}}">Kelola Data KP</a></li>
                 </ul>
             </div>
             <div class="collapse" id="tables">

@@ -6,6 +6,7 @@ use App\Models\DataPensiun;
 use App\Models\DataPegawai;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use function PHPUnit\Framework\isEmpty;
 
 class DataPensiunController extends Controller
 {
@@ -17,11 +18,13 @@ class DataPensiunController extends Controller
     public function index(Request $request)
     {
         if ($request->has('cari')) {
+            $bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']; 
             $data_pensiun = \App\Models\DataPegawai::where('namapegawai', 'LIKE', '%' . $request->cari . '%')->get();
         } else {
+            $bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']; 
             $data_pensiun = \App\Models\DataPegawai::all();
         }
-        return view('tabel.tabeldatapensiun', compact('data_pensiun'));
+        return view('tabel.tabeldatapensiun', compact('data_pensiun', 'bulan'));
     }
 
     /**
@@ -122,12 +125,39 @@ class DataPensiunController extends Controller
     }
 
     public function print(Request $request){
+        $namabulan = [
+            'empty' => 0, 
+            '01' => 'Januari', 
+            '02' =>'Februari', 
+            '03' =>'Maret', 
+            '04' =>'April', 
+            '05' =>'Mei', 
+            '06' =>'Juni', 
+            '07' =>'Juli', 
+            '08' =>'Agustus', 
+            '09' =>'September', 
+            '10' =>'Oktober', 
+            '11' =>'November', 
+            '12' =>'Desember'
+        ];
+        $datebulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
         if ($request->input('bulan') != '1' && $request->input('tahun') != '1') {
-            $bulan = $request->input('bulan');
+            $inputbulan = $request->input('bulan');
+            $bulan = $namabulan[$inputbulan];
             $tahun = $request->input('tahun');
-            $data_pensiun = DataPensiun::whereMonth('updated_at', $bulan)->whereYear('updated_at', $tahun)->get();
-           
-            return view('laporan.datapensiun', compact('data_pensiun', 'bulan', 'tahun'));
+            $data_pensiun = DataPensiun::whereMonth('updated_at', $inputbulan)->whereYear('updated_at', $tahun)->get();
+            $datapegawai = [];
+            if($data_pensiun->isEmpty()){
+                Alert::error('Not Found', 'Data Pensiun Tidak Ditemukan');
+                return view('errors.404');
+            }else{
+                foreach ($data_pensiun as $pensiun) {
+                    $datapegawai[] = DataPegawai::where('id', 'LIKE', '%' . $pensiun->data_pegawai_id . '%')->get();
+                }
+               
+                return view('laporan.datapensiun', compact('data_pensiun', 'bulan', 'tahun','datapegawai', 'datebulan'));
+            }
+            
         }else{
             Alert::error('Not Found', 'Data Pensiun Tidak Ditemukan');
             return view('errors.404');

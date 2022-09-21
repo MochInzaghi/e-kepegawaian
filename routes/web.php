@@ -40,16 +40,23 @@ Route::middleware('auth')->group(function () {
     Route::delete('admin/datapegawai/{data_pegawai:id}/delete', '\App\Http\Controllers\DataPegawaiController@destroy')->name('hapus.pegawai');
 
     //tabel kgb
+    // Route::post('admin/datakgb/filter', '\App\Http\Controllers\FilterController@index')->name('filter.kgb');
     Route::get('admin/datakgb', '\App\Http\Controllers\DataKgbController@index')->name('admin.kgb');
+    Route::get('admin/datakgb/{data_kgb:id}/insert', '\App\Http\Controllers\DataKgbController@create')->name('create.kgb');
+    Route::POST('admin/datakgb/store', '\App\Http\Controllers\DataKgbController@store')->name('store.kgb');
     Route::get('admin/datakgb/{id}/edit', '\App\Http\Controllers\DataKgbController@edit')->name('edit.kgb');
-    Route::post('admin/datakgb/update', '\App\Http\Controllers\DataKgbController@update')->name('update.kgb');
+    Route::PATCH('admin/datakgb/{dataKgb:id}/update', '\App\Http\Controllers\DataKgbController@update')->name('update.kgb');
     Route::get('admin/datakgb/{id}/print', '\App\Http\Controllers\DataKgbController@print')->name('print.kgb');
+    Route::get('admin/datakgb/error', '\App\Http\Controllers\DataKgbController@error')->name('error.kgb');
 
     //tabel kp
     Route::get('admin/datakp', '\App\Http\Controllers\DataKpController@index')->name('admin.kp');
+    Route::get('admin/datakp/{data_kp:id}/insert', '\App\Http\Controllers\DataKpController@create')->name('create.kgb');
+    Route::POST('admin/datakp/store', '\App\Http\Controllers\DataKpController@store')->name('store.kgb');
     Route::get('admin/datakp/{id}/edit', '\App\Http\Controllers\DataKpController@edit')->name('edit.kp');
-    Route::post('admin/datakp/update', '\App\Http\Controllers\DataKpController@update')->name('update.kp');
+    Route::post('admin/datakp/{dataKp:id}/update', '\App\Http\Controllers\DataKpController@update')->name('update.kp');
     Route::get('admin/datakp/{id}/print', '\App\Http\Controllers\DataKpController@print')->name('print.kp');
+    Route::get('admin/datakp/error', '\App\Http\Controllers\DataKPController@error')->name('error.kp');
 
     //tabel penghargaan
     Route::get('/admin/datapenghargaan', '\App\Http\Controllers\DataPenghargaanController@index')->name('admin.penghargaan');
@@ -79,8 +86,8 @@ Route::middleware('auth')->group(function () {
     Route::get('admin/datacuti/print', '\App\Http\Controllers\DataCutiController@print')->name('print.cuti');
 
     // show modal
-    Route::get('showmodal-kgb/{id}', [DataKgbController::class, 'showModalKgb']);
-    Route::get('showmodal-kp/{id}', [DataKpController::class, 'showModalKp']);
+    Route::get('showmodal-kgb/{id}', '\App\Http\Controllers\DataKgbController@showModalKgb')->name('show.kgb');
+    Route::get('showmodal-kp/{id}', '\App\Http\Controllers\DataKpController@showModalKp')->name('show.kp');
 });
 
 // Disable Register

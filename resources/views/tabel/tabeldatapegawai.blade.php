@@ -58,6 +58,12 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($data_pegawai as $pegawai)
+                                        @php
+                                            $bulankgb = $bulan[(int)date('n', strtotime($pegawai->kgb))-1];
+                                            $datekgb = date('j', strtotime($pegawai->kgb)). " " . $bulankgb . " " . date('Y', strtotime($pegawai->kgb));
+                                            $bulankp = $bulan[(int)date('n', strtotime($pegawai->kp))-1];
+                                            $datekp = date('j', strtotime($pegawai->kp)). " " . $bulankp . " " . date('Y', strtotime($pegawai->kp));
+                                        @endphp
                                         <tr>
                                             <th class = "thratatengah" scope="row">{{ $pegawai->id }}</th>
                                             <td>{{ $pegawai->namapegawai }}</td>
@@ -67,8 +73,8 @@
                                             <td class = "thratatengah">{{ $pegawai->jabatan }}</td>
                                             <td class = "thratatengah">{{ $pegawai->jenjang }}</td>
                                             <td class = "thratatengah">{{ $pegawai->notelp }}</td>
-                                            <td class = "thratatengah">{{ date('d F Y', strtotime($pegawai->kgb)) }}</td>
-                                            <td class = "thratatengah">{{ date('d F Y', strtotime($pegawai->kp)) }}</td>
+                                            <td class = "thratatengah">{{ $datekgb }}</td>
+                                            <td class = "thratatengah">{{ $datekp }}</td>
                                             <td class = "thratatengah">Rp. {{ number_format($pegawai->gajipokok) }},000</td>
                                             <td class = "thratatengah">{{ $pegawai->keterangan }}</td>
                                             <td>
@@ -82,7 +88,7 @@
                                                     <button class="btn btn-danger btn sm inline"
                                                         type="submit">Hapus</button>
                                                 </form> --}}
-                                                <button onclick="deletePegawai({{ $pegawai->id }})"
+                                                <button onclick="delPegawai({{ $pegawai->id }})"
                                                     class="d-inline ml-3 btn btn-danger btn sm inline"
                                                     type="submit">Hapus</button>
                                             </td>
@@ -99,37 +105,39 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
-        function deletePegawai(id) {
-            url = `/admin/datapegawai/${id}/delete`
-            swal({
-                title: 'Apakah anda yakin ingin menghapus data ini?',
-                text: 'Catatan ini dan detailnya akan dihapus secara permanen!',
-                icon: 'warning',
-                buttons: ["Batal", "Hapus"],
-            }).then(function(value) {
-                if (value) {
-                    $.ajax({
-                        url: url,
-                        type: 'POST',
-                        data: {
-                            '_token': '{{ csrf_token() }}',
-                            '_method': 'DELETE'
-                        },
-                        success: function(result) {
-                            swal({
-                                title: 'Berhasil!',
-                                text: 'Data berhasil dihapus!',
-                                icon: 'success',
-                                button: 'OK',
-                            }).then(function() {
-                                location.reload()
-                            });
-                        }
-                    })
+    function delPegawai(id) {
+    url = `/admin/datapegawai/${id}/delete`
+    swal({
+        title: 'Apakah anda yakin ingin menghapus data ini?',
+        text: 'Catatan ini dan detailnya akan dihapus secara permanen!',
+        icon: 'warning',
+        buttons: ["Batal", "Hapus"],
+    }).then(function(value) {
+        if (value) {
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: {
+                    '_token': '{{ csrf_token() }}',
+                    '_method': 'DELETE'
+                },
+                success: function(result) {
+                    swal({
+                        title: 'Berhasil!',
+                        text: 'Data berhasil dihapus!',
+                        icon: 'success',
+                        button: 'OK',
+                    }).then(function() {
+                        location.reload()
+                    });
                 }
-            });
+            })
         }
+    });
+}
+console.log('hai');
     </script>
 @endsection

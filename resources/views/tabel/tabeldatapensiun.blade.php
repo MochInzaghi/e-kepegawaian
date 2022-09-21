@@ -50,6 +50,10 @@
               </thead>
               <tbody>
                 @foreach ($data_pensiun as $pensiun)
+                @php
+                    $bulan = $bulan[(int)date('n', strtotime($pensiun->pegawaiPensiun->tanggal ?? ''))-1];
+                    $tanggal = date('j', strtotime($pensiun->pegawaiPensiun->tanggal ?? '')). " " . $bulan . " " . date('Y', strtotime($pensiun->pegawaiPensiun->tanggal ?? ''));
+                @endphp
                 <tr>
                   <th class = "thratatengah" scope="row">{{ $pensiun->id }}</th>
                   <td>{{ $pensiun->namapegawai }}</td>
@@ -58,7 +62,11 @@
                   <td class = "thratatengah">{{ $pensiun->pegawaiPensiun->tl_sk_pertama ?? '' }}</td> 
                   <td class = "thratatengah">{{ $pensiun->pegawaiPensiun->tmt_58 ?? '' }}</td>
                   <td class = "thratatengah">{{ $pensiun->pegawaiPensiun->tmt_60 ?? '' }}</td>
-                  <td class = "thratatengah">{{  date('d F Y', strtotime($pensiun->pegawaiPensiun->tanggal ?? '')) }}</td>
+                  @if(empty($pensiun->pegawaiPensiun->tanggal))
+                  <td class = "thratatengah">{{ $pensiun->pegawaiPensiun->tanggal ?? '' }}</td>
+                  @else
+                  <td class = "thratatengah">{{ $tanggal }}</td>
+                  @endif
                   <td class = "thratatengah">{{ $pensiun->pegawaiPensiun->no_sk ?? '' }}</td>
                   <td>{{ $pensiun->pegawaiPensiun->keterangan_pensiun ?? '' }}</td>
                   <td>

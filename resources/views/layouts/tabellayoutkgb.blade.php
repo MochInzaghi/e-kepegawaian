@@ -5,7 +5,7 @@
 
 <body>
     <div class="container-scroller">
-        @include('components.navbartahun')
+        @include('components.navbartahunkgb')
         <div class="container-fluid page-body-wrapper">
             <div class="theme-setting-wrapper">
                 <div id="settings-trigger"><i class="ti-settings"></i></div>
@@ -47,22 +47,6 @@
     <script src="{{ asset('template') }}/js/template.js"></script>
     <script src="{{ asset('template') }}/js/settings.js"></script>
     <script src="{{ asset('template') }}/js/todolist.js"></script>
-    <script>
-        $('#view').on('click', function(event) {
-            event.preventDefault();
-            const url = $(this).attr('href');
-            swal({
-                title: 'Apakah anda yakin ingin menghapus data ini?',
-                text: 'Catatan ini dan detailnya akan dihapus secara permanen!',
-                icon: 'warning',
-                buttons: ["Batal", "Hapus"],
-            }).then(function(value) {
-                if (value) {
-                    window.location.href = url;
-                }
-            });
-        });
-    </script>
     {{-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
     </script> --}}

@@ -93,79 +93,82 @@
 
                         <table class="table table-bordered solid" style="margin-top: 10px; border:1px solid black;">
                             <tr>
-                                <th>
+                                <th class="thratatengah">
                                     No
                                   </th>
-                                  <th>
+                                  <th class="thratatengah">
                                     Nama Pegawai
                                   </th>
-                                  <th>
+                                  <th class="thratatengah">
                                     NIP
                                   </th>
-                                  <th>
+                                  <th class="thratatengah">
                                     Tempat Tanggal Lahir
                                   </th>
-                                  <th>
+                                  <th class="thratatengah">
                                     Pangkat / <br>Gol. Ruang
                                   </th>
-                                  <th>
+                                  <th class="thratatengah">
                                     TMT / <br>Gol. Ruang
                                   </th>
-                                  <th>
+                                  <th class="thratatengah">
                                     Jabatan Terakhir
                                   </th>
-                                  <th>
+                                  <th class="thratatengah">
                                     TMT Jabatan
                                   </th>
-                                  <th>
+                                  <th class="thratatengah">
                                     Masa Kerja <br>(Tahun)
                                   </th>
-                                  <th>
+                                  <th class="thratatengah">
                                     Masa Kerja <br>(Bulan)
                                   </th>
-                                  <th>
+                                  <th class="thratatengah">
                                     Pendidikan <br>Kepemimpinan
                                   </th>
-                                  <th>
+                                  <th class="thratatengah">
                                     Tahun <br>Lulus
                                   </th>
-                                  <th>
+                                  <th class="thratatengah">
                                     Pendidikan Terakhir, <br> Nama Sekolah
                                   </th>
-                                  <th>
+                                  <th class="thratatengah">
                                     Tahun <br>Lulus
                                   </th>
-                                  <th>
+                                  <th class="thratatengah">
                                     Jenis <br>Kelamin
                                   </th>
-                                  <th>
+                                  <th class="thratatengah">
                                     Agama <br>Tahun
                                   </th>
-                                  <th>
+                                  <th class="thratatengah">
                                     Tahun <br>Pensiun
                                   </th>
                             </tr>
 
-                            @php $no=1; @endphp
-                            @foreach ($data_duk as $duk)
-                                <tr>
-                                    <td>{{ $no++ }}</td>
-                                    <td>{{ $duk->namapegawai }}</td>
-                                    <td>{{ $duk->nip }}</td>
-                                    <td>{{ $duk->ttl }}</td>
-                                    <td>{{ $duk->pangkat }}</td>
-                                    <td>{{ $duk->pegawaiDuk->tmt ?? ''}}</td> 
-                                    <td>{{ $duk->pegawaiDuk->jabatanterakhir ?? '' }}</td>
-                                    <td>{{ $duk->pegawaiDuk->tmt_jabatan ?? '' }}</td>
-                                    <td>{{ $duk->pegawaiDuk->mk_tahun ?? '' }}</td>
-                                    <td>{{ $duk->pegawaiDuk->mk_bulan ?? ''}}</td>
-                                    <td>{{ $duk->pegawaiDuk->pendidikan_kepemimpinan ?? ''}}</td>
-                                    <td>{{ $duk->pegawaiDuk->tahunlulus ?? ''}}</td>
-                                    <td>{{ $duk->pegawaiDuk->pendidikan_terakhir ?? ''}}</td>
-                                    <td>{{ $duk->pegawaiDuk->tahun_lulus ?? ''}}</td>
-                                    <td>{{ $duk->pegawaiDuk->jeniskelamin ?? ''}}</td> 
-                                    <td>{{ $duk->pegawaiDuk->agama_tahun ?? ''}}</td>
-                                    <td>{{ $duk->pegawaiDuk->tahunpensiun ?? ''}}</td>
+                                  @php $no=1; @endphp
+                                  @foreach ($datapegawai as $data )
+                                  @php
+                                      $duk = $data_duk[$no-1];
+                                  @endphp
+                                  <tr>
+                                      <td class="thratatengah">{{ $no++ }}</td>
+                                      <td>{{ $data->namapegawai }}</td>
+                                      <td class="thratatengah">{{ $data->nip }}</td>
+                                      <td class="thratatengah">{{ $data->ttl }}</td>
+                                      <td class="thratatengah">{{ $data->pangkat }}</td>
+                                      <td class="thratatengah">{{ $duk->tmt ?? ''}}</td> 
+                                      <td class="thratatengah">{{ $duk->jabatanterakhir ?? '' }}</td>
+                                      <td class="thratatengah">{{ $duk->tmt_jabatan ?? '' }}</td>
+                                      <td class="thratatengah">{{ $duk->mk_tahun ?? '' }}</td>
+                                      <td class="thratatengah">{{ $duk->mk_bulan ?? ''}}</td>
+                                      <td class="thratatengah">{{ $duk->pendidikan_kepemimpinan ?? ''}}</td>
+                                      <td class="thratatengah">{{ $duk->tahunlulus ?? ''}}</td>
+                                      <td class="thratatengah">{{ $duk->pendidikan_terakhir ?? ''}}</td>
+                                      <td class="thratatengah">{{ $duk->tahun_lulus ?? ''}}</td>
+                                      <td class="thratatengah">{{ $duk->jeniskelamin ?? ''}}</td> 
+                                      <td class="thratatengah">{{ $duk->agama_tahun ?? ''}}</td>
+                                      <td class="thratatengah">{{ $duk->tahunpensiun ?? ''}}</td>
                                 </tr>
                             @endforeach
                         </table>

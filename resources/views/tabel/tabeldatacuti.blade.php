@@ -61,25 +61,31 @@
               </thead>
               <tbody>
               @foreach($data_cuti as $cuti)
+              @php
+                $bulandrtgl = $bulan[(int)date('n', strtotime($cuti->daritgl))-1];
+                $daritgl = date('j', strtotime($cuti->daritgl)). " " . $bulandrtgl . " " . date('Y', strtotime($cuti->daritgl));
+                $bulansmptgl = $bulan[(int)date('n', strtotime($cuti->sampaitgl))-1];
+                $sampaitgl = date('j', strtotime($cuti->sampaitgl)). " " . $bulansmptgl . " " . date('Y', strtotime($cuti->sampaitgl));
+                $bulantgl = $bulan[(int)date('n', strtotime($cuti->tanggal))-1];
+                $tanggal = date('j', strtotime($cuti->tanggal)). " " . $bulantgl . " " . date('Y', strtotime($cuti->tanggal));
+              @endphp
                 <tr>
                   <th class = "thratatengah" scope="row">{{ $cuti->id }}</th>
                   <td>{{$cuti->namapegawai}}</td>
                   <td class = "thratatengah">{{$cuti->nip}}</td>
                   <td class = "thratatengah">{{$cuti->jabatan}}</td>
                   <td class = "thratatengah">{{$cuti->jeniscuti}}</td>
-                  <td class = "thratatengah">{{ date('d F Y', strtotime( $cuti->daritgl )) }}</td> 
-                  <td class = "thratatengah">{{ date('d F Y', strtotime($cuti->sampaitgl)) }}</td>
+                  <td class = "thratatengah">{{ $daritgl }}</td> 
+                  <td class = "thratatengah">{{ $sampaitgl }}</td>
                   <td class = "thratatengah">{{$cuti->jmlhrkrj}}</td>
                   <td class = "thratatengah">{{$cuti->sisacuti}}</td>
                   <td class = "thratatengah">{{$cuti->pejabat}}</td>
                   <td class = "thratatengah">{{$cuti->nosurat}}</td>
-                  <td class = "thratatengah">{{ date('d F Y', strtotime($cuti->tanggal)) }}</td>
-                  <td>{{$cuti->keterangan}}</td>
+                  <td class = "thratatengah">{{ $tanggal }}</td>
+                  <td class = "thratatengah">{{$cuti->keterangan}}</td>
                   <td>
-                  <a href="datacuti/{{ $cuti->id }}/edit" class="btn btn-primary d-inline ml-3">Edit</a>
-                  <button onclick="deleteCuti({{ $cuti->id }})"
-                    class="d-inline ml-3 btn btn-danger btn sm inline"
-                    type="submit">Hapus</button>
+                  <a href="datacuti/{{ $cuti->id }}/edit" class="d-inline ml-3 btn btn-primary d-inline ml-3">Edit</a>
+                  <button style="height: 50px;" onclick="deleteCuti({{ $cuti->id }})" class="d-inline ml-3 btn btn-danger btn sm inline" type="submit">Hapus</button>
                   </td>
                 </tr>
                 @endforeach
@@ -92,39 +98,38 @@
   </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
 function deleteCuti(id) {
-    url = `/admin/datacuti/${id}/delete`
-    swal({
-        title: 'Apakah anda yakin ingin menghapus data ini?',
-        text: 'Catatan ini dan detailnya akan dihapus secara permanen!',
-        icon: 'warning',
-        buttons: ["Batal", "Hapus"],
-    }).then(function(value) {
-        if (value) {
-            $.ajax({
-                url: url,
-                type: 'POST',
-                data: {
-                    '_token': '{{ csrf_token() }}',
-                    '_method': 'DELETE'
-                },
-                success: function(result) {
-                    swal({
-                        title: 'Berhasil!',
-                        text: 'Data berhasil dihapus!',
-                        icon: 'success',
-                        button: 'OK',
-                    }).then(function() {
-                        location.reload()
-                    });
-                }
-            })
-        }
-    });
+  url = `/admin/datacuti/${id}/delete`
+  swal({
+      title: 'Apakah anda yakin ingin menghapus data ini?',
+      text: 'Catatan ini dan detailnya akan dihapus secara permanen!',
+      icon: 'warning',
+      buttons: ["Batal", "Hapus"],
+  }).then(function(value) {
+      if (value) {
+          $.ajax({
+              url: url,
+              type: 'POST',
+              data: {
+                  '_token': '{{ csrf_token() }}',
+                  '_method': 'DELETE'
+              },
+              success: function(result) {
+                  swal({
+                      title: 'Berhasil!',
+                      text: 'Data berhasil dihapus!',
+                      icon: 'success',
+                      button: 'OK',
+                  }).then(function() {
+                      location.reload()
+                  });
+              }
+          })
+      }
+  });
 }
-</script>
+  </script>
 @endsection

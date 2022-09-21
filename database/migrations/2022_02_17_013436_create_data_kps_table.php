@@ -26,6 +26,7 @@ class CreateDataKpsTable extends Migration
             $table->string('skp_2021')->nullable();
             $table->string('skp_jabatan')->nullable();
             $table->string('sp_pengangkatanlama')->nullable();
+            $table->string('tahun');
             $table->timestamps();
         });
     }

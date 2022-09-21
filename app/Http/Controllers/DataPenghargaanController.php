@@ -7,6 +7,7 @@ use App\Models\DataPegawai;
 use Exception;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use function PHPUnit\Framework\isEmpty;
 
 class DataPenghargaanController extends Controller
 {
@@ -18,11 +19,13 @@ class DataPenghargaanController extends Controller
     public function index(Request $request)
     {
         if ($request->has('cari')) {
+            $bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']; 
             $data_penghargaan = \App\Models\DataPegawai::where('namapegawai', 'LIKE', '%' . $request->cari . '%')->get();
         } else {
+            $bulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']; 
             $data_penghargaan = \App\Models\DataPegawai::all();
         }
-        return view('tabel.tabeldatapenghargaan', compact('data_penghargaan'));
+        return view('tabel.tabeldatapenghargaan', compact('data_penghargaan', 'bulan'));
     }
 
     /**
@@ -86,8 +89,8 @@ class DataPenghargaanController extends Controller
         try {
             $request->validate([
                     'thn_10' => 'required',
-                    'thn_20' => 'date',
-                    'thn_30' => 'date',
+                    'thn_20',
+                    'thn_30',
             ]);
             DataPenghargaan::updateorCreate(
                 ['data_pegawai_id' => $request->data_pegawai_id],
@@ -118,12 +121,40 @@ class DataPenghargaanController extends Controller
     }
 
     public function print(Request $request){
-        if ($request->input('bulan') != '1' && $request->input('tahun') != '1') {
-            $bulan = $request->input('bulan');
+        $namabulan = [
+            'empty' => 0, 
+            '01' => 'Januari', 
+            '02' =>'Februari', 
+            '03' =>'Maret', 
+            '04' =>'April', 
+            '05' =>'Mei', 
+            '06' =>'Juni', 
+            '07' =>'Juli', 
+            '08' =>'Agustus', 
+            '09' =>'September', 
+            '10' =>'Oktober', 
+            '11' =>'November', 
+            '12' =>'Desember'
+        ];
+        
+        $datebulan = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']; 
+        
+        if ($request->input('bulan') != '0' && $request->input('tahun') != '0') {
+            $inputbulan = $request->input('bulan');
+            $bulan = $namabulan[$inputbulan];
             $tahun = $request->input('tahun');
-            $data_penghargaan = DataPenghargaan::whereMonth('updated_at', $bulan)->whereYear('updated_at', $tahun)->get();
-           
-            return view('laporan.datapenghargaan', compact('data_penghargaan', 'bulan', 'tahun'));
+            $data_penghargaan = DataPenghargaan::whereMonth('updated_at', $inputbulan)->whereYear('updated_at', $tahun)->get();
+            // dd($data_penghargaan);
+            $datapegawai = [];
+            if($data_penghargaan->isEmpty()){
+                Alert::error('Not Found', 'Data Penghargaan Tidak Ditemukan');
+                return view('errors.404');
+            }else{
+                foreach ($data_penghargaan as $penghargaan) {
+                    $datapegawai[] = DataPegawai::where('id', $penghargaan->data_pegawai_id)->first();               
+                }
+                return view('laporan.datapenghargaan', compact('data_penghargaan', 'bulan', 'tahun', 'datebulan' , 'datapegawai'));
+            }   
         }else{
             Alert::error('Not Found', 'Data Penghargaan Tidak Ditemukan');
             return view('errors.404');
